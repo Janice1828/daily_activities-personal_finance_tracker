@@ -42,9 +42,9 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="p-3">
-                            <form class="row">
+                            <form class="row" method="post">
                                 <div class="col-12">
-                                    <h5>Add Activity</h5>
+                                    <h2>Add Activity</h2>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Day</label>
@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="col-6">
                                     <label for="">Date</label>
-                                    <input type="date" name="date" value="" id="date">
+                                    <input type="date" name="date" value="" id="date" readonly>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Activity</label>
@@ -72,11 +72,11 @@
                                 </div>
                                 <div class="col-6">
                                     <label for="">Until</label>
-                                    <input type="" name="" value="">
+                                    <input type="" name="until" value="">
                                 </div>
                                 <div class="col-12">
                                     <label for="">Summary</label>
-                                    <textarea rows="" cols=""></textarea>
+                                    <textarea rows="" cols="" name="summary"></textarea>
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" name="addactivity">Add Activity</button>
@@ -93,7 +93,7 @@
     </div>
 </body>
 <?php
-include("connection.php");
+include("../connection.php");
 if (isset($_POST['addactivity'])) {
     $date = $_POST['date'];
     $day = $_POST['day'];
@@ -101,21 +101,28 @@ if (isset($_POST['addactivity'])) {
     $startedFrom = $_POST['started_from'];
     $until = $_POST['until'];
     $importance = $_POST['importance'];
-    print_r($_POST);
-    $hash_pw = sha1($password);
-    $sql = "INSERT INTO dapf_activities(date, day, activity, started_from, until, importance) VALUES ('$date', '$day','$activity', '$startedFrom','$until','$importance')";
+    $summary = $_POST['summary'];
+    $sql = "INSERT INTO dapf_activities(date, day, activity, started_from, until, importance,summary) VALUES ('$date', '$day','$activity', '$startedFrom','$until','$importance','$summary')";
     $sub = mysqli_query($conn, $sql);
     if ($sub) {
         echo "success";
     } else {
         echo "failed";
     }
-    // header("location:fetch.php");
 }
 
 ?>
 <script>
     let date = new Date();
-    document.getElementById("date").value = "12/2/2002"
-    // console.log(date.get());
+    let d = date.getDate();
+    const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    let getMonth = month[date.getMonth()];
+    let year = date.getFullYear();
+    if (getMonth < 10) {
+        getMonth = "0" + getMonth;
+    }
+    if (d < 10) {
+        d = "0" + d;
+    }
+    document.getElementById("date").value = `${year}-${getMonth}-${d}`;
 </script>

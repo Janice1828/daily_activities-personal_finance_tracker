@@ -51,13 +51,6 @@ nav {
 .dashboard form label {
   display: block;
 }
-/* .dashboard form input {
-  width: 200px;
-  border: 1px solid #000;
-  border-radius: 6px;
-  padding: 8px 10px;
-  outline: none;
-} */
 .dashboard-content {
   padding: 50px;
 }
@@ -79,7 +72,7 @@ nav {
 form div input,
 #select {
   width: 100%;
-  padding: 5px 5px;
+  padding: 7px 10px;
   border-radius: 6px;
   border: 1px solid #000;
   outline: none;
@@ -93,10 +86,12 @@ form div button {
   border-radius: 7px;
   outline: none;
   border: 0;
-  background: rgb(199, 198, 198);
+  /* background: rgb(199, 198, 198); */
+  cursor: pointer;
 }
 textarea {
   width: 97%;
+  outline: none;
   padding: 10px;
   border-radius: 7px;
 }
@@ -165,9 +160,10 @@ table tbody tr td {
 .btn-primary {
   padding: 7px 20px;
   outline: none;
-  background: #adadad;
+  background: #dedede;
   color: #000;
   border: 0px;
+  cursor: pointer;
 }
 .btn-danger {
   padding: 7px 20px;

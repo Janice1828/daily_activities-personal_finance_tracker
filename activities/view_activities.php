@@ -1,3 +1,10 @@
+<?php
+include("../connection.php");
+$selectQuery = "SELECT * FROM dapf_activities";
+$fetch = mysqli_query($conn, $selectQuery);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,34 +64,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>2024/4/2</td>
-                                            <td>Study</td>
-                                            <td>12:30 Am</td>
-                                            <td>4:30 Am</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>2024/4/2</td>
-                                            <td>Study</td>
-                                            <td>12:30 Am</td>
-                                            <td>4:30 Am</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>2024/4/2</td>
-                                            <td>Study</td>
-                                            <td>12:30 Am</td>
-                                            <td>4:30 Am</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>2024/4/2</td>
-                                            <td>Study</td>
-                                            <td>12:30 Am</td>
-                                            <td>4:30 Am</td>
-                                        </tr>
+                                        <?php
+                                        $i = 0;
+                                        while ($row = mysqli_fetch_assoc($fetch)) {
+                                        ?>
+                                            <tr>
+                                                <td><?php echo ++$i; ?></td>
+                                                <td><?php echo $row['date'] ?></td>
+                                                <td><?php echo $row['activity'] ?></td>
+                                                <td><?php echo $row['started_from']  ?></td>
+                                                <td><?php echo $row['until']  ?></td>
+                                            </tr>
+                                        <?php } ?>
+
                                     </tbody>
                                 </table>
                             </form>
