@@ -1,11 +1,11 @@
-<?php include("header.php") ?>
+<?php include("./components/header.php") ?>
 <form action="" method="post">
   <div><label for="">Email</label> <input type="text" name="email" /></div>
   <div><label for="">Password</label> <input name="password" type="text" /></div>
   <div><button name="login">Login</button></div>
 </form>
 
-<?php include("footer.php") ?>
+<?php include("./components/footer.php") ?>
 
 <?php
 session_start();

@@ -1,5 +1,5 @@
 <?php
-include("header.php")
+include("./components/header.php")
 ?>
 <form action="" method="post">
   <div><label for="">Full Name</label> <input type="text" name="fullname" required /></div>
@@ -8,7 +8,7 @@ include("header.php")
   <div><button name="register">Registration</button></div>
 </form>
 <?php
-include("footer.php");
+include("./components/footer.php");
 ?>
 <?php
 include("connection.php");

@@ -2,4 +2,177 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  /* background-color: red; */
+}
+:root {
+  --black: #2d3047;
+  --blue: #93b7be;
+  --white: #fffefe;
+}
+.sidebar {
+  color: #fff;
+  /* width: 17%; */
+  height: 100vh;
+  background-color: var(--black);
+  padding: 20px 30px;
+  box-shadow: 0px 0px 5px 2px rgb(210, 210, 210);
+}
+
+.dashboard {
+  /* width: 83%; */
+}
+.container {
+  display: flex;
+}
+.navbar {
+}
+.d-flex {
+  display: flex;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.position-sticky {
+  position: sticky;
+  top: 0;
+}
+.container {
+  height: 100vh;
+}
+nav {
+  background: var(--white);
+  padding: 20px 30px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  align-items: center;
+  box-shadow: 0px 0px 0px 1px #d7d3d3;
+}
+.dashboard form label {
+  display: block;
+}
+/* .dashboard form input {
+  width: 200px;
+  border: 1px solid #000;
+  border-radius: 6px;
+  padding: 8px 10px;
+  outline: none;
+} */
+.dashboard-content {
+  padding: 50px;
+}
+.sidebar ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+.sidebar ul li {
+  padding-top: 10px;
+  list-style: none;
+}
+.sidebar-finance {
+  padding-top: 40px;
+}
+.card {
+  box-shadow: 0px 0px 2px 2px #e7e7e7;
+  border-radius: 7px;
+}
+form div input,
+#select {
+  width: 100%;
+  padding: 5px 5px;
+  border-radius: 6px;
+  border: 1px solid #000;
+  outline: none;
+}
+form div label {
+  display: block;
+  margin-bottom: 7px;
+}
+form div button {
+  padding: 8px 20px;
+  border-radius: 7px;
+  outline: none;
+  border: 0;
+  background: rgb(199, 198, 198);
+}
+textarea {
+  width: 97%;
+  padding: 10px;
+  border-radius: 7px;
+}
+.p-5 {
+  padding: 50px;
+}
+.p-3 {
+  padding: 30px;
+}
+.col-1 {
+  flex: 0 0 auto;
+  width: 8.33333333%;
+}
+.col-2 {
+  flex: 0 0 auto;
+  width: calc(16.66666667% - 25px);
+}
+.col-3 {
+  flex: 0 0 auto;
+  width: calc(25% - 25px);
+}
+.col-4 {
+  flex: 0 0 auto;
+  width: calc(33.33333333% - 25px);
+}
+.col-5 {
+  flex: 0 0 auto;
+  width: 41.66666667%;
+}
+.col-6 {
+  flex: 0 0 auto;
+  width: calc(50% - 25px);
+}
+.col-7 {
+  flex: 0 0 auto;
+  width: 58.33333333%;
+}
+.col-8 {
+  flex: 0 0 auto;
+  width: 66.66666667%;
+}
+.col-9 {
+  flex: 0 0 auto;
+  width: 75%;
+}
+.col-10 {
+  flex: 0 0 auto;
+  width: 83.33333333%;
+}
+.col-11 {
+  flex: 0 0 auto;
+  width: 91.66666667%;
+}
+.col-12 {
+  width: 100%;
+}
+.row {
+  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+table thead tr th,
+table tbody tr td {
+  padding: 10px 20px;
+}
+.btn-primary {
+  padding: 7px 20px;
+  outline: none;
+  background: #adadad;
+  color: #000;
+  border: 0px;
+}
+.btn-danger {
+  padding: 7px 20px;
+  outline: none;
+  background: red;
+  color: #fff;
+  border: 0;
 }
