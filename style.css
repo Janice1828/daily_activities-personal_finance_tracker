@@ -2,29 +2,23 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /* background-color: red; */
 }
 :root {
   --black: #2d3047;
   --blue: #93b7be;
   --white: #fffefe;
 }
+#logo {
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+}
 .sidebar {
   color: #fff;
-  /* width: 17%; */
   height: 100vh;
   background-color: var(--black);
   padding: 20px 30px;
   box-shadow: 0px 0px 5px 2px rgb(210, 210, 210);
-}
-
-.dashboard {
-  /* width: 83%; */
-}
-.container {
-  display: flex;
-}
-.navbar {
 }
 .d-flex {
   display: flex;
@@ -41,9 +35,9 @@
 }
 nav {
   background: var(--white);
-  padding: 20px 30px;
+  padding: 20px 50px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 20px;
   align-items: center;
   box-shadow: 0px 0px 0px 1px #d7d3d3;
@@ -66,7 +60,7 @@ nav {
   padding-top: 40px;
 }
 .card {
-  box-shadow: 0px 0px 2px 2px #e7e7e7;
+  box-shadow: 0px 0px 1px 1px #ededed;
   border-radius: 7px;
 }
 form div input,
@@ -184,4 +178,48 @@ table tbody tr td {
 }
 .gap-2 {
   gap: 20px;
+}
+#bannerImg {
+  height: 600px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+.nav-links li {
+  list-style: none;
+}
+.nav-links li a {
+  text-decoration: none;
+}
+.gx-2 {
+  column-gap: 20px;
+}
+.gy-2 {
+  row-gap: 20px;
+}
+.main-content {
+  width: 80%;
+  margin: auto;
+  padding-top: 50px;
+}
+.card-body .card-content button {
+  padding: 7px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.card-content {
+  padding: 20px 25px;
+}
+.card-content p {
+  padding: 10px 0px;
+}
+.card img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
 }
