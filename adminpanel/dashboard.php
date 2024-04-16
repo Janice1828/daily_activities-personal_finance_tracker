@@ -1,7 +1,7 @@
 <?php
-include("../connection.php");
-$selectQuery = "SELECT date, money_spent, spent_on FROM dapf_finance";
-$fetch = mysqli_query($conn, $selectQuery);
+// include("../../connection.php");
+// $selectQuery = "SELECT date, money_spent, spent_on FROM dapf_finance";
+// $fetch = mysqli_query($conn, $selectQuery);
 
 ?>
 <!DOCTYPE html>
@@ -18,23 +18,10 @@ $fetch = mysqli_query($conn, $selectQuery);
     <div class="row">
         <div class="col-3">
             <div class="sidebar">
-                <div class="sidebar-activities">
-                    <ul>
-                        <h2>Activities</h2>
-                        <li><a href="../activities/add_activities.php">Add Activities</a></li>
-                        <li><a href="../activities/view_activities.php">View Activities</a></li>
-                        <li><a href="../activities/edit_activities.php">Edit Activities</a></li>
-                        <li><a href="../activities/delete_activities.php">Delete Activities</a></li>
-                    </ul>
-                </div>
-
                 <div class="sidebar-finance">
                     <ul>
-                        <h2>Finance</h2>
-                        <li><a href="./add_finance.php">Add Income/Expenses</a></li>
-                        <li><a href="#">View Income/Expenses</a></li>
-                        <li><a href="./edit_finance.php">Edit Income/Expenses</a></li>
-                        <li><a href="./delete_finance.php">Delete Income/Expenses</a></li>
+                        <h2>Daily Activities & Personal Finance Tracker</h2>
+                        <li><a href="./userlists.php">User Lists</a></li>
                     </ul>
                 </div>
             </div>
@@ -42,6 +29,8 @@ $fetch = mysqli_query($conn, $selectQuery);
         <div class="col-9">
             <nav class="d-flex position-sticky">
 
+
+                <p><a href="../login.php">Logout</a></p>
                 <p>Profile</p>
             </nav>
             <div class="p-5">
@@ -63,15 +52,14 @@ $fetch = mysqli_query($conn, $selectQuery);
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $i = 0;
-                                        while ($row = mysqli_fetch_assoc($fetch)) { ?>
-                                            <tr>
-                                                <td><?php echo ++$i; ?></td>
-                                                <td><?php echo $row['date'] ?></td>
-                                                <td><?php echo $row['money_spent'] ?></td>
-                                                <td><?php echo $row['spent_on'] ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                        // $i = 0;
+                                        // while ($row = mysqli_fetch_assoc($fetch)) { 
+                                        ?>
+                                        <tr>
+                                        </tr>
+                                        <?php
+                                        //  }
+                                        ?>
                                     </tbody>
                                 </table>
                             </form>

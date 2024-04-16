@@ -1,3 +1,10 @@
+<?php
+include("../../connection.php");
+$selectQuery = "SELECT * FROM dapf_activities";
+$fetch = mysqli_query($conn, $selectQuery);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +12,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Daily Activities & Personal Finance Tracker</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
@@ -16,9 +23,9 @@
                     <ul>
                         <h2>Activities</h2>
                         <li><a href="./add_activities.php">Add Activities</a></li>
-                        <li><a href="./view_activities.php">View Activities</a></li>
+                        <li><a href="#">View Activities</a></li>
                         <li><a href="./edit_activities.php">Edit Activities</a></li>
-                        <li><a href="#">Delete Activities</a></li>
+                        <li><a href="./delete_activities.php">Delete Activities</a></li>
                     </ul>
                 </div>
 
@@ -44,7 +51,7 @@
                         <div class="p-3">
                             <form class="row gap-2">
                                 <div class="col-12">
-                                    <h2>Delete Activity</h2>
+                                    <h2>View Activity</h2>
                                 </div>
                                 <table class="col-12" border="1" cellpadding="10" cellspacing="0">
                                     <thead>
@@ -54,46 +61,22 @@
                                             <th>Activity</th>
                                             <th>Started From</th>
                                             <th>Until</th>
-                                            <th>Action</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>2024/4/2</td>
-                                            <td>Study</td>
-                                            <td>12:30 Am</td>
-                                            <td>4:30 Am</td>
-                                            <td><button type="" class="btn-danger">Delete</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>2024/4/2</td>
-                                            <td>Study</td>
-                                            <td>12:30 Am</td>
-                                            <td>4:30 Am</td>
-                                            <td><button type="" class="btn-danger">Delete</button></td>
+                                        <?php
+                                        $i = 0;
+                                        while ($row = mysqli_fetch_assoc($fetch)) {
+                                        ?>
+                                            <tr>
+                                                <td><?php echo ++$i; ?></td>
+                                                <td><?php echo $row['date'] ?></td>
+                                                <td><?php echo $row['activity'] ?></td>
+                                                <td><?php echo $row['started_from']  ?></td>
+                                                <td><?php echo $row['until']  ?></td>
+                                            </tr>
+                                        <?php } ?>
 
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>2024/4/2</td>
-                                            <td>Study</td>
-                                            <td>12:30 Am</td>
-                                            <td>4:30 Am</td>
-                                            <td><button type="" class="btn-danger">Delete</button></td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>2024/4/2</td>
-                                            <td>Study</td>
-                                            <td>12:30 Am</td>
-                                            <td>4:30 Am</td>
-                                            <td><button type="" class="btn-danger">Delete</button></td>
-
-                                        </tr>
                                     </tbody>
                                 </table>
                             </form>

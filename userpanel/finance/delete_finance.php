@@ -1,9 +1,3 @@
-<?php
-include("../connection.php");
-$selectQuery = "SELECT id, date, money_spent, spent_on FROM dapf_finance";
-$fetch = mysqli_query($conn, $selectQuery);
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +5,7 @@ $fetch = mysqli_query($conn, $selectQuery);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Daily Activities & Personal Finance Tracker</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
@@ -32,8 +26,8 @@ $fetch = mysqli_query($conn, $selectQuery);
                     <ul>
                         <h2>Finance</h2>
                         <li><a href="./add_finance.php">Add Income/Expenses</a></li>
-                        <li><a href="./view_finance.php">View Income/Expenses</a></li>
-                        <li><a href="#">Edit Income/Expenses</a></li>
+                        <li><a href="#">View Income/Expenses</a></li>
+                        <li><a href="./edit_finance.php">Edit Income/Expenses</a></li>
                         <li><a href="./delete_finance.php">Delete Income/Expenses</a></li>
                     </ul>
                 </div>
@@ -41,6 +35,7 @@ $fetch = mysqli_query($conn, $selectQuery);
         </div>
         <div class="col-9">
             <nav class="d-flex position-sticky">
+
                 <p>Profile</p>
             </nav>
             <div class="p-5">
@@ -49,7 +44,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                         <div class="p-3">
                             <form class="row gap-2">
                                 <div class="col-12">
-                                    <h2>Edit Finance</h2>
+                                    <h2>Delete Finance</h2>
                                 </div>
                                 <table class="col-12" border="1" cellpadding="10" cellspacing="0">
                                     <thead>
@@ -58,22 +53,34 @@ $fetch = mysqli_query($conn, $selectQuery);
                                             <th>Date</th>
                                             <th>Money Spent</th>
                                             <th>Spent On</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        $i = 0;
-                                        while ($row = mysqli_fetch_assoc($fetch)) {  ?>
-                                            <tr>
-                                                <td><?php echo ++$i; ?></td>
-                                                <td><?php echo $row['date'] ?></td>
-                                                <td><?php echo $row['money_spent'] ?></td>
-                                                <td><?php echo $row['spent_on'] ?></td>
-                                                <td><a href="./editform.php?id=<?php echo $row['id'] ?>" class="btn-primary">Edit</a></td>
-                                            </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>2024/4/2</td>
+                                            <td>2000</td>
+                                            <td>Book Purchasing</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>2024/4/2</td>
+                                            <td>2000</td>
+                                            <td>Book Purchasing</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>2024/4/2</td>
+                                            <td>2000</td>
+                                            <td>Book Purchasing</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>2024/4/2</td>
+                                            <td>2000</td>
+                                            <td>Book Purchasing</td>
+                                        </tr>
 
-                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </form>

@@ -1,10 +1,9 @@
 <?php
 include("../connection.php");
-$selectQuery = "SELECT * FROM dapf_activities";
+$selectQuery = "SELECT fullname, email, usertype FROM users";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,30 +18,17 @@ $fetch = mysqli_query($conn, $selectQuery);
     <div class="row">
         <div class="col-3">
             <div class="sidebar">
-                <div class="sidebar-activities">
-                    <ul>
-                        <h2>Activities</h2>
-                        <li><a href="./add_activities.php">Add Activities</a></li>
-                        <li><a href="#">View Activities</a></li>
-                        <li><a href="./edit_activities.php">Edit Activities</a></li>
-                        <li><a href="./delete_activities.php">Delete Activities</a></li>
-                    </ul>
-                </div>
-
                 <div class="sidebar-finance">
                     <ul>
-                        <h2>Finance</h2>
-                        <li><a href="../finance/add_finance.php">Add Income/Expenses</a></li>
-                        <li><a href="../finance/view_finance.php">View Income/Expenses</a></li>
-                        <li><a href="../finance/edit_finance.php">Edit Income/Expenses</a></li>
-                        <li><a href="../finance/delete_finance.php">Delete Income/Expenses</a></li>
+                        <h2>Daily Activities & Personal Finance Tracker</h2>
+                        <li><a href="#">User Lists</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="col-9">
             <nav class="d-flex position-sticky">
-
+                <a href="../login.php">Log out</a>
                 <p>Profile</p>
             </nav>
             <div class="p-5">
@@ -51,32 +37,31 @@ $fetch = mysqli_query($conn, $selectQuery);
                         <div class="p-3">
                             <form class="row gap-2">
                                 <div class="col-12">
-                                    <h2>View Activity</h2>
+                                    <h2>User Lists</h2>
                                 </div>
                                 <table class="col-12" border="1" cellpadding="10" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>SN</th>
-                                            <th>Date</th>
-                                            <th>Activity</th>
-                                            <th>Started From</th>
-                                            <th>Until</th>
+                                            <th>Full Name</th>
+                                            <th>Email</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $i = 0;
                                         while ($row = mysqli_fetch_assoc($fetch)) {
+                                            if ($row['usertype'] != "admin") {
                                         ?>
-                                            <tr>
-                                                <td><?php echo ++$i; ?></td>
-                                                <td><?php echo $row['date'] ?></td>
-                                                <td><?php echo $row['activity'] ?></td>
-                                                <td><?php echo $row['started_from']  ?></td>
-                                                <td><?php echo $row['until']  ?></td>
-                                            </tr>
-                                        <?php } ?>
-
+                                                <tr>
+                                                    <td><?php echo ++$i; ?></td>
+                                                    <td><?php echo $row['fullname'] ?></td>
+                                                    <td><?php echo $row['email'] ?></td>
+                                                </tr>
+                                        <?php
+                                            }
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </form>
