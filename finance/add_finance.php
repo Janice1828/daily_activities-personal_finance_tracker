@@ -35,16 +35,15 @@
         </div>
         <div class="col-9">
             <nav class="d-flex position-sticky">
-
-                <p>profile Icon</p>
+                <p>profile</p>
             </nav>
             <div class="p-5">
                 <div class="card">
                     <div class="card-body">
                         <div class="p-3">
-                            <form class="row">
+                            <form class="row gap-2" method="post">
                                 <div class="col-12">
-                                    <h5>Add Finance</h5>
+                                    <h2>Add Finance</h2>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Day</label>
@@ -52,21 +51,21 @@
                                 </div>
                                 <div class="col-6">
                                     <label for="">Date</label>
-                                    <input type="date" name="date" value="">
+                                    <input type="date" name="date" value="" id="date" readonly>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Money Spent</label>
-                                    <input type="text" name="activity" value="">
+                                    <input type="text" name="money_spent" value="">
                                 </div>
 
                                 <div class="col-6">
                                     <label for="">Money Spent On</label>
-                                    <input type="text" name="activity" value="">
+                                    <input type="text" name="spent_on" value="">
                                 </div>
 
                                 <div class="col-12">
                                     <label for="">Summary</label>
-                                    <textarea rows="" cols=""></textarea>
+                                    <textarea rows="" cols="" name="summary"></textarea>
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" name="addfinance">Add Finance</button>
@@ -83,17 +82,29 @@
     </div>
 </body>
 <?php
-// include("connection.php");
-// if (isset($_POST['addactivity'])) {
-//     $name = $_POST['name'];
-//     $email = $_POST['email'];
-//     $password = $_POST['password'];
-//     $gender = $_POST['gender'];
-//     print_r($_POST);
-//     $hash_pw = sha1($password);
-//     $sql = "INSERT INTO tbl_a(name, email, password, gender) VALUES ('$name', '$email','$hash_pw', '$gender')";
-//     $sub = mysqli_query($conn, $sql);
-//     header("location:fetch.php");
-// }
+include("../connection.php");
+if (isset($_POST['addfinance'])) {
+    $day = $_POST['day'];
+    $date = $_POST['date'];
+    $moneySpent = $_POST['money_spent'];
+    $spentOn = $_POST['spent_on'];
+    $summary = $_POST['summary'];
+    $sql = "INSERT INTO dapf_finance(day, date, money_spent, spent_on, summary) VALUES ('$day', '$date','$moneySpent', '$spentOn','$summary')";
+    $sub = mysqli_query($conn, $sql);
+}
 
 ?>
+<script>
+    let date = new Date();
+    let d = date.getDate();
+    const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    let getMonth = month[date.getMonth()];
+    let year = date.getFullYear();
+    if (getMonth < 10) {
+        getMonth = "0" + getMonth;
+    }
+    if (d < 10) {
+        d = "0" + d;
+    }
+    document.getElementById("date").value = `${year}-${getMonth}-${d}`;
+</script>

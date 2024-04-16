@@ -18,8 +18,8 @@
                             <ul>
                                 <h2>Activities</h2>
                                 <li><a href="activities/add_activities.php">Add Activities</a></li>
-                                <li><a href="#">View Activities</a></li>
-                                <li><a href="#">Edit Activities</a></li>
+                                <li><a href="activities/view_activities.php">View Activities</a></li>
+                                <li><a href="activities/edit_activities.php">Edit Activities</a></li>
                                 <li><a href="#">Delete Activities</a></li>
                             </ul>
                         </div>
@@ -27,9 +27,9 @@
                         <div class="sidebar-finance">
                             <ul>
                                 <h2>Finance</h2>
-                                <li><a href="activities/add_finance.php">Add Income/Expenses</a></li>
-                                <li><a href="#">View Income/Expenses</a></li>
-                                <li><a href="#">Edit Income/Expenses</a></li>
+                                <li><a href="finance/add_finance.php">Add Income/Expenses</a></li>
+                                <li><a href="finance/view_finance.php">View Income/Expenses</a></li>
+                                <li><a href="finance/edit_finance.php">Edit Income/Expenses</a></li>
                                 <li><a href="#">Delete Income/Expenses</a></li>
                             </ul>
                         </div>

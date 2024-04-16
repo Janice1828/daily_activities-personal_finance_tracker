@@ -20,7 +20,7 @@ $result = mysqli_fetch_assoc($data);
         <div class="card">
             <div class="card-body">
                 <div class="p-3">
-                    <form class="row" method="post">
+                    <form class="row gap-2" method="post">
                         <div class="col-12">
                             <h2>Add Activity</h2>
                         </div>

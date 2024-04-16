@@ -1,3 +1,9 @@
+<?php
+include("../connection.php");
+$selectQuery = "SELECT date, money_spent, spent_on FROM dapf_finance";
+$fetch = mysqli_query($conn, $selectQuery);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,13 +42,13 @@
         <div class="col-9">
             <nav class="d-flex position-sticky">
 
-                <p>profile Icon</p>
+                <p>Profile</p>
             </nav>
             <div class="p-5">
                 <div class="card">
                     <div class="card-body">
                         <div class="p-3">
-                            <form class="row">
+                            <form class="row gap-2">
                                 <div class="col-12">
                                     <h2>View Finance</h2>
                                 </div>
@@ -56,31 +62,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>2024/4/2</td>
-                                            <td>2000</td>
-                                            <td>Book Purchasing</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>2024/4/2</td>
-                                            <td>2000</td>
-                                            <td>Book Purchasing</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>2024/4/2</td>
-                                            <td>2000</td>
-                                            <td>Book Purchasing</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>2024/4/2</td>
-                                            <td>2000</td>
-                                            <td>Book Purchasing</td>
-                                        </tr>
-
+                                        <?php
+                                        $i = 0;
+                                        while ($row = mysqli_fetch_assoc($fetch)) { ?>
+                                            <tr>
+                                                <td><?php echo ++$i; ?></td>
+                                                <td><?php echo $row['date'] ?></td>
+                                                <td><?php echo $row['money_spent'] ?></td>
+                                                <td><?php echo $row['spent_on'] ?></td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </form>

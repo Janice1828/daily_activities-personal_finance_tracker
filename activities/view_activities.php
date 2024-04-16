@@ -43,13 +43,13 @@ $fetch = mysqli_query($conn, $selectQuery);
         <div class="col-9">
             <nav class="d-flex position-sticky">
 
-                <p>profile Icon</p>
+                <p>Profile</p>
             </nav>
             <div class="p-5">
                 <div class="card">
                     <div class="card-body">
                         <div class="p-3">
-                            <form class="row">
+                            <form class="row gap-2">
                                 <div class="col-12">
                                     <h2>View Activity</h2>
                                 </div>
