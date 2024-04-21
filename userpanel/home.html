@@ -11,7 +11,7 @@
       <img src="../images/logo.jpeg" alt="Logo" id="logo" />
       <ul class="nav-links">
         <li>
-          <a href="#">Home</a>
+          <a href="#" class="active">Home</a>
         </li>
         <li>
           <a href="#">About Us</a>
@@ -23,19 +23,38 @@
           <a href="#">Contact Us</a>
         </li>
       </ul>
+      <div class="d-flex gap-2">
+        <a href="#" id="register">Register</a>
+        <a href="#" id="login">Login</a>
+      </div>
     </nav>
     <div class="container">
       <div>
-        <img src="../images/banner.jpg" alt="Baner Image" id="bannerImg" />
+        <img src="../images/banner_one.jpg" alt="Baner Image" id="bannerImg" />
       </div>
-      <div class="main-content row gx-2 gy-2">
-        <div class="col-12"><h2>Our Motive</h2></div>
+      <div class="main-content row gx-4 gy-2">
+        <div class="col-12"><h1>Our Motives</h1></div>
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body">
+              <img src="../images/motive_three.jpg" alt="Motive 1" />
+              <div class="card-content">
+                <h3>Motive 1</h3>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Numquam tempora, ad officiis ea non distinctio?
+                </p>
+                <button>Read More</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="col-6">
           <div class="card">
             <div class="card-body">
               <img src="../images/motive_one.jpg" alt="Motive 1" />
               <div class="card-content">
-                <h4>Motive 1</h4>
+                <h3>Motive 2</h3>
                 <p>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                   Numquam tempora, ad officiis ea non distinctio?
@@ -50,22 +69,7 @@
             <div class="card-body">
               <img src="../images/motive_two.jpg" alt="Motive 1" />
               <div class="card-content">
-                <h4>Motive 1</h4>
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Numquam tempora, ad officiis ea non distinctio?
-                </p>
-                <button>Read More</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="card">
-            <div class="card-body">
-              <img src="../images/motive_three.jpg" alt="Motive 1" />
-              <div class="card-content">
-                <h4>Motive 1</h4>
+                <h3>Motive 3</h3>
                 <p>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                   Numquam tempora, ad officiis ea non distinctio?
@@ -80,7 +84,7 @@
             <img src="../images/motive_four.jpg" alt="Motive 1" />
             <div class="card-body">
               <div class="card-content">
-                <h4>Motive 1</h4>
+                <h3>Motive 4</h3>
                 <p>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                   Numquam tempora, ad officiis ea non distinctio?
@@ -92,5 +96,26 @@
         </div>
       </div>
     </div>
+    <footer class="row">
+      <div class="col-4 text-center">
+        <h3>Shortcut Links</h3>
+        <a href="#" class="home-shortcut-links footer-links">Home</a>
+        <a href="#" class="home-shortcut-links footer-links">About Us</a>
+        <a href="#" class="home-shortcut-links footer-links">Services</a>
+        <a href="#" class="home-shortcut-links footer-links">Contact Us</a>
+      </div>
+      <div class="col-4 text-center">
+        <h3>Our Motives</h3>
+        <p class="footer-links">Motive 1</p>
+        <p class="footer-links">Motive 2</p>
+        <p class="footer-links">Motive 3</p>
+        <p class="footer-links">Motive 4</p>
+      </div>
+      <div class="col-4 text-center">
+        <h3>Additional Activities</h3>
+        <p class="footer-links">Help</p>
+        <p class="footer-links">About us</p>
+      </div>
+    </footer>
   </body>
 </html>
