@@ -1,6 +1,6 @@
 <?php
 include("../../connection.php");
-$selectQuery = "SELECT * FROM dapf_activities";
+$selectQuery = "SELECT id,date, task_name, task_due_date, importance FROM dtpf_tasks";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>
@@ -22,10 +22,10 @@ $fetch = mysqli_query($conn, $selectQuery);
                 <div class="sidebar-activities">
                     <ul>
                         <h2>Activities</h2>
-                        <li><a href="./add_activities.php">Add Activities</a></li>
-                        <li><a href="#">View Activities</a></li>
-                        <li><a href="./edit_activities.php">Edit Activities</a></li>
-                        <li><a href="./delete_activities.php">Delete Activities</a></li>
+                        <li><a href="./add_tasks.php">Add Tasks</a></li>
+                        <li><a href="./view_tasks.php">View Activities</a></li>
+                        <li><a href="#">Delete Tasks</a></li>
+                        <li><a href="#">Completed Tasks</a></li>
                     </ul>
                 </div>
 
@@ -51,16 +51,17 @@ $fetch = mysqli_query($conn, $selectQuery);
                         <div class="p-3">
                             <form class="row gap-2">
                                 <div class="col-12">
-                                    <h2>View Activity</h2>
+                                    <h2>Delete Activity</h2>
                                 </div>
                                 <table class="col-12" border="1" cellpadding="10" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>SN</th>
                                             <th>Date</th>
-                                            <th>Activity</th>
-                                            <th>Started From</th>
-                                            <th>Until</th>
+                                            <th>Task Name</th>
+                                            <th>Task Due Date</th>
+                                            <th>Importance</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -71,9 +72,15 @@ $fetch = mysqli_query($conn, $selectQuery);
                                             <tr>
                                                 <td><?php echo ++$i; ?></td>
                                                 <td><?php echo $row['date'] ?></td>
-                                                <td><?php echo $row['activity'] ?></td>
-                                                <td><?php echo $row['started_from']  ?></td>
-                                                <td><?php echo $row['until']  ?></td>
+                                                <td><?php echo $row['task_name'] ?></td>
+                                                <td><?php echo $row['task_due_date']  ?></td>
+                                                <td><?php echo $row['importance']  ?></td>
+                                                <td><a class="btn-danger" href="./delete.php?id=<?php echo $row['id'] ?>">Delete</a></td>
+                                                <!-- <a href="edit.php?id=  -->
+                                                <?php
+                                                // echo $row['id'];
+                                                ?>
+                                                <!-- ">Edit</a> -->
                                             </tr>
                                         <?php } ?>
 

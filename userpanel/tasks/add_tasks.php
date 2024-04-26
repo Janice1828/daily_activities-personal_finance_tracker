@@ -14,11 +14,11 @@
             <div class="sidebar">
                 <div class="sidebar-activities">
                     <ul>
-                        <h2>Activities</h2>
-                        <li><a href="#">Add Activities</a></li>
-                        <li><a href="./view_activities.php">View Activities</a></li>
-                        <li><a href="./edit_activities.php">Edit Activities</a></li>
-                        <li><a href="./delete_activities.php">Delete Activities</a></li>
+                        <h2>Tasks</h2>
+                        <li><a href="#">Add Tasks</a></li>
+                        <li><a href="./view_tasks.php">View Tasks</a></li>
+                        <li><a href="./delete_activities.php">Delete Tasks</a></li>
+                        <li><a href="./completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>
 
@@ -45,19 +45,15 @@
                         <div class="p-3">
                             <form class="row gap-2" method="post">
                                 <div class="col-12">
-                                    <h2>Add Activity</h2>
-                                </div>
-                                <div class="col-6">
-                                    <label for="">Day</label>
-                                    <input type="sunday" name="day" value="">
+                                    <h2>Add Tasks</h2>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Date</label>
-                                    <input type="date" name="date" value="" id="date" readonly>
+                                    <input type="date" name="date" value="" id="date">
                                 </div>
                                 <div class="col-6">
-                                    <label for="">Activity</label>
-                                    <input type="text" name="activity" value="">
+                                    <label for="">Task Name</label>
+                                    <input type="text" name="task_name" value="">
                                 </div>
                                 <div class="col-6">
                                     <label for="">Importance</label>
@@ -68,23 +64,18 @@
                                     </select>
                                 </div>
                                 <div class="col-6">
-                                    <label for="">Started From</label>
-                                    <input type="" name="started_from" value="">
-                                </div>
-                                <div class="col-6">
-                                    <label for="">Until</label>
-                                    <input type="" name="until" value="">
+                                    <label for="">Due Date</label>
+                                    <input type="date" name="tasks_due_date">
                                 </div>
                                 <div class="col-12">
                                     <label for="">Summary</label>
                                     <textarea rows="" cols="" name="summary"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" name="addactivity">Add Activity</button>
+                                    <button type="submit" name="addtasks">Add Activity</button>
                                 </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
 
@@ -95,35 +86,15 @@
 </body>
 <?php
 include("../../connection.php");
-if (isset($_POST['addactivity'])) {
+if (isset($_POST['addtasks'])) {
     $date = $_POST['date'];
-    $day = $_POST['day'];
-    $activity = $_POST['activity'];
-    $startedFrom = $_POST['started_from'];
-    $until = $_POST['until'];
+    $task_name = $_POST['task_name'];
+    $tasks_due_date = $_POST['tasks_due_date'];
     $importance = $_POST['importance'];
     $summary = $_POST['summary'];
-    $sql = "INSERT INTO dapf_activities(date, day, activity, started_from, until, importance,summary) VALUES ('$date', '$day','$activity', '$startedFrom','$until','$importance','$summary')";
+    $sql = "INSERT INTO dtpf_tasks(date, task_name, task_due_date, importance,summary) VALUES ('$date', '$task_name','$tasks_due_date', '$importance','$summary')";
     $sub = mysqli_query($conn, $sql);
-    if ($sub) {
-        echo "success";
-    } else {
-        echo "failed";
-    }
+    header("location:./view_tasks.php");
 }
 
 ?>
-<script>
-    let date = new Date();
-    let d = date.getDate();
-    const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-    let getMonth = month[date.getMonth()];
-    let year = date.getFullYear();
-    if (getMonth < 10) {
-        getMonth = "0" + getMonth;
-    }
-    if (d < 10) {
-        d = "0" + d;
-    }
-    document.getElementById("date").value = `${year}-${getMonth}-${d}`;
-</script>
