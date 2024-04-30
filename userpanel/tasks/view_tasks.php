@@ -21,10 +21,10 @@ $fetch = mysqli_query($conn, $selectQuery);
             <div class="sidebar">
                 <div class="sidebar-activities">
                     <ul>
-                        <h2>Activities</h2>
+                        <h2>Tasks</h2>
                         <li><a href="./add_tasks.php">Add Tasks</a></li>
-                        <li><a href="#">View Activities</a></li>
-                        <li><a href="./delete_activities.php">Delete Tasks</a></li>
+                        <li><a href="#">View Tasks</a></li>
+                        <li><a href="./delete_tasks.php">Delete Tasks</a></li>
                         <li><a href="./completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>

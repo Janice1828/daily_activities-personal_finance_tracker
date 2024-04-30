@@ -17,7 +17,7 @@
                         <h2>Tasks</h2>
                         <li><a href="#">Add Tasks</a></li>
                         <li><a href="./view_tasks.php">View Tasks</a></li>
-                        <li><a href="./delete_activities.php">Delete Tasks</a></li>
+                        <li><a href="./delete_tasks.php">Delete Tasks</a></li>
                         <li><a href="./completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>
