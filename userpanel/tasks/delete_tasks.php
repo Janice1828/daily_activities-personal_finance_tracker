@@ -47,10 +47,15 @@ $fetch = mysqli_query($conn, $selectQuery);
         </div>
         <div class="col-10">
             <nav class="d-flex position-sticky">
-
-
-                <p><a href="../../logout.php">Logout</a></p>
-                <p>Profile</p>
+                <div class="user-profile position-relative">
+                    <div class="profile-icon cursor-pointer" onclick="displayProfile()">
+                        <img src="../../images/people.png" alt="">
+                    </div>
+                    <ul id="logout-userprofile">
+                        <li><a href="../../logout.php">Logout</a></li>
+                        <li><a href="../profile.php">Profile</a></li>
+                    </ul>
+                </div>
             </nav>
             <div class="p-5">
                 <div class="card">
@@ -101,3 +106,5 @@ $fetch = mysqli_query($conn, $selectQuery);
 
     </div>
 </body>
+<script src="../../script.js">
+</script>

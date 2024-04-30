@@ -43,8 +43,15 @@ if ($login_status != "true") {
         </div>
         <div class="col-10">
             <nav class="d-flex position-sticky">
-                <p><a href="../../logout.php">Logout</a></p>
-                <p>Profile</p>
+                <div class="user-profile position-relative">
+                    <div class="profile-icon cursor-pointer" onclick="displayProfile()">
+                        <img src="../../images/people.png" alt="">
+                    </div>
+                    <ul id="logout-userprofile">
+                        <li><a href="../../logout.php">Logout</a></li>
+                        <li><a href="../profile.php">Profile</a></li>
+                    </ul>
+                </div>
             </nav>
             <div class="p-5">
                 <div class="card">
@@ -90,6 +97,10 @@ if ($login_status != "true") {
 
     </div>
 </body>
+
+</html>
+<script src="../../script.js">
+</script>
 <?php
 include("../../connection.php");
 if (isset($_POST['addfinance'])) {
@@ -103,17 +114,3 @@ if (isset($_POST['addfinance'])) {
 }
 
 ?>
-<script>
-    let date = new Date();
-    let d = date.getDate();
-    const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-    let getMonth = month[date.getMonth()];
-    let year = date.getFullYear();
-    if (getMonth < 10) {
-        getMonth = "0" + getMonth;
-    }
-    if (d < 10) {
-        d = "0" + d;
-    }
-    document.getElementById("date").value = `${year}-${getMonth}-${d}`;
-</script>
