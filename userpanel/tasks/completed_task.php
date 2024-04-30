@@ -1,4 +1,10 @@
 <?php
+session_start();
+$login_status = $_SESSION['logged_in'];
+if ($login_status != "true") {
+    header("location:../../login.php");
+}
+
 include("../../connection.php");
 $selectQuery = "SELECT id,date, task_name, task_due_date,status, importance FROM dtpf_tasks WHERE status='completed'";
 $fetch = mysqli_query($conn, $selectQuery);
@@ -43,6 +49,8 @@ $fetch = mysqli_query($conn, $selectQuery);
         <div class="col-10">
             <nav class="d-flex position-sticky">
 
+
+                <p><a href="../../logout.php">Logout</a></p>
                 <p>Profile</p>
             </nav>
             <div class="p-5">

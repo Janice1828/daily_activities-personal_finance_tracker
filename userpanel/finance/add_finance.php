@@ -1,3 +1,11 @@
+<?php
+session_start();
+$login_status = $_SESSION['logged_in'];
+if ($login_status != "true") {
+    header("location:../../login.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,9 +41,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-9">
+        <div class="col-10">
             <nav class="d-flex position-sticky">
-                <p>profile</p>
+                <p><a href="../../logout.php">Logout</a></p>
+                <p>Profile</p>
             </nav>
             <div class="p-5">
                 <div class="card">

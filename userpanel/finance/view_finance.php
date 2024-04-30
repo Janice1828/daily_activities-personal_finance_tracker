@@ -1,4 +1,9 @@
 <?php
+session_start();
+$login_status = $_SESSION['logged_in'];
+if ($login_status != "true") {
+    header("location:../../login.php");
+}
 include("../../connection.php");
 $selectQuery = "SELECT id,date, money_spent, spent_on FROM dapf_finance WHERE deleted_status=0";
 $fetch = mysqli_query($conn, $selectQuery);
@@ -41,7 +46,7 @@ $fetch = mysqli_query($conn, $selectQuery);
         </div>
         <div class="col-10">
             <nav class="d-flex position-sticky">
-
+                <p><a href="../../logout.php">Logout</a></p>
                 <p>Profile</p>
             </nav>
             <div class="p-5">
