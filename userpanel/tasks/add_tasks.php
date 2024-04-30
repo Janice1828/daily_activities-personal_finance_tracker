@@ -10,7 +10,7 @@
 
 <body>
     <div class="row">
-        <div class="col-3">
+        <div class="col-2">
             <div class="sidebar">
                 <div class="sidebar-activities">
                     <ul>
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-9">
+        <div class="col-10">
             <nav class="d-flex position-sticky">
 
                 <p><a href="../../login.php">Logout</a></p>
@@ -72,7 +72,7 @@
                                     <textarea rows="" cols="" name="summary"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" name="addtasks">Add Activity</button>
+                                    <button type="submit" name="addtasks" class="btn-success">Add Activity</button>
                                 </div>
                             </form>
                         </div>

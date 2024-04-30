@@ -1,3 +1,9 @@
+<?php
+include("../../connection.php");
+$selectQuery = "SELECT id, date, money_spent, spent_on FROM dapf_finance WHERE `deleted_status`=0";
+$fetch = mysqli_query($conn, $selectQuery);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,15 +16,15 @@
 
 <body>
     <div class="row">
-        <div class="col-3">
+        <div class="col-2">
             <div class="sidebar">
                 <div class="sidebar-activities">
                     <ul>
-                        <h2>Activities</h2>
-                        <li><a href="../activities/add_activities.php">Add Activities</a></li>
-                        <li><a href="../activities/view_activities.php">View Activities</a></li>
-                        <li><a href="../activities/edit_activities.php">Edit Activities</a></li>
-                        <li><a href="../activities/delete_activities.php">Delete Activities</a></li>
+                        <h2>Tasks</h2>
+                        <li><a href="../tasks/add_tasks.php">Add Tasks</a></li>
+                        <li><a href="../tasks/view_tasks.php">View Tasks</a></li>
+                        <li><a href="../tasks/delete_tasks.php">Delete Tasks</a></li>
+                        <li><a href="../tasks/completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>
 
@@ -33,9 +39,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-9">
+        <div class="col-10">
             <nav class="d-flex position-sticky">
-
                 <p>Profile</p>
             </nav>
             <div class="p-5">
@@ -53,33 +58,21 @@
                                             <th>Date</th>
                                             <th>Money Spent</th>
                                             <th>Spent On</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>2024/4/2</td>
-                                            <td>2000</td>
-                                            <td>Book Purchasing</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>2024/4/2</td>
-                                            <td>2000</td>
-                                            <td>Book Purchasing</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>2024/4/2</td>
-                                            <td>2000</td>
-                                            <td>Book Purchasing</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>2024/4/2</td>
-                                            <td>2000</td>
-                                            <td>Book Purchasing</td>
-                                        </tr>
+                                        <?php
+                                        $i = 1;
+                                        while ($row = mysqli_fetch_assoc($fetch)) { ?>
+                                            <tr>
+                                                <td><?php echo $i++; ?></td>
+                                                <td><?php echo $row['date']; ?></td>
+                                                <td><?php echo $row['money_spent']; ?></td>
+                                                <td><?php echo $row['spent_on']; ?></td>
+                                                <td><a href="./delete.php?id=<?php echo $row['id'] ?>" class="btn-delete">Delete</a></td>
+                                            </tr>
+                                        <?php  } ?>
 
                                     </tbody>
                                 </table>

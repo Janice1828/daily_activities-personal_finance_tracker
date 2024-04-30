@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 :root {
   --black: #2d3047;
@@ -113,7 +114,7 @@ textarea {
 }
 .col-2 {
   flex: 0 0 auto;
-  width: calc(16.66666667% - 25px);
+  width: 16.66666667%;
 }
 .col-3 {
   flex: 0 0 auto;
@@ -162,22 +163,46 @@ table thead tr th,
 table tbody tr td {
   padding: 10px 20px;
 }
-.btn-primary {
-  padding: 7px 20px;
-  outline: none;
-  background: #dedede;
-  color: #000;
-  border: 0px;
-  cursor: pointer;
-}
+
 .btn-danger {
-  padding: 7px 20px;
+  padding: 4px 15px;
   cursor: pointer;
   text-decoration: none;
   outline: none;
   background: red;
   color: #fff;
   border: 0;
+  border-radius: 5px;
+}
+.btn-primary {
+  padding: 4px 15px;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  background: #308ced;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+}
+.btn-secondary {
+  padding: 4px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  background: rgba(159, 159, 159, 1);
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+}
+.btn-success {
+  padding: 8px 15px;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  background: #2c942c;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
 }
 .gap-2 {
   gap: 20px;

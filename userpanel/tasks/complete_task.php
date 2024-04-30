@@ -1,8 +1,10 @@
 <?php
 include("../../connection.php");
 $id = $_GET['id'];
-$status = "completed";
+print_r($id);
+$new_status = "completed";
+echo $new_status;
 $tblName = "dtpf_tasks";
-$query = "UDPATE $tblName SET status='$status' WHERE id=$id";
+$query = "UPDATE `dtpf_tasks` SET `status` = 'completed' WHERE `dtpf_tasks`.`id`= $id";
 mysqli_query($conn, $query);
-// header("location:./completed_task.php");
+header("location:completed_task.php");

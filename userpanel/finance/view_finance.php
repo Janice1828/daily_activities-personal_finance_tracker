@@ -1,6 +1,6 @@
 <?php
 include("../../connection.php");
-$selectQuery = "SELECT id,date, money_spent, spent_on FROM dapf_finance";
+$selectQuery = "SELECT id,date, money_spent, spent_on FROM dapf_finance WHERE deleted_status=0";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>
@@ -16,15 +16,15 @@ $fetch = mysqli_query($conn, $selectQuery);
 
 <body>
     <div class="row">
-        <div class="col-3">
+        <div class="col-2">
             <div class="sidebar">
                 <div class="sidebar-activities">
                     <ul>
-                        <h2>Activities</h2>
-                        <li><a href="../activities/add_activities.php">Add Activities</a></li>
-                        <li><a href="../activities/view_activities.php">View Activities</a></li>
-                        <li><a href="../activities/edit_activities.php">Edit Activities</a></li>
-                        <li><a href="../activities/delete_activities.php">Delete Activities</a></li>
+                        <h2>Tasks</h2>
+                        <li><a href="../tasks/add_tasks.php">Add Tasks</a></li>
+                        <li><a href="../tasks/view_tasks.php">View Tasks</a></li>
+                        <li><a href="../tasks/delete_tasks.php">Delete Tasks</a></li>
+                        <li><a href="../tasks/completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>
 
@@ -39,7 +39,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                 </div>
             </div>
         </div>
-        <div class="col-9">
+        <div class="col-10">
             <nav class="d-flex position-sticky">
 
                 <p>Profile</p>

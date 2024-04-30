@@ -1,6 +1,6 @@
 <?php
 include("../../connection.php");
-$selectQuery = "SELECT id,date, task_name, task_due_date,status, importance FROM dtpf_tasks";
+$selectQuery = "SELECT id,date, task_name, task_due_date,status, importance FROM dtpf_tasks WHERE `deleted_status` = 0";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>
@@ -17,7 +17,7 @@ $fetch = mysqli_query($conn, $selectQuery);
 
 <body>
     <div class="row">
-        <div class="col-3">
+        <div class="col-2">
             <div class="sidebar">
                 <div class="sidebar-activities">
                     <ul>
@@ -40,7 +40,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                 </div>
             </div>
         </div>
-        <div class="col-9">
+        <div class="col-10">
             <nav class="d-flex position-sticky">
 
                 <p>Profile</p>
@@ -75,7 +75,16 @@ $fetch = mysqli_query($conn, $selectQuery);
                                                 <td><?php echo $row['task_name'] ?></td>
                                                 <td><?php echo $row['task_due_date']  ?></td>
                                                 <td><?php echo $row['status']  ?></td>
-                                                <td><a href="./complete_task.php?id=<?php echo $row['id'] ?>">Complete</a></td>
+                                                <td style="text-align: center;">
+                                                    <?php
+                                                    if ($row['status'] == "completed") {
+                                                        echo "completed";
+                                                    } else {
+                                                    ?>
+                                                        <a href="./complete_task.php?id=<?php echo $row['id'] ?>" class="btn-primary">Complete</a>
+                                                    <?php }
+                                                    ?>
+                                                </td>
                                             </tr>
                                         <?php } ?>
 
