@@ -28,11 +28,12 @@ try {
   if (isset($_POST["login"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
-    $selectQuery = "SELECT email, password,usertype FROM $tbl_name where email='$email' && password='$password'";
+    $selectQuery = "SELECT id, email, password,usertype FROM $tbl_name where email='$email' && password='$password'";
     $execute = mysqli_query($conn, $selectQuery);
     $fetchedData = mysqli_fetch_assoc($execute);
     if ($fetchedData['email'] === $email && $fetchedData['password'] === $password && $fetchedData['usertype'] == "user") {
       $_SESSION['logged_in'] = "true";
+      $_SESSION['user_id'] = $fetchedData['id'];
       header("location:./userpanel/dashboard.php");
       $_SESSION['fullname'] = $fetchedData['fullname'];
     } else if ($fetchedData['email'] === $email && $fetchedData['password'] === $password && $fetchedData['usertype'] == "admin") {

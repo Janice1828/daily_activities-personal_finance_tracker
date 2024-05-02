@@ -25,8 +25,8 @@ $fetch = mysqli_query($conn, $selectQuery);
         <div class="col-2">
             <div class="sidebar">
                 <div class="sidebar-activities">
-                    <ul>
-                        <h2>Tasks</h2>
+                    <h2>Tasks</h2>
+                    <ul style="padding-left:7px;">
                         <li><a href="./add_tasks.php">Add Tasks</a></li>
                         <li><a href="#">View Tasks</a></li>
                         <li><a href="./delete_tasks.php">Delete Tasks</a></li>
@@ -35,8 +35,8 @@ $fetch = mysqli_query($conn, $selectQuery);
                 </div>
 
                 <div class="sidebar-finance">
-                    <ul>
-                        <h2>Finance</h2>
+                    <h2>Finance</h2>
+                    <ul style="padding-left:7px;">
                         <li><a href="../finance/add_finance.php">Add Income/Expenses</a></li>
                         <li><a href="../finance/view_finance.php">View Income/Expenses</a></li>
                         <li><a href="../finance/edit_finance.php">Edit Income/Expenses</a></li>

@@ -20,8 +20,8 @@ if ($login_status != "true") {
         <div class="col-2">
             <div class="sidebar">
                 <div class="sidebar-activities">
-                    <ul>
-                        <h2>Tasks</h2>
+                    <h2>Tasks</h2>
+                    <ul style="padding-left:7px;">
                         <li><a href="#">Add Tasks</a></li>
                         <li><a href="./view_tasks.php">View Tasks</a></li>
                         <li><a href="./delete_tasks.php">Delete Tasks</a></li>
@@ -30,8 +30,8 @@ if ($login_status != "true") {
                 </div>
 
                 <div class="sidebar-finance">
-                    <ul>
-                        <h2>Finance</h2>
+                    <h2>Finance</h2>
+                    <ul style="padding-left:7px;">
                         <li><a href="../finance/add_finance.php">Add Income/Expenses</a></li>
                         <li><a href="../finance/view_finance.php">View Income/Expenses</a></li>
                         <li><a href="../finance/edit_finance.php">Edit Income/Expenses</a></li>
@@ -48,8 +48,8 @@ if ($login_status != "true") {
                         <img src="../../images/people.png" alt="">
                     </div>
                     <ul id="logout-userprofile">
-                        <li><a href="../../logout.php">Logout</a></li>
                         <li><a href="../profile.php">Profile</a></li>
+                        <li><a href="../../logout.php">Logout</a></li>
                     </ul>
                 </div>
             </nav>
