@@ -38,7 +38,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                     <ul style="padding-left:7px;">
                         <li><a href="./add_finance.php">Add Income/Expenses</a></li>
                         <li><a href="./view_finance.php">View Income/Expenses</a></li>
-                        <li><a href="#">Edit Income/Expenses</a></li>
+                        <li><a href="#" class="active-sidebar">Edit Income/Expenses</a></li>
                         <li><a href="./delete_finance.php">Delete Income/Expenses</a></li>
                     </ul>
                 </div>
@@ -59,12 +59,12 @@ $fetch = mysqli_query($conn, $selectQuery);
             <div class="p-5">
                 <div class="card">
                     <div class="card-body">
-                        <div class="p-3">
+                        <div class="">
                             <form class="row gap-2">
                                 <div class="col-12">
                                     <h2>Edit Finance</h2>
                                 </div>
-                                <table class="col-12" border="1" cellpadding="10" cellspacing="0">
+                                <table class="col-12" cellpadding="10" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>SN</th>

@@ -39,7 +39,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                         <li><a href="./add_finance.php">Add Income/Expenses</a></li>
                         <li><a href="#">View Income/Expenses</a></li>
                         <li><a href="./edit_finance.php">Edit Income/Expenses</a></li>
-                        <li><a href="./delete_finance.php">Delete Income/Expenses</a></li>
+                        <li><a href="./delete_finance.php" class="active-sidebar">Delete Income/Expenses</a></li>
                     </ul>
                 </div>
             </div>
@@ -59,12 +59,12 @@ $fetch = mysqli_query($conn, $selectQuery);
             <div class="p-5">
                 <div class="card">
                     <div class="card-body">
-                        <div class="p-3">
+                        <div class="">
                             <form class="row gap-2">
                                 <div class="col-12">
                                     <h2>Delete Finance</h2>
                                 </div>
-                                <table class="col-12" border="1" cellpadding="10" cellspacing="0">
+                                <table class="col-12" cellpadding="10" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>SN</th>
@@ -83,7 +83,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                                                 <td><?php echo $row['date']; ?></td>
                                                 <td><?php echo $row['money_spent']; ?></td>
                                                 <td><?php echo $row['spent_on']; ?></td>
-                                                <td><a href="./delete.php?id=<?php echo $row['id'] ?>" class="btn-delete">Delete</a></td>
+                                                <td style="text-align: center;"><a href="./delete.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a></td>
                                             </tr>
                                         <?php  } ?>
 

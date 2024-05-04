@@ -17,7 +17,7 @@ if ($login_status != "true") {
 </head>
 
 <body>
-    <div class="row">
+    <div class="row add-finance-container">
         <div class="col-2">
             <div class="sidebar">
                 <div class="sidebar-activities">
@@ -33,7 +33,7 @@ if ($login_status != "true") {
                 <div class="sidebar-finance">
                     <h2>Finance</h2>
                     <ul style="padding-left:7px">
-                        <li><a href="#">Add Income/Expenses</a></li>
+                        <li><a href="#" class="active-sidebar">Add Income/Expenses</a></li>
                         <li><a href="./view_finance.php">View Income/Expenses</a></li>
                         <li><a href="./edit_finance.php">Edit Income/Expenses</a></li>
                         <li><a href="./delete_finance.php">Delete Income/Expenses</a></li>
@@ -56,10 +56,10 @@ if ($login_status != "true") {
             <div class="p-5">
                 <div class="card">
                     <div class="card-body">
-                        <div class="p-3">
+                        <div class="">
                             <form class="row gap-2" method="post">
                                 <div class="col-12">
-                                    <h2>Add Finance</h2>
+                                    <h2 class="ml-2">Add Finance</h2>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Day</label>
@@ -79,12 +79,12 @@ if ($login_status != "true") {
                                     <input type="text" name="spent_on" value="">
                                 </div>
 
-                                <div class="col-12">
+                                <div class="col-12 ml-2">
                                     <label for="">Summary</label>
                                     <textarea rows="" cols="" name="summary"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" name="addfinance">Add Finance</button>
+                                    <button type="submit" class="btn-success ml-2" name="addfinance">Add Finance</button>
                                 </div>
                             </form>
                         </div>

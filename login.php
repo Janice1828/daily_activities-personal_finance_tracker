@@ -13,6 +13,8 @@ session_start();
 </head>
 <div class="p-5">
   <form action="" method="post" id="loginForm">
+    <h2 style="text-align:center">Login Form</h2>
+
     <div><label for="">Email</label> <input type="text" name="email" /></div>
     <div><label for="">Password</label> <input name="password" type="text" /></div>
     <div><button name="login">Login</button></div>

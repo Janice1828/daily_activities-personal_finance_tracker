@@ -16,13 +16,13 @@ if ($login_status != "true") {
 </head>
 
 <body>
-    <div class="row">
+    <div class="row add-task-container">
         <div class="col-2">
             <div class="sidebar">
                 <div class="sidebar-activities">
                     <h2>Tasks</h2>
                     <ul style="padding-left:7px;">
-                        <li><a href="#">Add Tasks</a></li>
+                        <li><a href="#" class="active-sidebar">Add Tasks</a></li>
                         <li><a href="./view_tasks.php">View Tasks</a></li>
                         <li><a href="./delete_tasks.php">Delete Tasks</a></li>
                         <li><a href="./completed_task.php">Completed Tasks</a></li>
@@ -56,10 +56,10 @@ if ($login_status != "true") {
             <div class="p-5">
                 <div class="card">
                     <div class="card-body">
-                        <div class="p-3">
+                        <div class="">
                             <form class="row gap-2" method="post">
                                 <div class="col-12">
-                                    <h2>Add Tasks</h2>
+                                    <h2 class="ml-2">Add Tasks</h2>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Date</label>
@@ -81,12 +81,12 @@ if ($login_status != "true") {
                                     <label for="">Due Date</label>
                                     <input type="date" name="tasks_due_date">
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 ml-2">
                                     <label for="">Summary</label>
                                     <textarea rows="" cols="" name="summary"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" name="addtasks" class="btn-success">Add Activity</button>
+                                    <button type="submit" name="addtasks" class="btn-success ml-2">Add Activity</button>
                                 </div>
                             </form>
                         </div>

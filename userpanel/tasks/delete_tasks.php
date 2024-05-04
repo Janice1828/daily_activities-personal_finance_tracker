@@ -29,7 +29,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                     <ul style="padding-left:7px;">
                         <li><a href="./add_tasks.php">Add Tasks</a></li>
                         <li><a href="./view_tasks.php">View Tasks</a></li>
-                        <li><a href="#">Delete Tasks</a></li>
+                        <li><a href="#" class="active-sidebar">Delete Tasks</a></li>
                         <li><a href="./completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>
@@ -60,12 +60,12 @@ $fetch = mysqli_query($conn, $selectQuery);
             <div class="p-5">
                 <div class="card">
                     <div class="card-body">
-                        <div class="p-3">
+                        <div class="">
                             <form class="row gap-2">
                                 <div class="col-12">
-                                    <h2>Delete Activity</h2>
+                                    <h2>Delete Tasks</h2>
                                 </div>
-                                <table class="col-12" border="1" cellpadding="10" cellspacing="0">
+                                <table class="col-12" cellpadding="10" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>SN</th>

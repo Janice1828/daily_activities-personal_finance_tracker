@@ -9,7 +9,7 @@
 </head>
 <div class="p-5">
   <form action="" method="post" id="registrationForm">
-    <h2>Registration Form</h2>
+    <h2 style="text-align: center;">Registration Form</h2>
     <div><label for="">Full Name</label> <input type="text" name="fullname" required /></div>
     <div><label for="">Email</label> <input name="email" type="email" required /></div>
     <div><label for="">Password</label> <input name="password" type="password" required /></div>
