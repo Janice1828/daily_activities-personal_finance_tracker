@@ -246,6 +246,9 @@ table tbody tr:last-child {
 .gap-2 {
   gap: 20px;
 }
+.gap-1 {
+  gap: 10px;
+}
 #bannerImg {
   object-position: center;
   filter: brightness(50%);
@@ -279,7 +282,7 @@ table tbody tr:last-child {
   width: 70%;
   margin: auto;
   padding-top: 50px;
-  padding-bottom: 40px;
+  padding-bottom: 80px;
 }
 .card-body .card-content button {
   padding: 8px 20px;
@@ -301,7 +304,7 @@ table tbody tr:last-child {
   object-fit: cover;
 }
 footer {
-  background-color: #000;
+  background-color: var(--black);
   color: #fff;
   padding: 40px 50px;
 }
@@ -420,4 +423,40 @@ footer h3 {
   font-size: 45px;
   color: #fff;
   left: 15%;
+}
+.send-message-form {
+  row-gap: 20px;
+}
+.send-message-form textarea {
+  width: 100%;
+  padding: 7px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+.contact-us {
+  background-color: var(--black);
+  padding: 20px 20px 40px 20px;
+  margin: 60px 0px 0px 0px;
+  color: #fff;
+}
+.contact-us-details p {
+  font-size: 17px;
+  font-weight: 550;
+}
+.contact-us-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.contact-us-title {
+  margin-bottom: 15px;
+  padding-bottom: 7px;
+}
+.send-message-form div input {
+  padding: 10px;
+}
+.contact-us-details img {
+  width: 20px;
+  height: 22px;
 }
