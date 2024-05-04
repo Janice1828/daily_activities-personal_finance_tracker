@@ -13,6 +13,7 @@
   height: 50px;
   width: 50px;
   object-fit: contain;
+  border-radius: 50%;
 }
 .sidebar {
   color: #fff;
@@ -196,7 +197,7 @@ table tbody tr {
 table thead tr th,
 table tbody tr td {
   padding: 12px 20px;
-  text-align: center;
+  text-align: left;
 }
 
 table tbody tr:last-child {
@@ -246,10 +247,13 @@ table tbody tr:last-child {
   gap: 20px;
 }
 #bannerImg {
-  height: 600px;
-  width: 100%;
-  object-fit: cover;
   object-position: center;
+  filter: brightness(50%);
+  background-image: url(./images/banner_one.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 600px;
+  background-attachment: fixed;
 }
 .nav-links {
   display: flex;
@@ -400,4 +404,20 @@ footer h3 {
 }
 .profileimg {
   width: 150px;
+}
+.pb-1 {
+  padding-bottom: 10px;
+}
+#edit-finance-textarea {
+  width: 96%;
+  padding: 7px;
+  border-radius: 4px;
+  outline: none;
+}
+.banner-slogan {
+  position: absolute;
+  top: 30%;
+  font-size: 45px;
+  color: #fff;
+  left: 15%;
 }

@@ -4,6 +4,18 @@ $login_status = $_SESSION['logged_in'];
 if ($login_status != "true") {
     header("location:../../login.php");
 }
+include("../../connection.php");
+if (isset($_POST['addfinance'])) {
+    $day = $_POST['day'];
+    $date = $_POST['date'];
+    $moneySpent = $_POST['money_spent'];
+    $spentOn = $_POST['spent_on'];
+    $summary = $_POST['summary'];
+    $sql = "INSERT INTO dapf_finance(day, date, money_spent, spent_on, summary) VALUES ('$day', '$date','$moneySpent', '$spentOn','$summary')";
+    $sub = mysqli_query($conn, $sql);
+    header("location:./view_finance.php");
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -101,16 +113,3 @@ if ($login_status != "true") {
 </html>
 <script src="../../script.js">
 </script>
-<?php
-include("../../connection.php");
-if (isset($_POST['addfinance'])) {
-    $day = $_POST['day'];
-    $date = $_POST['date'];
-    $moneySpent = $_POST['money_spent'];
-    $spentOn = $_POST['spent_on'];
-    $summary = $_POST['summary'];
-    $sql = "INSERT INTO dapf_finance(day, date, money_spent, spent_on, summary) VALUES ('$day', '$date','$moneySpent', '$spentOn','$summary')";
-    $sub = mysqli_query($conn, $sql);
-}
-
-?>

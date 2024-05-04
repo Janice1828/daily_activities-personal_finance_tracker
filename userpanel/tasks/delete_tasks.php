@@ -87,7 +87,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                                                 <td><?php echo $row['task_name'] ?></td>
                                                 <td><?php echo $row['task_due_date']  ?></td>
                                                 <td><?php echo $row['importance']  ?></td>
-                                                <td style="text-align: center;"><a class="btn-danger" href="./delete.php?id=<?php echo $row['id'] ?>">Delete</a></td>
+                                                <td><a class="btn-danger" href="./delete.php?id=<?php echo $row['id'] ?>">Delete</a></td>
 
 
                                             </tr>

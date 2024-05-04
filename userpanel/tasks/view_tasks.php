@@ -87,7 +87,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                                                 <td><?php echo $row['task_name'] ?></td>
                                                 <td><?php echo $row['task_due_date']  ?></td>
                                                 <td><?php echo $row['status']  ?></td>
-                                                <td style="text-align: center;">
+                                                <td>
                                                     <?php
                                                     if ($row['status'] == "completed") {
                                                         echo "completed";

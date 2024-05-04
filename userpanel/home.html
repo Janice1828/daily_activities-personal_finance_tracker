@@ -7,15 +7,13 @@
     <link rel="stylesheet" href="../style.css" />
   </head>
   <body>
-    <nav class="d-flex position-sticky">
+    <nav class="d-flex position-sticky justify-content-between">
       <img src="../images/logo.jpeg" alt="Logo" id="logo" />
       <ul class="nav-links">
         <li>
           <a href="#" class="active">Home</a>
         </li>
-        <li>
-          <a href="#">About Us</a>
-        </li>
+
         <li>
           <a href="#">Services</a>
         </li>
@@ -24,13 +22,17 @@
         </li>
       </ul>
       <div class="d-flex gap-2">
-        <a href="#" id="register">Register</a>
+        <a href="../registration.php" id="register">Register</a>
         <a href="../login.php" id="login">Login</a>
       </div>
     </nav>
     <div class="container">
-      <div>
-        <img src="../images/banner_one.jpg" alt="Baner Image" id="bannerImg" />
+      <div class="position-relative">
+        <div id="bannerImg"></div>
+        <h1 class="banner-slogan">
+          Empower Your Every Day,<br />
+          Manage Your Money the Smart Way!
+        </h1>
       </div>
       <div class="main-content row gx-4 gy-2">
         <div class="col-12"><h1>Our Motives</h1></div>
@@ -39,10 +41,10 @@
             <div class="card-body">
               <img src="../images/motive_three.jpg" alt="Motive 1" />
               <div class="card-content">
-                <h3>Motive 1</h3>
+                <h3 class="pb-1">Aids in Saving Money</h3>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Numquam tempora, ad officiis ea non distinctio?
+                  By tracking expenses, we gain insights into how much we spend
+                  in different categories.
                 </p>
               </div>
             </div>
@@ -53,10 +55,10 @@
             <div class="card-body">
               <img src="../images/motive_one.jpg" alt="Motive 1" />
               <div class="card-content">
-                <h3>Motive 2</h3>
+                <h3 class="pb-1">Lifestyle Awareness</h3>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Numquam tempora, ad officiis ea non distinctio?
+                  By analyzing data collected by trackers, we can identify
+                  patterns and trends in our daily routines.
                 </p>
               </div>
             </div>
@@ -67,10 +69,11 @@
             <div class="card-body">
               <img src="../images/motive_two.jpg" alt="Motive 1" />
               <div class="card-content">
-                <h3>Motive 3</h3>
+                <h3 class="pb-1">Time Management and Productivity</h3>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Numquam tempora, ad officiis ea non distinctio?
+                  Keeping a daily log of activities improves time<br />
+                  management. It helps us allocate time to<br />
+                  important tasks and avoid non-core activities
                 </p>
               </div>
             </div>
@@ -81,10 +84,10 @@
             <div class="card-body">
               <img src="../images/motive_four.jpg" alt="Motive 1" />
               <div class="card-content">
-                <h3>Motive 4</h3>
+                <h3 class="pb-1">Tracks Spending Habits</h3>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Numquam tempora, ad officiis ea non distinctio?
+                  Monitoring where our money goes helps us recognize spending
+                  habits
                 </p>
               </div>
             </div>
@@ -93,24 +96,30 @@
       </div>
     </div>
     <footer class="row">
-      <div class="col-4 text-center">
-        <h3>Shortcut Links</h3>
-        <a href="#" class="home-shortcut-links footer-links">Home</a>
-        <a href="#" class="home-shortcut-links footer-links">About Us</a>
-        <a href="#" class="home-shortcut-links footer-links">Services</a>
-        <a href="#" class="home-shortcut-links footer-links">Contact Us</a>
+      <div class="col-4 d-flex justify-content-center">
+        <div>
+          <h3>Shortcut Links</h3>
+          <a href="#" class="home-shortcut-links footer-links">Home</a>
+          <a href="#" class="home-shortcut-links footer-links">About Us</a>
+          <a href="#" class="home-shortcut-links footer-links">Services</a>
+          <a href="#" class="home-shortcut-links footer-links">Contact Us</a>
+        </div>
       </div>
-      <div class="col-4 text-center">
-        <h3>Our Motives</h3>
-        <p class="footer-links">Motive 1</p>
-        <p class="footer-links">Motive 2</p>
-        <p class="footer-links">Motive 3</p>
-        <p class="footer-links">Motive 4</p>
+      <div class="col-4 d-flex justify-content-center">
+        <div>
+          <h3>Our Motives</h3>
+          <p class="footer-links">Aids in Saving Money</p>
+          <p class="footer-links">Lifestyle Awareness</p>
+          <p class="footer-links">Time Management and Productivity</p>
+          <p class="footer-links">Tracks Spending Habits</p>
+        </div>
       </div>
-      <div class="col-4 text-center">
-        <h3>Additional Activities</h3>
-        <p class="footer-links">Help</p>
-        <p class="footer-links">About us</p>
+      <div class="col-4 d-flex justify-content-center">
+        <div>
+          <h3>Additional Activities</h3>
+          <p class="footer-links">Help</p>
+          <p class="footer-links">About us</p>
+        </div>
       </div>
     </footer>
   </body>

@@ -83,7 +83,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                                                 <td><?php echo $row['date']; ?></td>
                                                 <td><?php echo $row['money_spent']; ?></td>
                                                 <td><?php echo $row['spent_on']; ?></td>
-                                                <td style="text-align: center;"><a href="./delete.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a></td>
+                                                <td><a href="./delete.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a></td>
                                             </tr>
                                         <?php  } ?>
 

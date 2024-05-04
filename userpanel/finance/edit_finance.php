@@ -83,7 +83,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                                                 <td><?php echo $row['date'] ?></td>
                                                 <td><?php echo $row['money_spent'] ?></td>
                                                 <td><?php echo $row['spent_on'] ?></td>
-                                                <td style="text-align: center;"><a href="./editform.php?id=<?php echo $row['id'] ?>" class="btn-secondary">Edit</a></td>
+                                                <td><a href="./editform.php?id=<?php echo $row['id'] ?>" class="btn-secondary">Edit</a></td>
                                             </tr>
 
                                         <?php } ?>

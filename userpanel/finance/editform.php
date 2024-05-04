@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
     <?php
-    include("../connection.php");
+    include("../../connection.php");
     $id = $_GET['id'];
     $selectQuery = "SELECT day, date, money_spent, spent_on, summary FROM dapf_finance WHERE id=$id";
     $fetch = mysqli_query($conn, $selectQuery);
@@ -22,7 +22,7 @@
 
         <form class="row gap-2" method="post">
             <div class="col-12">
-                <h2>Add Finance</h2>
+                <h2>Update Finance</h2>
             </div>
             <div class="col-6">
                 <label for="">Day</label>
@@ -44,10 +44,10 @@
 
             <div class="col-12">
                 <label for="">Summary</label>
-                <textarea rows="" cols="" name="summary"><?php echo $data['summary'] ?></textarea>
+                <textarea rows="" cols="" name="summary" id="edit-finance-textarea"><?php echo $data['summary'] ?></textarea>
             </div>
             <div class="col-12">
-                <button type="submit" name="updatefinance">Update Finance</button>
+                <button type="submit" class="btn-primary" name="updatefinance">Update Finance</button>
             </div>
         </form>
     </div>
