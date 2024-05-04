@@ -11,7 +11,7 @@ if (isset($_POST['addtasks'])) {
     $tasks_due_date = $_POST['tasks_due_date'];
     $importance = $_POST['importance'];
     $summary = $_POST['summary'];
-    $sql = "INSERT INTO dtpf_tasks(date, task_name, task_due_date, importance,summary) VALUES ('$date', '$task_name','$tasks_due_date', '$importance','$summary')";
+    $sql = "INSERT INTO dapf_tasks(date, task_name, task_due_date, importance,summary) VALUES ('$date', '$task_name','$tasks_due_date', '$importance','$summary')";
     $sub = mysqli_query($conn, $sql);
     header("location:./view_tasks.php");
     exit;

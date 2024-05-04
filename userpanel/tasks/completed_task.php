@@ -6,7 +6,7 @@ if ($login_status != "true") {
 }
 
 include("../../connection.php");
-$selectQuery = "SELECT id,date, task_name, task_due_date,status, importance FROM dtpf_tasks WHERE status='completed'";
+$selectQuery = "SELECT id,date, task_name, task_due_date,status, importance FROM dapf_tasks WHERE status='completed'";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>

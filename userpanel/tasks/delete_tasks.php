@@ -5,7 +5,7 @@ if ($login_status != "true") {
     header("location:../../login.php");
 }
 include("../../connection.php");
-$selectQuery = "SELECT id,date, task_name, task_due_date, importance FROM dtpf_tasks WHERE `status`!='completed' AND `deleted_status`= 0";
+$selectQuery = "SELECT id,date, task_name, task_due_date, importance FROM dapf_tasks WHERE `status`!='completed' AND `deleted_status`= 0";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>
