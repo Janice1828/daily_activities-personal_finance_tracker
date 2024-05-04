@@ -39,6 +39,8 @@ try {
       header("location:./userpanel/dashboard.php");
       $_SESSION['fullname'] = $fetchedData['fullname'];
     } else if ($fetchedData['email'] === $email && $fetchedData['password'] === $password && $fetchedData['usertype'] == "admin") {
+      $_SESSION['user_id'] = $fetchedData['id'];
+
       header("location:./adminpanel/dashboard.php");
     } else {
       echo "login failed";

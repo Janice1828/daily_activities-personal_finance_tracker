@@ -21,30 +21,20 @@
       <div class="col-2">
         <div class="sidebar">
           <div class="sidebar-activities">
-            <h2>Tasks</h2>
-            <ul style="padding-left:7px">
-              <li><a href="./tasks/add_tasks.php">Add Tasks</a></li>
-              <li><a href="./tasks/view_tasks.php">View Tasks</a></li>
-              <li><a href="./tasks/delete_tasks.php">Delete Tasks</a></li>
-              <li><a href="./tasks/completed_task.php">Completed Tasks</a></li>
+            <ul>
+              <h2>Manage Users</h2>
+              <li><a href="./manage_user/userlists.php">User Lists</a></li>
             </ul>
-          </div>
-
-          <div class="sidebar-finance">
-            <h2>Finance</h2>
-            <ul style="padding-left:7px">
-              <li>
-                <a href="./finance/add_finance.php">Add Income/Expenses</a>
-              </li>
-              <li>
-                <a href="./finance/view_finance.php">View Income/Expenses</a>
-              </li>
-              <li>
-                <a href="./finance/edit_finance.php">Edit Income/Expenses</a>
-              </li>
-              <li>
-                <a href="./finance/delete_finance.php">Delete Income/Expenses</a>
-              </li>
+            <ul style="margin-top:15px">
+              <h2>Motives</h2>
+              <li><a href="../motives/add_motives.php">Add Motives</a></li>
+              <li><a href="../motives/motives_list.php">Motives List</a></li>
+              <li><a href="../motives/manage_motives.php">Manage Motives</a></li>
+            </ul>
+            <ul style="margin-top:15px">
+              <h2>Contact Us</h2>
+              <li><a href="../messages/message_list.php">Messages Lists</a></li>
+              <li><a href="../messages/message_detail.php">View Messages</a></li>
             </ul>
           </div>
         </div>
