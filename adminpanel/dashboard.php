@@ -20,8 +20,8 @@
             <div class="sidebar">
                 <div class="sidebar-finance">
                     <ul>
-                        <h2>Daily Activities & Personal Finance Tracker</h2>
-                        <li><a href="./userlists.php">User Lists</a></li>
+                        <h2>Manage Users</h2>
+                        <li><a href="./manage_user/userlists.php">User Lists</a></li>
                     </ul>
                 </div>
             </div>

@@ -460,3 +460,25 @@ footer h3 {
   width: 20px;
   height: 22px;
 }
+.services-card-content img {
+  width: 100%;
+}
+.services-card-body {
+  width: 100%;
+}
+.services-card-body img {
+  width: 100%;
+}
+.services-card {
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+.services-card-content {
+  padding: 10px;
+}
+.services {
+  margin-top: 60px;
+}
+.services h1 {
+  padding-bottom: 15px;
+}
