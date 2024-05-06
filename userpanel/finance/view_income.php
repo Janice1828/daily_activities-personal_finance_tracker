@@ -5,7 +5,7 @@ if ($login_status != "true") {
     header("location:../../login.php");
 }
 include("../../connection.php");
-$selectQuery = "SELECT id,date, money_spent, spent_on FROM dapf_finance WHERE deleted_status=0";
+$selectQuery = "SELECT id,date, money_spent_income, spenton_income FROM dapf_finance WHERE deleted_status=0";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>
@@ -37,7 +37,8 @@ $fetch = mysqli_query($conn, $selectQuery);
                     <h2>Finance</h2>
                     <ul style="padding-left:7px;">
                         <li><a href="./add_finance.php">Add Income/Expenses</a></li>
-                        <li><a href="#" class="active-sidebar">View Income/Expenses</a></li>
+                        <li><a href="#" class="active-sidebar">View Income</a></li>
+                        <li><a href="./view_expense.php">View Expenses</a></li>
                         <li><a href="./edit_finance.php">Edit Income/Expenses</a></li>
                         <li><a href="./delete_finance.php">Delete Income/Expenses</a></li>
                     </ul>
@@ -62,15 +63,15 @@ $fetch = mysqli_query($conn, $selectQuery);
                         <div class="">
                             <form class="row gap-2">
                                 <div class="col-12">
-                                    <h2>View Finance</h2>
+                                    <h2>View Income</h2>
                                 </div>
                                 <table class="col-12" cellpadding="10" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>SN</th>
                                             <th>Date</th>
-                                            <th>Money Spent</th>
-                                            <th>Spent On</th>
+                                            <th>Incomed Money</th>
+                                            <th>Income Via</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -80,8 +81,8 @@ $fetch = mysqli_query($conn, $selectQuery);
                                             <tr>
                                                 <td><?php echo ++$i; ?></td>
                                                 <td><?php echo $row['date'] ?></td>
-                                                <td><?php echo $row['money_spent'] ?></td>
-                                                <td><?php echo $row['spent_on'] ?></td>
+                                                <td><?php echo $row['money_spent_income'] ?></td>
+                                                <td><?php echo $row['spenton_income'] ?></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>

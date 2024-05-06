@@ -146,7 +146,7 @@ form div button {
 }
 .col-4 {
   flex: 0 0 auto;
-  width: calc(33.33333333% - 25px);
+  width: calc(33.33333333% - 30px);
 }
 .col-5 {
   flex: 0 0 auto;

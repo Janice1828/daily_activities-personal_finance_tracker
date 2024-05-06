@@ -5,7 +5,7 @@ if ($login_status != "true") {
     header("location:../../login.php");
 }
 include("../../connection.php");
-$selectQuery = "SELECT id, date, money_spent_income, spenton_income FROM dapf_finance WHERE `deleted_status`=0";
+$selectQuery = "SELECT id,date, money_spent_income, spenton_income FROM dapf_finance WHERE deleted_status=0";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>
@@ -25,7 +25,7 @@ $fetch = mysqli_query($conn, $selectQuery);
             <div class="sidebar">
                 <div class="sidebar-activities">
                     <h2>Tasks</h2>
-                    <ul style="padding-left:7px;">
+                    <ul style="padding-left: 7px;">
                         <li><a href="../tasks/add_tasks.php">Add Tasks</a></li>
                         <li><a href="../tasks/view_tasks.php">View Tasks</a></li>
                         <li><a href="../tasks/delete_tasks.php">Delete Tasks</a></li>
@@ -35,12 +35,12 @@ $fetch = mysqli_query($conn, $selectQuery);
 
                 <div class="sidebar-finance">
                     <h2>Finance</h2>
-                    <ul style="padding-left: 7px;">
+                    <ul style="padding-left:7px;">
                         <li><a href="./add_finance.php">Add Income/Expenses</a></li>
                         <li><a href="./view_income.php">View Income</a></li>
-                        <li><a href="./view_expense.php">View Expenses</a></li>
+                        <li><a href="#" class="active-sidebar">View Expenses</a></li>
                         <li><a href="./edit_finance.php">Edit Income/Expenses</a></li>
-                        <li><a href="./delete_finance.php" class="active-sidebar">Delete Income/Expenses</a></li>
+                        <li><a href="./delete_finance.php">Delete Income/Expenses</a></li>
                     </ul>
                 </div>
             </div>
@@ -63,7 +63,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                         <div class="">
                             <form class="row gap-2">
                                 <div class="col-12">
-                                    <h2>Delete Finance</h2>
+                                    <h2>View Expense</h2>
                                 </div>
                                 <table class="col-12" cellpadding="10" cellspacing="0">
                                     <thead>
@@ -72,22 +72,19 @@ $fetch = mysqli_query($conn, $selectQuery);
                                             <th>Date</th>
                                             <th>Money Spent</th>
                                             <th>Spent On</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $i = 1;
+                                        $i = 0;
                                         while ($row = mysqli_fetch_assoc($fetch)) { ?>
                                             <tr>
-                                                <td><?php echo $i++; ?></td>
-                                                <td><?php echo $row['date']; ?></td>
-                                                <td><?php echo $row['money_spent_income']; ?></td>
-                                                <td><?php echo $row['spenton_income']; ?></td>
-                                                <td><a href="./delete.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a></td>
+                                                <td><?php echo ++$i; ?></td>
+                                                <td><?php echo $row['date'] ?></td>
+                                                <td><?php echo $row['money_spent_income'] ?></td>
+                                                <td><?php echo $row['spenton_income'] ?></td>
                                             </tr>
-                                        <?php  } ?>
-
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </form>
@@ -101,7 +98,6 @@ $fetch = mysqli_query($conn, $selectQuery);
 
     </div>
 </body>
-
-</html>
 <script src="../../script.js">
+
 </script>
