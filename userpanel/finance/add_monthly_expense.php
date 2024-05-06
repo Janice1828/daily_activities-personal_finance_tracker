@@ -5,16 +5,11 @@ if ($login_status != "true") {
     header("location:../../login.php");
 }
 include("../../connection.php");
-if (isset($_POST['addfinance'])) {
-    $day = $_POST['day'];
-    $date = $_POST['date'];
-    $moneySpent = $_POST['money_spent_income'];
-    $spentOn = $_POST['spenton_income'];
-    $summary = $_POST['summary'];
-    $category = $_POST['finance_category'];
-    $sql = "INSERT INTO dapf_finance(day, date, money_spent_income, spent_on, summary,finance_category) VALUES ('$day', '$date','$moneySpent', '$spentOn','$summary','$category')";
+if (isset($_POST['addexpense'])) {
+    $title = $_POST['title'];
+    $sql = "INSERT INTO dapf_monthlyexpense(title) VALUES ('$title')";
     $sub = mysqli_query($conn, $sql);
-    header("location:./view_finance.php");
+    header("location:./view_monthly_expense.php");
 }
 
 
@@ -46,10 +41,10 @@ if (isset($_POST['addfinance'])) {
                 <div class="sidebar-finance">
                     <h2>Finance</h2>
                     <ul style="padding-left:7px">
-                        <li><a href="#" class="active-sidebar">Add Income/Expenses</a></li>
+                        <li><a href="#">Add Income/Expenses</a></li>
                         <li><a href="./view_income.php">View Income</a></li>
                         <li><a href="./view_expense.php">View Expenses</a></li>
-                        <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
+                        <li><a href="./add_monthly_expense.php" class="active-sidebar">Add Monthly Expenses</a></li>
                         <li><a href="./allocate_budget.php">Allocate Budget</a></li>
                         <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
                         <li><a href="./edit_finance.php">Edit Income/Expenses</a></li>
@@ -76,40 +71,15 @@ if (isset($_POST['addfinance'])) {
                         <div class="">
                             <form class="row gap-2" method="post">
                                 <div class="col-12">
-                                    <h2 class="ml-2">Add Income/Expenses</h2>
-                                </div>
-                                <div class="col-6">
-                                    <label for="">Day</label>
-                                    <input type="sunday" name="day" value="">
-                                </div>
-                                <div class="col-6">
-                                    <label for="">Date</label>
-                                    <input type="date" name="date" value="" id="date" readonly>
-                                </div>
-                                <div class="col-4">
-                                    <label>Category</label>
-                                    <select name="finance_category" id="select">
-                                        <option value="income">Income</option>
-                                        <option value="expense">Expense</option>
-                                    </select>
-
-                                </div>
-                                <div class="col-4">
-                                    <label for="">Money Spent / Income</label>
-                                    <input type="text" name="money_spent_income" value="">
-                                </div>
-                                <div class="col-4">
-                                    <label for="">Money Spent On / Income Money</label>
-                                    <input type="text" name="spenton_income" value="">
+                                    <h2 class="ml-2">Add Monthly Expenses</h2>
                                 </div>
 
-
-                                <div class="col-12 ml-2">
-                                    <label for="">Summary</label>
-                                    <textarea rows="" cols="" name="summary"></textarea>
+                                <div class="col-12">
+                                    <label for="">Title</label>
+                                    <input type="text" name="title" value="">
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn-success ml-2" name="addfinance">Add Finance</button>
+                                    <button type="submit" class="btn-success ml-2" name="addexpense">Add Expenses</button>
                                 </div>
                             </form>
                         </div>

@@ -5,11 +5,10 @@ if ($login_status != "true") {
     header("location:../../login.php");
 }
 include("../../connection.php");
-$selectQuery = "SELECT id,date, task_name, task_due_date,status, importance FROM dapf_tasks WHERE `deleted_status` = 0 ORDER BY status DESC";
+$selectQuery = "SELECT id,title FROM dapf_monthlyexpense";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,22 +25,25 @@ $fetch = mysqli_query($conn, $selectQuery);
             <div class="sidebar">
                 <div class="sidebar-activities">
                     <h2>Tasks</h2>
-                    <ul style="padding-left:7px;">
-                        <li><a href="./add_tasks.php">Add Tasks</a></li>
-                        <li><a href="#" class="active-sidebar">View Tasks</a></li>
-                        <li><a href="./delete_tasks.php">Delete Tasks</a></li>
-                        <li><a href="./completed_task.php">Completed Tasks</a></li>
+                    <ul style="padding-left: 7px;">
+                        <li><a href="../tasks/add_tasks.php">Add Tasks</a></li>
+                        <li><a href="../tasks/view_tasks.php">View Tasks</a></li>
+                        <li><a href="../tasks/delete_tasks.php">Delete Tasks</a></li>
+                        <li><a href="../tasks/completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>
 
                 <div class="sidebar-finance">
                     <h2>Finance</h2>
                     <ul style="padding-left:7px;">
-                        <li><a href="../finance/add_finance.php">Add Income/Expenses</a></li>
-                        <li><a href="../finance/view_income.php">View Income</a></li>
-                        <li><a href="../finance/view_expense.php">View Expenses</a></li>
-                        <li><a href="../finance/edit_finance.php">Edit Income/Expenses</a></li>
-                        <li><a href="../finance/delete_finance.php">Delete Income/Expenses</a></li>
+                        <li><a href="./add_finance.php">Add Income/Expenses</a></li>
+                        <li><a href="./view_income.php">View Income</a></li>
+                        <li><a href="#">View Expenses</a></li>
+                        <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
+                        <li><a href="./allocate_budget.php">Allocate Budget</a></li>
+                        <li><a href="./view_monthly_expense.php" class="active-sidebar">View Monthly Expenses</a></li>
+                        <li><a href="./edit_finance.php">Edit Income/Expenses</a></li>
+                        <li><a href="./delete_finance.php">Delete Income/Expenses</a></li>
                     </ul>
                 </div>
             </div>
@@ -64,43 +66,24 @@ $fetch = mysqli_query($conn, $selectQuery);
                         <div class="">
                             <form class="row gap-2">
                                 <div class="col-12">
-                                    <h2>View Tasks</h2>
+                                    <h2>View Monthly Expenses</h2>
                                 </div>
                                 <table class="col-12" cellpadding="10" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>SN</th>
-                                            <th>Date</th>
-                                            <th>Task Name</th>
-                                            <th>Task Due Date</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
+                                            <th>Title</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $i = 0;
-                                        while ($row = mysqli_fetch_assoc($fetch)) {
-                                        ?>
+                                        while ($row = mysqli_fetch_assoc($fetch)) { ?>
                                             <tr>
                                                 <td><?php echo ++$i; ?></td>
-                                                <td><?php echo $row['date'] ?></td>
-                                                <td><a style="text-decoration: none;" href="./task_detail.php?id=<?php echo $row['id'] ?>"><?php echo $row['task_name'] ?></a></td>
-                                                <td><?php echo $row['task_due_date']  ?></td>
-                                                <td><?php echo $row['status']  ?></td>
-                                                <td>
-                                                    <?php
-                                                    if ($row['status'] == "completed") {
-                                                        echo "completed";
-                                                    } else {
-                                                    ?>
-                                                        <a href="./complete_task.php?id=<?php echo $row['id'] ?>" class="btn-primary">Complete</a>
-                                                    <?php }
-                                                    ?>
-                                                </td>
+                                                <td><?php echo $row['title'] ?></td>
                                             </tr>
                                         <?php } ?>
-
                                     </tbody>
                                 </table>
                             </form>
@@ -115,4 +98,5 @@ $fetch = mysqli_query($conn, $selectQuery);
     </div>
 </body>
 <script src="../../script.js">
+
 </script>

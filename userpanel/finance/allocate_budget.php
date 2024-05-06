@@ -5,19 +5,15 @@ if ($login_status != "true") {
     header("location:../../login.php");
 }
 include("../../connection.php");
-if (isset($_POST['addfinance'])) {
-    $day = $_POST['day'];
-    $date = $_POST['date'];
-    $moneySpent = $_POST['money_spent_income'];
-    $spentOn = $_POST['spenton_income'];
-    $summary = $_POST['summary'];
-    $category = $_POST['finance_category'];
-    $sql = "INSERT INTO dapf_finance(day, date, money_spent_income, spent_on, summary,finance_category) VALUES ('$day', '$date','$moneySpent', '$spentOn','$summary','$category')";
+if (isset($_POST['allocatemoney'])) {
+    $allocation_for = $_POST['allocation_for'];
+    $estimated_money = $_POST['estimated_money'];
+    $sql = "INSERT INTO dapf_allocatebudget(allocation_for, estimated_money) VALUES ('$allocation_for', '$estimated_money')";
     $sub = mysqli_query($conn, $sql);
-    header("location:./view_finance.php");
+    header("location:./view_allocatedbudget.php");
 }
-
-
+$fetch_expenses = "SELECT id, title FROM dapf_monthlyexpense";
+$get_expenses = mysqli_query($conn, $fetch_expenses);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,15 +38,14 @@ if (isset($_POST['addfinance'])) {
                         <li><a href="../tasks/completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>
-
                 <div class="sidebar-finance">
                     <h2>Finance</h2>
                     <ul style="padding-left:7px">
-                        <li><a href="#" class="active-sidebar">Add Income/Expenses</a></li>
+                        <li><a href="./add_finance.php">Add Income/Expenses</a></li>
                         <li><a href="./view_income.php">View Income</a></li>
                         <li><a href="./view_expense.php">View Expenses</a></li>
                         <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
-                        <li><a href="./allocate_budget.php">Allocate Budget</a></li>
+                        <li><a href="./allocate_budget.php" class="active-sidebar">Allocate Budget</a></li>
                         <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
                         <li><a href="./edit_finance.php">Edit Income/Expenses</a></li>
                         <li><a href="./delete_finance.php">Delete Income/Expenses</a></li>
@@ -76,50 +71,29 @@ if (isset($_POST['addfinance'])) {
                         <div class="">
                             <form class="row gap-2" method="post">
                                 <div class="col-12">
-                                    <h2 class="ml-2">Add Income/Expenses</h2>
+                                    <h2 class="ml-2">Allocate Budget</h2>
                                 </div>
                                 <div class="col-6">
-                                    <label for="">Day</label>
-                                    <input type="sunday" name="day" value="">
-                                </div>
-                                <div class="col-6">
-                                    <label for="">Date</label>
-                                    <input type="date" name="date" value="" id="date" readonly>
-                                </div>
-                                <div class="col-4">
-                                    <label>Category</label>
-                                    <select name="finance_category" id="select">
-                                        <option value="income">Income</option>
-                                        <option value="expense">Expense</option>
+                                    <label for="">Allocation For</label>
+                                    <select id="select" name="allocation_for">
+                                        <?php while ($data = mysqli_fetch_assoc($get_expenses)) { ?>
+                                            <option value="<?php echo $data['title'] ?>"><?php echo $data['title']; ?></option>
+                                        <?php } ?>
                                     </select>
-
                                 </div>
-                                <div class="col-4">
-                                    <label for="">Money Spent / Income</label>
-                                    <input type="text" name="money_spent_income" value="">
-                                </div>
-                                <div class="col-4">
-                                    <label for="">Money Spent On / Income Money</label>
-                                    <input type="text" name="spenton_income" value="">
-                                </div>
-
-
-                                <div class="col-12 ml-2">
-                                    <label for="">Summary</label>
-                                    <textarea rows="" cols="" name="summary"></textarea>
+                                <div class="col-6">
+                                    <label for="">Estimated Money</label>
+                                    <input type="number" name="estimated_money" value="">
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn-success ml-2" name="addfinance">Add Finance</button>
+                                    <button type="submit" class="btn-success ml-2" name="allocatemoney">Allocate</button>
                                 </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </div>
-
     </div>
 </body>
 
