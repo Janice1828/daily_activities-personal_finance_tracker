@@ -13,8 +13,10 @@ if (isset($_POST['addexpenses'])) {
     $summary = $_POST['summary'];
     $sql = "INSERT INTO dapf_expense(day, date, money_spent, spent_on, summary) VALUES ('$day', '$date','$moneySpent', '$spentOn','$summary')";
     $sub = mysqli_query($conn, $sql);
-    header("location:./view_expenses.php");
+    header("location:./view_expense.php");
 }
+$getexpenses = "SELECT id, allocation_for FROM dapf_allocatebudget";
+$data = mysqli_query($conn, $getexpenses);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +41,6 @@ if (isset($_POST['addexpenses'])) {
                         <li><a href="../tasks/completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>
-
                 <div class="sidebar-finance">
                     <h2>Finance</h2>
                     <ul style="padding-left:7px">
@@ -49,9 +50,9 @@ if (isset($_POST['addexpenses'])) {
                         <li><a href="./view_expense.php">View Expenses</a></li>
                         <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
                         <li><a href="./allocate_budget.php">Allocate Budget</a></li>
+                        <li><a href="./view_allocatedbudget.php">View Allocated Budget</a></li>
                         <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
-                        <li><a href="./edit_finance.php">Edit Income/Expenses</a></li>
-                        <li><a href="./delete_finance.php">Delete Income/Expenses</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -91,7 +92,12 @@ if (isset($_POST['addexpenses'])) {
                                 </div>
                                 <div class="col-6">
                                     <label for="">Money Spent On</label>
-                                    <input type="text" name="spent_on" value="">
+                                    <select name="spent_on" id="select">
+                                        <?php while ($row = mysqli_fetch_assoc($data)) { ?>
+                                            <option value="<?php echo $row['allocation_for'] ?>"><?php echo $row['allocation_for'] ?></option>
+                                        <?php } ?>
+                                        <option value="other">Others</option>
+                                    </select>
                                 </div>
                                 <div class="col-12 ml-2">
                                     <label for="">Summary</label>

@@ -11,9 +11,9 @@ if (isset($_POST['addincome'])) {
     $incomed_money = $_POST['incomed_money'];
     $incomed_from = $_POST['incomed_from'];
     $summary = $_POST['summary'];
-    $sql = "INSERT INTO dapf_finance(day, date, incomed_money, incomed_from, summary) VALUES ('$day', '$date','$incomed_money', '$incomed_from','$summary')";
+    $sql = "INSERT INTO dapf_income(day, date, incomed_money, incomed_from, summary) VALUES ('$day', '$date','$incomed_money', '$incomed_from','$summary')";
     $sub = mysqli_query($conn, $sql);
-    header("location:./view_finance.php");
+    header("location:./view_income.php");
 }
 ?>
 <!DOCTYPE html>
@@ -49,9 +49,9 @@ if (isset($_POST['addincome'])) {
                         <li><a href="./view_expense.php">View Expenses</a></li>
                         <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
                         <li><a href="./allocate_budget.php">Allocate Budget</a></li>
+                        <li><a href="./view_allocatedbudget.php">View Allocated Budget</a></li>
                         <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
-                        <li><a href="./edit_finance.php">Edit Income/Expenses</a></li>
-                        <li><a href="./delete_finance.php">Delete Income/Expenses</a></li>
+
                     </ul>
                 </div>
             </div>

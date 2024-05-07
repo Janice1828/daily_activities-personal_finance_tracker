@@ -5,7 +5,7 @@ if ($login_status != "true") {
     header("location:../../login.php");
 }
 include("../../connection.php");
-$selectQuery = "SELECT id,date, money_spent_income, spenton_income FROM dapf_finance WHERE deleted_status=0";
+$selectQuery = "SELECT id,date, incomed_money, incomed_from FROM dapf_income";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>
@@ -42,9 +42,9 @@ $fetch = mysqli_query($conn, $selectQuery);
                         <li><a href="./view_expense.php">View Expenses</a></li>
                         <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
                         <li><a href="./allocate_budget.php">Allocate Budget</a></li>
+                        <li><a href="./view_allocatedbudget.php">View Allocated Budget</a></li>
                         <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
-                        <li><a href="./edit_finance.php">Edit Income/Expenses</a></li>
-                        <li><a href="./delete_finance.php">Delete Income/Expenses</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -75,7 +75,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                                             <th>SN</th>
                                             <th>Date</th>
                                             <th>Incomed Money</th>
-                                            <th>Income Via</th>
+                                            <th>Income From</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -85,8 +85,8 @@ $fetch = mysqli_query($conn, $selectQuery);
                                             <tr>
                                                 <td><?php echo ++$i; ?></td>
                                                 <td><?php echo $row['date'] ?></td>
-                                                <td><?php echo $row['money_spent_income'] ?></td>
-                                                <td><?php echo $row['spenton_income'] ?></td>
+                                                <td><?php echo $row['incomed_money'] ?></td>
+                                                <td><?php echo $row['incomed_from'] ?></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>

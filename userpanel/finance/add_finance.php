@@ -52,8 +52,7 @@ if (isset($_POST['addfinance'])) {
                         <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
                         <li><a href="./allocate_budget.php">Allocate Budget</a></li>
                         <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
-                        <li><a href="./edit_finance.php">Edit Income/Expenses</a></li>
-                        <li><a href="./delete_finance.php">Delete Income/Expenses</a></li>
+
                     </ul>
                 </div>
             </div>

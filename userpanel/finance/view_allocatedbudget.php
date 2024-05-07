@@ -5,7 +5,7 @@ if ($login_status != "true") {
     header("location:../../login.php");
 }
 include("../../connection.php");
-$selectQuery = "SELECT id,allocation_for,estimated_money FROM dapf_allocatebudget";
+$selectQuery = "SELECT id,allocation_for,estimated_money,remaining_money FROM dapf_allocatebudget";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>
@@ -36,14 +36,15 @@ $fetch = mysqli_query($conn, $selectQuery);
                 <div class="sidebar-finance">
                     <h2>Finance</h2>
                     <ul style="padding-left:7px;">
-                        <li><a href="./add_finance.php">Add Income/Expenses</a></li>
+                        <li><a href="./add_income.php">Add Income</a></li>
+                        <li><a href="./add_expenses.php">Add Expense</a></li>
                         <li><a href="./view_income.php">View Income</a></li>
-                        <li><a href="#">View Expenses</a></li>
+                        <li><a href="./view_expense.php">View Expenses</a></li>
                         <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
                         <li><a href="./allocate_budget.php">Allocate Budget</a></li>
-                        <li><a href="./view_monthly_expense.php" class="active-sidebar">View Monthly Expenses</a></li>
-                        <li><a href="./edit_finance.php">Edit Income/Expenses</a></li>
-                        <li><a href="./delete_finance.php">Delete Income/Expenses</a></li>
+                        <li><a href="./view_allocatedbudget.php" class="active-sidebar">View Allocated Budget</a></li>
+                        <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -74,6 +75,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                                             <th>SN</th>
                                             <th>Money Allocation For</th>
                                             <th>Allocated Money</th>
+                                            <th>Remaining Money</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -84,6 +86,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                                                 <td><?php echo ++$i; ?></td>
                                                 <td><?php echo $row['allocation_for'] ?></td>
                                                 <td><?php echo $row['estimated_money'] ?></td>
+                                                <td><?php echo $row['remaining_money'] ?></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
