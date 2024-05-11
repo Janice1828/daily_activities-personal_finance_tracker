@@ -46,13 +46,13 @@ $data = mysqli_query($conn, $getexpenses);
                     <h2>Finance</h2>
                     <ul style="padding-left:7px">
                         <li><a href="./add_income.php">Add Income</a></li>
-                        <li><a href="#" class="active-sidebar">Add Expense</a></li>
                         <li><a href="./view_income.php">View Income</a></li>
+                        <li><a href="#" class="active-sidebar">Add Expense</a></li>
                         <li><a href="./view_expense.php">View Expenses</a></li>
                         <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
+                        <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
                         <li><a href="./allocate_budget.php">Allocate Budget</a></li>
                         <li><a href="./view_allocatedbudget.php">View Allocated Budget</a></li>
-                        <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
 
                     </ul>
                 </div>
