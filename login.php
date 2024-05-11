@@ -18,7 +18,7 @@ session_start();
       <h2 style="text-align:center">Login</h2>
 
       <div><label for="">Email</label> <input type="text" name="email" /></div>
-      <div><label for="">Password</label> <input name="password" type="text" /></div>
+      <div class="position-relative"><label for="">Password</label> <input name="password" type="password" id="password" /><span class="position-absolute cursor-pointer" id="loginShowPassword">Show</span></div>
       <div><button name="login">Login</button></div>
       <div>
         or <a href="./registration.php">register?</a>
@@ -54,3 +54,15 @@ session_start();
 </body>
 
 </html>
+<script>
+  document.getElementById("loginShowPassword").addEventListener("click", function() {
+    const password = document.getElementById('password');
+    if (password.type == 'password') {
+      password.type = "text"
+      this.innerHTML = "Hide"
+    } else {
+      password.type = "password";
+      this.innerHTML = "Show"
+    }
+  })
+</script>

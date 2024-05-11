@@ -15,7 +15,7 @@
       <h2 style="text-align: center;">Registration</h2>
       <div><label for="">Full Name</label> <input type="text" name="fullname" required /></div>
       <div><label for="">Email</label> <input name="email" type="email" required /></div>
-      <div><label for="">Password</label> <input name="password" type="password" required /></div>
+      <div class="position-relative"><label for="">Password</label> <input name="password" type="password" required id="password" /><span class="position-absolute cursor-pointer" id="registerShowPassword">Show</span></div>
       <div><button name="register">Registration</button></div>
       <div>
         or <a href="./login.php">Login?</a>
@@ -38,3 +38,15 @@
 </body>
 
 </html>
+<script>
+  document.getElementById("registerShowPassword").addEventListener("click", function() {
+    const password = document.getElementById('password');
+    if (password.type == 'password') {
+      password.type = "text"
+      this.innerHTML = "Hide"
+    } else {
+      password.type = "password";
+      this.innerHTML = "Show"
+    }
+  })
+</script>

@@ -361,12 +361,20 @@ footer h3 {
   left: 14%;
   color: #fff;
 }
-
+#loginShowPassword,
+#registerShowPassword {
+  top: 33px;
+  right: 10px;
+  font-size: 13px;
+}
 .card-body {
   position: relative;
 }
 .card-body img {
   filter: brightness(50%);
+}
+.position-absolute {
+  position: absolute;
 }
 .position-relative {
   position: relative;
