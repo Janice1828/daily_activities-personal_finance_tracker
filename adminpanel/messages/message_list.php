@@ -5,7 +5,7 @@
 //     header("location:../../login.php");
 // }
 include("../../connection.php");
-$message_fetch_query = "SELECT name, email, phone FROM dapf_messages";
+$message_fetch_query = "SELECT id, name, email, phone FROM dapf_messages";
 $res = mysqli_query($conn, $message_fetch_query);
 ?>
 
@@ -25,19 +25,22 @@ $res = mysqli_query($conn, $message_fetch_query);
             <div class="sidebar">
                 <div class="sidebar-activities">
                     <ul>
-                        <h2>Manage Users</h2>
+                        <h3>Master</h3>
+                        <li><a href="../importances/view_importances.php">Importances</a></li>
+                    </ul>
+                    <ul style="margin-top:15px;">
+                        <h3>Manage Users</h3>
                         <li><a href="../manage_user/userlists.php">User Lists</a></li>
                     </ul>
                     <ul style="margin-top:15px">
-                        <h2>Motives</h2>
+                        <h3>Motives</h3>
                         <li><a href="../motives/add_motives.php">Add Motives</a></li>
                         <li><a href="../motives/motives_list.php">Motives List</a></li>
                         <li><a href="../motives/manage_motives.php">Manage Motives</a></li>
                     </ul>
                     <ul style="margin-top:15px">
-                        <h2>Contact Us</h2>
-                        <li><a href="#" class="active-sidebar">Messages Lists</a></li>
-                        <li><a href="../messages/message_detail.php">View Messages</a></li>
+                        <h3>Contact Us</h3>
+                        <li><a href="#" class="active-sidebar">Messages</a></li>
 
                     </ul>
                 </div>
@@ -70,7 +73,7 @@ $res = mysqli_query($conn, $message_fetch_query);
                                             <th>SN</th>
                                             <th>Name</th>
                                             <th>Email</th>
-                                            <th>Phone</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -84,7 +87,7 @@ $res = mysqli_query($conn, $message_fetch_query);
                                                     ?></td>
                                                 <td><?php echo $data['name'] ?></td>
                                                 <td><?php echo $data['email'] ?></td>
-                                                <td><?php echo $data['phone'] ?></td>
+                                                <td><a href="./view_message.php?id=<?php echo $data['id'] ?>" class="btn-secondary">View Message</a></td>
                                             </tr>
                                         <?php } ?>
 

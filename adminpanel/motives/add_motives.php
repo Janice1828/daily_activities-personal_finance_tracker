@@ -24,19 +24,23 @@
             <div class="sidebar">
                 <div class="sidebar-activities">
                     <ul>
-                        <h2>Manage Users</h2>
+                        <h3>Master</h3>
+                        <li><a href="../importances/view_importances.php">Importances</a></li>
+                    </ul>
+                    <ul style="margin-top:15px;">
+                        <h3>Manage Users</h3>
                         <li><a href="../manage_user/userlists.php">User Lists</a></li>
                     </ul>
                     <ul style="margin-top:15px">
-                        <h2>Motives</h2>
+                        <h3>Motives</h3>
                         <li><a href="#" class="active-sidebar">Add Motives</a></li>
                         <li><a href="./motives_list.php">Motives List</a></li>
                         <li><a href="./manage_motives.php">Manage Motives</a></li>
                     </ul>
                     <ul style="margin-top:15px">
-                        <h2>Contact Us</h2>
-                        <li><a href="../messages/message_list.php">Messages Lists</a></li>
-                        <li><a href="../messages/message_detail.php">View Messages</a></li>
+                        <h3>Contact Us</h3>
+                        <li><a href="../messages/message_list.php">Messages</a></li>
+
                     </ul>
                 </div>
 

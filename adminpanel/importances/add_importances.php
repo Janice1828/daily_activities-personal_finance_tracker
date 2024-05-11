@@ -29,9 +29,8 @@ if (isset($_POST['addimportances'])) {
             <div class="sidebar">
                 <div class="sidebar-activities">
                     <ul>
-                        <h2>Master</h2>
-                        <li><a href="#" class="active-sidebar">Add Importances</a></li>
-                        <li><a href="./view_importances.php">View Importances</a></li>
+                        <h4>Master</h4>
+                        <li><a href="./view_importances.php" class="active-sidebar">Importances</a></li>
                     </ul>
                     <ul style="margin-top:15px">
                         <h2>Manage Users</h2>
