@@ -75,7 +75,7 @@ if (isset($_POST['addexpense'])) {
                                     <h2 class="ml-2">Add Monthly Expenses</h2>
                                 </div>
 
-                                <div class="col-12">
+                                <div class="col-12" style="width:96%">
                                     <label for="">Title</label>
                                     <input type="text" name="title" value="">
                                 </div>

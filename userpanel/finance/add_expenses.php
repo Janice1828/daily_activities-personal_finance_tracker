@@ -4,15 +4,15 @@ $login_status = $_SESSION['logged_in'];
 if ($login_status != "true") {
     header("location:../../login.php");
 }
+$user_id = $_SESSION['user_id'];
 include("../../connection.php");
 if (isset($_POST['addexpenses'])) {
-    $day = $_POST['day'];
     $date = $_POST['date'];
     $moneySpent = $_POST['money_spent'];
     $spentOn = $_POST['spent_on'];
     $summary = $_POST['summary'];
-    $allocated_budget = "null";
-    $sql = "INSERT INTO dapf_expense(day, date, money_spent, spent_on, summary, allocatedbudget_id) VALUES ('$day', '$date','$moneySpent', '$spentOn','$summary','$allocated_budget')";
+    // $allocated_budget = "null";
+    $sql = "INSERT INTO dapf_expense(date, money_spent, spent_on, summary, user_id) VALUES ('$date','$moneySpent', '$spentOn','$summary','$user_id')";
     $sub = mysqli_query($conn, $sql);
     header("location:./view_expense.php");
 }
@@ -78,11 +78,7 @@ $data = mysqli_query($conn, $getexpenses);
                                 <div class="col-12">
                                     <h2 class="ml-2">Add Expenses</h2>
                                 </div>
-                                <div class="col-6">
-                                    <label for="">Day</label>
-                                    <input type="sunday" name="day" value="">
-                                </div>
-                                <div class="col-6">
+                                <div class="col-12" style="width:95%">
                                     <label for="">Date</label>
                                     <input type="date" name="date" value="" id="date" readonly>
                                 </div>
@@ -97,7 +93,6 @@ $data = mysqli_query($conn, $getexpenses);
                                         <?php while ($row = mysqli_fetch_assoc($data)) { ?>
                                             <option value="<?php echo $row['id'] ?>"><?php echo $row['allocation_for'] ?></option>
                                         <?php } ?>
-                                        <option value="other">Others</option>
                                     </select>
                                 </div>
                                 <div class="col-12 ml-2">

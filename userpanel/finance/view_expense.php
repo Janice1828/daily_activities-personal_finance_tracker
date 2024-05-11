@@ -4,8 +4,9 @@ $login_status = $_SESSION['logged_in'];
 if ($login_status != "true") {
     header("location:../../login.php");
 }
+$user_id = $_SESSION['user_id'];
 include("../../connection.php");
-$selectQuery = "SELECT dapf_expense.id, dapf_expense.date, dapf_expense.money_spent, dapf_allocatebudget.allocation_for, dapf_allocatebudget.estimated_money,dapf_allocatebudget.estimated_money FROM dapf_expense LEFT JOIN dapf_allocatebudget ON  dapf_expense.spent_on = dapf_allocatebudget.id ORDER BY dapf_expense.id DESC ";
+$selectQuery = "SELECT dapf_expense.id, dapf_expense.date, dapf_expense.money_spent, dapf_allocatebudget.allocation_for, dapf_allocatebudget.estimated_money,dapf_allocatebudget.estimated_money FROM dapf_expense LEFT JOIN dapf_allocatebudget ON  dapf_expense.spent_on = dapf_allocatebudget.id WHERE dapf_expense.user_id=$user_id ORDER BY dapf_expense.id DESC ";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>
