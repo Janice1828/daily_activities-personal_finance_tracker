@@ -6,7 +6,8 @@ if ($login_status != "true") {
 }
 
 include("../../connection.php");
-$selectQuery = "SELECT id,date, task_name, task_due_date,status, importance FROM dapf_tasks WHERE status='completed'";
+$user_id = $_SESSION['user_id'];
+$selectQuery = "SELECT id,date, task_name, task_due_date,status, user_id, importance FROM dapf_tasks WHERE status='completed' AND `user_id`=$user_id";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>
@@ -38,11 +39,14 @@ $fetch = mysqli_query($conn, $selectQuery);
                 <div class="sidebar-finance">
                     <h2>Finance</h2>
                     <ul style="padding-left:7px;">
-                        <li><a href="../finance/add_finance.php">Add Income/Expenses</a></li>
+                        <li><a href="../finance/add_income.php">Add Income</a></li>
+                        <li><a href="../finance/add_expenses.php">Add Expense</a></li>
                         <li><a href="../finance/view_income.php">View Income</a></li>
-                        <li><a href="../finance/view_expense.php">View Expenses</a></li>
-                        <li><a href="../finance/edit_finance.php">Edit Income/Expenses</a></li>
-                        <li><a href="../finance/delete_finance.php">Delete Income/Expenses</a></li>
+                        <li><a href=" ../finance/view_expense.php">View Expenses</a></li>
+                        <li><a href="../finance/add_monthly_expense.php">Add Monthly Expenses</a></li>
+                        <li><a href="../finance/allocate_budget.php">Allocate Budget</a></li>
+                        <li><a href="../finance/view_allocatedbudget.php">View Allocated Budget</a></li>
+                        <li><a href="../finance/view_monthly_expense.php">View Monthly Expenses</a></li>
                     </ul>
                 </div>
             </div>
@@ -71,7 +75,6 @@ $fetch = mysqli_query($conn, $selectQuery);
                                     <thead>
                                         <tr>
                                             <th>SN</th>
-                                            <th>Date</th>
                                             <th>Task Name</th>
                                             <th>Task Due Date</th>
                                         </tr>
@@ -83,8 +86,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                                         ?>
                                             <tr>
                                                 <td><?php echo ++$i; ?></td>
-                                                <td><?php echo $row['date'] ?></td>
-                                                <td><?php echo $row['task_name'] ?></td>
+                                                <td><a style="text-decoration: none; color:blue" href="./task_detail.php?id=<?php echo $row['id'] ?>"><?php echo $row['task_name'] ?></a></td>
                                                 <td><?php echo $row['task_due_date']  ?></td>
                                             </tr>
                                         <?php } ?>

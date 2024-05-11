@@ -1,14 +1,14 @@
 <?php
-session_start();
-$login_status = $_SESSION['logged_in'];
-if ($login_status != "true") {
-    header("location:../../login.php");
-}
+// session_start();
+// $login_status = $_SESSION['logged_in'];
+// if ($login_status != "true") {
+//     header("location:../../login.php");
+// }
 include("../../connection.php");
-$selectQuery = "SELECT id,allocation_for,estimated_money FROM dapf_allocatebudget";
-$fetch = mysqli_query($conn, $selectQuery);
-
+$message_fetch_query = "SELECT title FROM dapf_importances";
+$res = mysqli_query($conn, $message_fetch_query);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,29 +24,29 @@ $fetch = mysqli_query($conn, $selectQuery);
         <div class="col-2">
             <div class="sidebar">
                 <div class="sidebar-activities">
-                    <h2>Tasks</h2>
-                    <ul style="padding-left: 7px;">
-                        <li><a href="../tasks/add_tasks.php">Add Tasks</a></li>
-                        <li><a href="../tasks/view_tasks.php">View Tasks</a></li>
-                        <li><a href="../tasks/delete_tasks.php">Delete Tasks</a></li>
-                        <li><a href="../tasks/completed_task.php">Completed Tasks</a></li>
+                    <ul>
+                        <h2>Master</h2>
+                        <li><a href="./add_importances.php">Add Importances</a></li>
+                        <li><a href="#" class="active-sidebar">View Importances</a></li>
+                    </ul>
+                    <ul style="margin-top:15px">
+                        <h2>Manage Users</h2>
+                        <li><a href="../manage_user/userlists.php">User Lists</a></li>
+                    </ul>
+                    <ul style="margin-top:15px">
+                        <h2>Motives</h2>
+                        <li><a href="../motives/add_motives.php">Add Motives</a></li>
+                        <li><a href="../motives/motives_list.php">Motives List</a></li>
+                        <li><a href="../motives/manage_motives.php">Manage Motives</a></li>
+                    </ul>
+                    <ul style="margin-top:15px">
+                        <h2>Contact Us</h2>
+                        <li><a href="#">Messages Lists</a></li>
+                        <li><a href="../messages/message_detail.php">View Messages</a></li>
+
                     </ul>
                 </div>
 
-                <div class="sidebar-finance">
-                    <h2>Finance</h2>
-                    <ul style="padding-left:7px;">
-                        <li><a href="./add_income.php">Add Income</a></li>
-                        <li><a href="./add_expenses.php">Add Expense</a></li>
-                        <li><a href="./view_income.php">View Income</a></li>
-                        <li><a href="./view_expense.php">View Expenses</a></li>
-                        <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
-                        <li><a href="./allocate_budget.php">Allocate Budget</a></li>
-                        <li><a href="./view_allocatedbudget.php" class="active-sidebar">View Allocated Budget</a></li>
-                        <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
-
-                    </ul>
-                </div>
             </div>
         </div>
         <div class="col-10">
@@ -67,26 +67,28 @@ $fetch = mysqli_query($conn, $selectQuery);
                         <div class="">
                             <form class="row gap-2">
                                 <div class="col-12">
-                                    <h2>View Monthly Expenses</h2>
+                                    <h2>View Importances</h2>
                                 </div>
                                 <table class="col-12" cellpadding="10" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>SN</th>
-                                            <th>Money Allocation For</th>
-                                            <th>Allocated Money</th>
+                                            <th>Title</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $i = 0;
-                                        while ($row = mysqli_fetch_assoc($fetch)) { ?>
+                                        $i = 1;
+                                        while ($data = mysqli_fetch_assoc($res)) {
+                                        ?>
                                             <tr>
-                                                <td><?php echo ++$i; ?></td>
-                                                <td><?php echo $row['allocation_for'] ?></td>
-                                                <td><?php echo $row['estimated_money'] ?></td>
+                                                <td><?php echo $i;
+                                                    $i++;
+                                                    ?></td>
+                                                <td><?php echo $data['title'] ?></td>
                                             </tr>
                                         <?php } ?>
+
                                     </tbody>
                                 </table>
                             </form>
@@ -101,5 +103,4 @@ $fetch = mysqli_query($conn, $selectQuery);
     </div>
 </body>
 <script src="../../script.js">
-
 </script>

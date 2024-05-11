@@ -11,7 +11,8 @@ if (isset($_POST['addexpenses'])) {
     $moneySpent = $_POST['money_spent'];
     $spentOn = $_POST['spent_on'];
     $summary = $_POST['summary'];
-    $sql = "INSERT INTO dapf_expense(day, date, money_spent, spent_on, summary) VALUES ('$day', '$date','$moneySpent', '$spentOn','$summary')";
+    $allocated_budget = "null";
+    $sql = "INSERT INTO dapf_expense(day, date, money_spent, spent_on, summary, allocatedbudget_id) VALUES ('$day', '$date','$moneySpent', '$spentOn','$summary','$allocated_budget')";
     $sub = mysqli_query($conn, $sql);
     header("location:./view_expense.php");
 }
@@ -94,7 +95,7 @@ $data = mysqli_query($conn, $getexpenses);
                                     <label for="">Money Spent On</label>
                                     <select name="spent_on" id="select">
                                         <?php while ($row = mysqli_fetch_assoc($data)) { ?>
-                                            <option value="<?php echo $row['allocation_for'] ?>"><?php echo $row['allocation_for'] ?></option>
+                                            <option value="<?php echo $row['id'] ?>"><?php echo $row['allocation_for'] ?></option>
                                         <?php } ?>
                                         <option value="other">Others</option>
                                     </select>

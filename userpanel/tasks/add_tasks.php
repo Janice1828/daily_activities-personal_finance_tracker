@@ -4,6 +4,8 @@ $login_status = $_SESSION['logged_in'];
 if ($login_status != "true") {
     header("location:../../login.php");
 }
+$user_id = $_SESSION['user_id'];
+
 include("../../connection.php");
 if (isset($_POST['addtasks'])) {
     $date = $_POST['date'];
@@ -11,12 +13,17 @@ if (isset($_POST['addtasks'])) {
     $tasks_due_date = $_POST['tasks_due_date'];
     $importance = $_POST['importance'];
     $summary = $_POST['summary'];
-    $sql = "INSERT INTO dapf_tasks(date, task_name, task_due_date, importance,summary) VALUES ('$date', '$task_name','$tasks_due_date', '$importance','$summary')";
+    $sql = "INSERT INTO dapf_tasks(date, task_name, task_due_date, importance,summary,user_id) VALUES ('$date', '$task_name','$tasks_due_date', '$importance','$summary','$user_id')";
     $sub = mysqli_query($conn, $sql);
     header("location:./view_tasks.php");
     exit;
 }
-
+$fetch_importances = "SELECT title FROM dapf_importances";
+$importances = mysqli_query($conn, $fetch_importances);
+// print_r($importances);
+// while ($a = mysqli_fetch_assoc($importances)) {
+//     echo $a['title'];
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,11 +52,14 @@ if (isset($_POST['addtasks'])) {
                 <div class="sidebar-finance">
                     <h2>Finance</h2>
                     <ul style="padding-left:7px;">
-                        <li><a href="../finance/add_finance.php">Add Income/Expenses</a></li>
+                        <li><a href="../finance/add_income.php">Add Income</a></li>
+                        <li><a href="../finance/add_expenses.php">Add Expense</a></li>
                         <li><a href="../finance/view_income.php">View Income</a></li>
-                        <li><a href="../finance/view_expense.php">View Expenses</a></li>
-                        <li><a href="../finance/edit_finance.php">Edit Income/Expenses</a></li>
-                        <li><a href="../finance/delete_finance.php">Delete Income/Expenses</a></li>
+                        <li><a href=" ../finance/view_expense.php">View Expenses</a></li>
+                        <li><a href="../finance/add_monthly_expense.php">Add Monthly Expenses</a></li>
+                        <li><a href="../finance/allocate_budget.php">Allocate Budget</a></li>
+                        <li><a href="../finance/view_allocatedbudget.php">View Allocated Budget</a></li>
+                        <li><a href="../finance/view_monthly_expense.php">View Monthly Expenses</a></li>
                     </ul>
                 </div>
             </div>
@@ -87,8 +97,9 @@ if (isset($_POST['addtasks'])) {
                                     <label for="">Importance</label>
                                     <select id="select" name="importance">
                                         <option value="">Select Option</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
+                                        <?php while ($title = mysqli_fetch_assoc($importances)) { ?>
+                                            <option value="<?php echo $title['title'];  ?>"><?php echo $title['title'] ?></option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                                 <div class="col-6">
@@ -100,7 +111,7 @@ if (isset($_POST['addtasks'])) {
                                     <textarea rows="" cols="" name="summary"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" name="addtasks" class="btn-success ml-2">Add Activity</button>
+                                    <button type="submit" name="addtasks" class="btn-success ml-2">Add Tasks</button>
                                 </div>
                             </form>
                         </div>

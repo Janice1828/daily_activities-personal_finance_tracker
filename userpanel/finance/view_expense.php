@@ -5,7 +5,7 @@ if ($login_status != "true") {
     header("location:../../login.php");
 }
 include("../../connection.php");
-$selectQuery = "SELECT id,date, money_spent, spent_on FROM dapf_expense";
+$selectQuery = "SELECT dapf_expense.id, dapf_expense.date, dapf_expense.money_spent, dapf_allocatebudget.allocation_for, dapf_allocatebudget.estimated_money,dapf_allocatebudget.estimated_money FROM dapf_expense LEFT JOIN dapf_allocatebudget ON  dapf_expense.spent_on = dapf_allocatebudget.id ORDER BY dapf_expense.id DESC ";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>
@@ -77,6 +77,8 @@ $fetch = mysqli_query($conn, $selectQuery);
                                             <th>Date</th>
                                             <th>Money Spent</th>
                                             <th>Spent On</th>
+                                            <th>Allocated Money</th>
+                                            <th>Remaining Allocated Money</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -87,7 +89,9 @@ $fetch = mysqli_query($conn, $selectQuery);
                                                 <td><?php echo ++$i; ?></td>
                                                 <td><?php echo $row['date'] ?></td>
                                                 <td><?php echo $row['money_spent'] ?></td>
-                                                <td><?php echo $row['spent_on'] ?></td>
+                                                <td><?php echo $row['allocation_for'] ?></td>
+                                                <td><?php echo $row['estimated_money'] ?></td>
+                                                <td></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>

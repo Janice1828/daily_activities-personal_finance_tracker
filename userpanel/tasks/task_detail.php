@@ -29,7 +29,7 @@ $data = mysqli_fetch_assoc($fetch);
                     <h2>Tasks</h2>
                     <ul style="padding-left:7px;">
                         <li><a href="./add_tasks.php">Add Tasks</a></li>
-                        <li><a href="./view_tasks.php" class="active-sidebar">View Tasks</a></li>
+                        <li><a href="./view_tasks.php">View Tasks</a></li>
                         <li><a href="./delete_tasks.php">Delete Tasks</a></li>
                         <li><a href="./completed_task.php">Completed Tasks</a></li>
                     </ul>
@@ -38,11 +38,14 @@ $data = mysqli_fetch_assoc($fetch);
                 <div class="sidebar-finance">
                     <h2>Finance</h2>
                     <ul style="padding-left:7px;">
-                        <li><a href="../finance/add_finance.php">Add Income/Expenses</a></li>
+                        <li><a href="../finance/add_income.php">Add Income</a></li>
+                        <li><a href="../finance/add_expenses.php">Add Expense</a></li>
                         <li><a href="../finance/view_income.php">View Income</a></li>
-                        <li><a href="../finance/view_expense.php">View Expenses</a></li>
-                        <li><a href="../finance/edit_finance.php">Edit Income/Expenses</a></li>
-                        <li><a href="../finance/delete_finance.php">Delete Income/Expenses</a></li>
+                        <li><a href=" ../finance/view_expense.php">View Expenses</a></li>
+                        <li><a href="../finance/add_monthly_expense.php">Add Monthly Expenses</a></li>
+                        <li><a href="../finance/allocate_budget.php">Allocate Budget</a></li>
+                        <li><a href="../finance/view_allocatedbudget.php">View Allocated Budget</a></li>
+                        <li><a href="../finance/view_monthly_expense.php">View Monthly Expenses</a></li>
                     </ul>
                 </div>
             </div>
@@ -65,7 +68,7 @@ $data = mysqli_fetch_assoc($fetch);
                         <div class="" style="box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.2); padding:30px;">
                             <div class="row gy-2">
                                 <div class="col-6">
-                                    <p><b>Date : </b> <?php echo $data['date'] ?></p>
+                                    <p><b>Task Created Date : </b> <?php echo $data['date'] ?></p>
                                 </div>
                                 <div class="col-6">
                                     <p><b>Task Name : </b> <?php echo $data['task_name'] ?></p>
