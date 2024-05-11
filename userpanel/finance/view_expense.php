@@ -68,7 +68,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                         <div class="">
                             <form class="row gap-2">
                                 <div class="col-12">
-                                    <h2>View Expense</h2>
+                                    <h2>View Expenses</h2>
                                 </div>
                                 <table class="col-12" cellpadding="10" cellspacing="0">
                                     <thead>
@@ -89,7 +89,13 @@ $fetch = mysqli_query($conn, $selectQuery);
                                                 <td><?php echo ++$i; ?></td>
                                                 <td><?php echo $row['date'] ?></td>
                                                 <td><?php echo $row['money_spent'] ?></td>
-                                                <td><?php echo $row['allocation_for'] ?></td>
+                                                <td><?php
+                                                    if (strlen($row['allocation_for']) > 0) {
+                                                        echo $row['allocation_for'];
+                                                    } else {
+                                                        echo "Others";
+                                                    }
+                                                    ?></td>
                                                 <td><?php echo $row['estimated_money'] ?></td>
                                                 <td></td>
                                             </tr>

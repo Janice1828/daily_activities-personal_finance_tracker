@@ -4,15 +4,16 @@ $login_status = $_SESSION['logged_in'];
 if ($login_status != "true") {
     header("location:../../login.php");
 }
+$user_id = $_SESSION['user_id'];
 include("../../connection.php");
 if (isset($_POST['allocatemoney'])) {
     $allocation_for = $_POST['allocation_for'];
     $estimated_money = $_POST['estimated_money'];
-    $sql = "INSERT INTO dapf_allocatebudget(allocation_for, estimated_money) VALUES ('$allocation_for', '$estimated_money')";
+    $sql = "INSERT INTO dapf_allocatebudget(allocation_for, estimated_money,user_id) VALUES ('$allocation_for', '$estimated_money','$user_id')";
     $sub = mysqli_query($conn, $sql);
     header("location:./view_allocatedbudget.php");
 }
-$fetch_expenses = "SELECT id, title FROM dapf_monthlyexpense";
+$fetch_expenses = "SELECT id, title FROM dapf_monthlyexpense WHERE user_id=$user_id";
 $get_expenses = mysqli_query($conn, $fetch_expenses);
 ?>
 <!DOCTYPE html>

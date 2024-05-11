@@ -4,10 +4,11 @@ $login_status = $_SESSION['logged_in'];
 if ($login_status != "true") {
     header("location:../../login.php");
 }
+$user_id = $_SESSION['user_id'];
 include("../../connection.php");
 if (isset($_POST['addexpense'])) {
     $title = $_POST['title'];
-    $sql = "INSERT INTO dapf_monthlyexpense(title) VALUES ('$title')";
+    $sql = "INSERT INTO dapf_monthlyexpense(title,user_id) VALUES ('$title','$user_id')";
     $sub = mysqli_query($conn, $sql);
     header("location:./view_monthly_expense.php");
 }

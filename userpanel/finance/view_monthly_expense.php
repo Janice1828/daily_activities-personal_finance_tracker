@@ -5,7 +5,8 @@ if ($login_status != "true") {
     header("location:../../login.php");
 }
 include("../../connection.php");
-$selectQuery = "SELECT id,title FROM dapf_monthlyexpense";
+$user_id = $_SESSION['user_id'];
+$selectQuery = "SELECT id,title FROM dapf_monthlyexpense WHERE user_id=$user_id";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>

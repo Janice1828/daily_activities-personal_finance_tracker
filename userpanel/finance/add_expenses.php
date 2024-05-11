@@ -16,7 +16,7 @@ if (isset($_POST['addexpenses'])) {
     $sub = mysqli_query($conn, $sql);
     header("location:./view_expense.php");
 }
-$getexpenses = "SELECT id, allocation_for FROM dapf_allocatebudget";
+$getexpenses = "SELECT id, allocation_for FROM dapf_allocatebudget WHERE user_id=$user_id";
 $data = mysqli_query($conn, $getexpenses);
 ?>
 <!DOCTYPE html>
@@ -93,6 +93,7 @@ $data = mysqli_query($conn, $getexpenses);
                                         <?php while ($row = mysqli_fetch_assoc($data)) { ?>
                                             <option value="<?php echo $row['id'] ?>"><?php echo $row['allocation_for'] ?></option>
                                         <?php } ?>
+                                        <option value="others">Others</option>
                                     </select>
                                 </div>
                                 <div class="col-12 ml-2">
