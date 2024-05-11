@@ -132,44 +132,45 @@
             </div>
           </div>
         </div> -->
-      <div class="contact-us" id="contactus">
-        <div class="row align-items-center">
-          <h1 class="col-12 text-center contact-us-title">Contact us</h1>
-          <div class="col-5 justify-content-center d-flex">
-            <div class="contact-us-details">
-              <div class="d-flex gap-1 align-items-center">
-                <img src="../icons/location.png" alt="" />
-                <p>Imadol, Lalitpur, Nepal</p>
-              </div>
-              <div class="d-flex gap-1 align-items-center">
-                <img src="../icons/telephone.png" alt="" />
-                <p>+977 9812345678</p>
-              </div>
-              <div class="d-flex gap-1 align-items-center">
-                <img src="../icons/email.png" alt="" />
-                <p>test@gmail.com</p>
-              </div>
+
+    </div>
+    <div class="contact-us" id="contactus">
+      <div class="row align-items-center">
+        <h1 class="col-12 text-center contact-us-title">Contact us</h1>
+        <div class="col-5 justify-content-center d-flex">
+          <div class="contact-us-details">
+            <div class="d-flex gap-1 align-items-center">
+              <img src="../icons/location.png" alt="" />
+              <p>Imadol, Lalitpur, Nepal</p>
+            </div>
+            <div class="d-flex gap-1 align-items-center">
+              <img src="../icons/telephone.png" alt="" />
+              <p>+977 9812345678</p>
+            </div>
+            <div class="d-flex gap-1 align-items-center">
+              <img src="../icons/email.png" alt="" />
+              <p>test@gmail.com</p>
             </div>
           </div>
-          <div class="col-7">
-            <form action="#" method="post" class="row send-message-form gx-4">
-              <div class="col-6">
-                <input type="text" placeholder="Name" name="name" />
-              </div>
-              <div class="col-6">
-                <input type="number" placeholder="Phone" name="phone" />
-              </div>
-              <div class="col-12">
-                <input type="email" placeholder="Email Address" name="email" />
-              </div>
-              <div class="col-12">
-                <textarea id="" placeholder="Message" rows="7" name="message"></textarea>
-              </div>
-              <div class="col-12">
-                <button class="" name="send_message">Send Message</button>
-              </div>
-            </form>
-          </div>
+        </div>
+        <div class="col-7">
+          <form action="#" method="post" class="row send-message-form gx-4">
+            <div class="col-6">
+              <input type="text" placeholder="Name" name="name" />
+            </div>
+            <div class="col-6">
+              <input type="number" placeholder="Phone" name="phone" />
+            </div>
+            <div class="col-12">
+              <input type="email" placeholder="Email Address" name="email" />
+            </div>
+            <div class="col-12">
+              <textarea id="" placeholder="Message" rows="7" name="message"></textarea>
+            </div>
+            <div class="col-12">
+              <button class="" name="send_message">Send Message</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
