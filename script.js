@@ -51,3 +51,48 @@ function toggleFinances() {
     financeToggle.src = "../../icons/arrow_down.png";
   }
 }
+function toggleUsers() {
+  const userLists = document.getElementById("user-lists");
+  const toggleLogo = document.getElementById("user-toggle-img");
+  if (userLists.style.display == "none") {
+    userLists.style.display = "block";
+    toggleLogo.src = "../../icons/arrow_up.png";
+  } else {
+    userLists.style.display = "none";
+    toggleLogo.src = "../../icons/arrow_down.png";
+  }
+}
+function toggleMotives() {
+  const motiveLists = document.getElementById("motive-lists");
+  const toggleLogo = document.getElementById("motives-toggle-img");
+  if (motiveLists.style.display == "none") {
+    motiveLists.style.display = "block";
+    toggleLogo.src = "../../icons/arrow_up.png";
+  } else {
+    motiveLists.style.display = "none";
+    toggleLogo.src = "../../icons/arrow_down.png";
+  }
+}
+function toggleContactus() {
+  const contactList = document.getElementById("message-lists");
+  const toggleLogo = document.getElementById("contact-toggle-img");
+  if (contactList.style.display == "none") {
+    contactList.style.display = "block";
+    toggleLogo.src = "../../icons/arrow_up.png";
+  } else {
+    contactList.style.display = "none";
+    toggleLogo.src = "../../icons/arrow_down.png";
+  }
+}
+function toggleMaster() {
+  const masterLists = document.getElementById("master-lists");
+  const toggleLogo = document.getElementById("master-toggle-img");
+
+  if (masterLists.style.display == "none") {
+    masterLists.style.display = "block";
+    toggleLogo.src = "../../icons/arrow_up.png";
+  } else {
+    masterLists.style.display = "none";
+    toggleLogo.src = "../../icons/arrow_down.png";
+  }
+}

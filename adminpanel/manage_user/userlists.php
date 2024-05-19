@@ -18,23 +18,48 @@ $fetch = mysqli_query($conn, $selectQuery);
     <div class="row">
         <div class="col-2">
             <div class="sidebar d-flex flex-column gap-1">
+                <h5><a href="../dashboard.php" class="sidebar-heading d-flex align-items-center gap-1"><img src="../../images/dashboard.png" class="sidebar-logo"> <span>Dashboard</span></a></h5>
                 <div class="sidebar-activities">
-                    <ul>
-                        <h3>Master</h3>
+                    <h5 class="sidebar-heading cursor-pointer d-flex justify-content-between align-items-center" onclick="toggleMaster()">
+                        <div class="d-flex align-items-center gap-1">
+                            <img src="../../icons/master.png" class="sidebar-logo" alt="">
+                            <span>Master</span>
+                        </div>
+                        <img src="../../icons/arrow_down.png" class="sidebar-logo" id="master-toggle-img" alt="">
+                    </h5>
+                    <ul style="padding-left:30px; display:none" id="master-lists">
                         <li><a href="../importances/view_importances.php">Importances</a></li>
                     </ul>
-                    <ul style="margin-top:15px">
-                        <h3>Manage Users</h3>
+                    <h5 class="pt-1 sidebar-heading cursor-pointer d-flex justify-content-between align-items-center" onclick="toggleUsers()">
+                        <div class=" d-flex align-items-center gap-1">
+                            <img src="../../icons/users.png" class="sidebar-logo" alt="">
+                            <span>Manage Users</span>
+                        </div>
+                        <img src="../../icons/arrow_down.png" class="sidebar-logo" id="user-toggle-img" alt="">
+                    </h5>
+                    <ul style=" padding-left:30px" id="user-lists">
                         <li><a href="#" class="active-sidebar">User Lists</a></li>
                     </ul>
-                    <ul style="margin-top:15px">
-                        <h3>Motives</h3>
+                    <h5 class="sidebar-heading cursor-pointer pt-1 d-flex justify-content-between align-items-center" onclick="toggleMotives()">
+                        <div class="d-flex align-items-center gap-1">
+                            <img src="../../icons/motives.png" class="sidebar-logo" alt="">
+                            <span>Motives</span>
+                        </div>
+                        <img src="../../icons/arrow_down.png" class="sidebar-logo" id="motives-toggle-img" alt="">
+                    </h5>
+                    <ul style="padding-left:30px; display:none" id="motive-lists">
                         <li><a href="../motives/add_motives.php">Add Motives</a></li>
                         <li><a href="../motives/motives_list.php">Motives List</a></li>
                         <li><a href="../motives/manage_motives.php">Manage Motives</a></li>
                     </ul>
-                    <ul style="margin-top:15px">
-                        <h3>Contact Us</h3>
+                    <h5 class="pt-1 sidebar-heading d-flex justify-content-between align-items-center cursor-pointer" onclick="toggleContactus()">
+                        <div class="d-flex align-items-center gap-1">
+                            <img src="../../icons/contactus.png" class="sidebar-logo" alt="">
+                            <span>Contact Us</span>
+                        </div>
+                        <img src="../../icons/arrow_down.png" class="sidebar-logo" id="contact-toggle-img" alt="">
+                    </h5>
+                    <ul style="padding-left:30px; display:none" id="message-lists">
                         <li><a href="../messages/message_list.php">Messages</a></li>
 
                     </ul>
