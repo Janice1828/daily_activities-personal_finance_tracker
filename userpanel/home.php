@@ -24,8 +24,8 @@
       </li>
     </ul>
     <div class="d-flex gap-2">
-      <a href="../registration.php" id="register">Register</a>
-      <a href="../login.php" id="login">Login</a>
+      <a href="../registration.php" id="register">Sign Up</a>
+      <a href="../login.php" id="login">Sign In</a>
     </div>
   </nav>
   <div class="container">

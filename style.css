@@ -15,6 +15,18 @@
   object-fit: contain;
   border-radius: 50%;
 }
+.pt-2 {
+  padding-top: 20px;
+}
+.pt-1 {
+  padding-top: 10px;
+}
+.pb-1 {
+  padding-bottom: 10px;
+}
+.pb-2 {
+  padding-bottom: 20px;
+}
 .sidebar {
   color: #fff;
   height: 100vh;
@@ -61,14 +73,13 @@ nav {
 }
 .sidebar ul li a {
   text-decoration: none;
+  font-size: 15px;
+  font-weight: 400;
   color: #fff;
 }
 .sidebar ul li {
   padding-top: 10px;
   list-style: none;
-}
-.sidebar-finance {
-  padding-top: 40px;
 }
 .card {
   border-radius: 7px;
@@ -493,4 +504,16 @@ footer h3 {
 }
 .services h1 {
   padding-bottom: 15px;
+}
+.sidebar-heading {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 17px;
+}
+#finance-lists {
+  display: none;
+}
+.sidebar-logo {
+  width: 20px;
 }
