@@ -20,10 +20,6 @@ if (isset($_POST['addtasks'])) {
 }
 $fetch_importances = "SELECT title FROM dapf_importances";
 $importances = mysqli_query($conn, $fetch_importances);
-// print_r($importances);
-// while ($a = mysqli_fetch_assoc($importances)) {
-//     echo $a['title'];
-// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,20 +34,31 @@ $importances = mysqli_query($conn, $fetch_importances);
 <body>
     <div class="row add-task-container">
         <div class="col-2">
-            <div class="sidebar">
+            <div class="sidebar d-flex flex-column gap-1">
+                <h5><a href="../dashboard.php" class="sidebar-heading d-flex align-items-center gap-1"><img src="../../images/dashboard.png" class="sidebar-logo"> <span>Dashboard</span></a></h5>
+
                 <div class="sidebar-activities">
-                    <h2>Tasks</h2>
-                    <ul style="padding-left:7px;">
+                    <h5 id="task-link" class="cursor-pointer sidebar-heading d-flex align-items-center justify-content-between" onclick="displayTask()">
+                        <div class="d-flex gap-1 align-items-center">
+                            <img src="../../images/to-do-list.png" class="sidebar-logo" alt=""><span>Tasks</span>
+                        </div>
+                        <img src="../../icons/arrow_down.png" id="tasks-toggle-icon" class="sidebar-logo" alt="">
+                    </h5>
+                    <ul style="padding-left:30px;" id="tasks-lists">
                         <li><a href="#" class="active-sidebar">Add Tasks</a></li>
                         <li><a href="./view_tasks.php">View Tasks</a></li>
                         <li><a href="./delete_tasks.php">Delete Tasks</a></li>
                         <li><a href="./completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>
-
                 <div class="sidebar-finance">
-                    <h2>Finance</h2>
-                    <ul style="padding-left:7px;">
+                    <h2 class="sidebar-heading cursor-pointer d-flex align-items-center justify-content-between" onclick="toggleFinances()">
+                        <div class="d-flex align-items-center gap-1">
+                            <img src="../../images/finance.png" class="sidebar-logo" alt=""><span>Finance</span>
+                        </div>
+                        <img src="../../icons/arrow_down.png" class="sidebar-logo" id="finance-toggle-logo" alt="">
+                    </h2>
+                    <ul style="padding-left:30px; display:none" id="finance-lists">
                         <li><a href="../finance/add_income.php">Add Income</a></li>
                         <li><a href="../finance/view_income.php">View Income</a></li>
                         <li><a href="../finance/add_expenses.php">Add Expense</a></li>

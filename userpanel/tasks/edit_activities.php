@@ -17,7 +17,7 @@ $fetch = mysqli_query($conn, $selectQuery);
 <body>
     <div class="row">
         <div class="col-3">
-            <div class="sidebar">
+            <div class="sidebar d-flex flex-column gap-1">
                 <div class="sidebar-activities">
                     <ul>
                         <h2>Activities</h2>
@@ -30,7 +30,12 @@ $fetch = mysqli_query($conn, $selectQuery);
 
                 <div class="sidebar-finance">
                     <ul>
-                        <h2>Finance</h2>
+                        <h2 class="sidebar-heading cursor-pointer d-flex align-items-center justify-content-between" onclick="toggleFinances()">
+                            <div class="d-flex align-items-center gap-1">
+                                <img src="../images/finance.png" class="sidebar-logo" alt=""><span>Finance</span>
+                            </div>
+                            <img src="../icons/arrow_down.png" class="sidebar-logo" id="finance-toggle-logo" alt="">
+                        </h2>
                         <li><a href="../finance/add_finance.php">Add Income/Expenses</a></li>
                         <li><a href="../finance/view_finance.php">View Income/Expenses</a></li>
                         <li><a href="../finance/edit_finance.php">Edit Income/Expenses</a></li>

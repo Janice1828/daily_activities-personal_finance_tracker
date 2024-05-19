@@ -34,10 +34,10 @@ function displayTask() {
   const tasksToggle = document.getElementById("tasks-toggle-icon");
   if (tasksLists.style.display == "none") {
     tasksLists.style.display = "block";
-    tasksToggle.src = "../icons/arrow_up.png";
+    tasksToggle.src = "../../icons/arrow_up.png";
   } else {
     tasksLists.style.display = "none";
-    tasksToggle.src = "../icons/arrow_down.png";
+    tasksToggle.src = "../../icons/arrow_down.png";
   }
 }
 function toggleFinances() {
@@ -45,9 +45,9 @@ function toggleFinances() {
   const financeToggle = document.getElementById("finance-toggle-logo");
   if (financeLists.style.display == "none") {
     financeLists.style.display = "block";
-    financeToggle.src = "../icons/arrow_up.png";
+    financeToggle.src = "../../icons/arrow_up.png";
   } else {
     financeLists.style.display = "none";
-    financeToggle.src = "../icons/arrow_down.png";
+    financeToggle.src = "../../icons/arrow_down.png";
   }
 }

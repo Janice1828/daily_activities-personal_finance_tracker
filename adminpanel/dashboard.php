@@ -17,7 +17,7 @@
 <body>
     <div class="row">
         <div class="col-2">
-            <div class="sidebar">
+            <div class="sidebar d-flex flex-column gap-1">
                 <div class="sidebar-activities">
                     <ul>
                         <h2>Manage Users</h2>

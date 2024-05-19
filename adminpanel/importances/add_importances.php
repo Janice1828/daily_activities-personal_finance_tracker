@@ -26,7 +26,7 @@ if (isset($_POST['addimportances'])) {
 <body>
     <div class="row add-task-container">
         <div class="col-2">
-            <div class="sidebar">
+            <div class="sidebar d-flex flex-column gap-1">
                 <div class="sidebar-activities">
                     <ul>
                         <h4>Master</h4>

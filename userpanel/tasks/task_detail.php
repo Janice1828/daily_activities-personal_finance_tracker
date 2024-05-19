@@ -24,10 +24,15 @@ $data = mysqli_fetch_assoc($fetch);
 <body>
     <div class="row">
         <div class="col-2">
-            <div class="sidebar">
+            <div class="sidebar d-flex flex-column gap-1">
                 <div class="sidebar-activities">
-                    <h2>Tasks</h2>
-                    <ul style="padding-left:7px;">
+                    <h5 id="task-link" class="cursor-pointer sidebar-heading d-flex align-items-center justify-content-between" onclick="displayTask()">
+                        <div class="d-flex gap-1 align-items-center">
+                            <img src="../images/to-do-list.png" class="sidebar-logo" alt=""><span>Tasks</span>
+                        </div>
+                        <img src="../icons/arrow_down.png" id="tasks-toggle-icon" class="sidebar-logo" alt="">
+                    </h5>
+                    <ul style="padding-left:30px; display:none">
                         <li><a href="./add_tasks.php">Add Tasks</a></li>
                         <li><a href="./view_tasks.php">View Tasks</a></li>
                         <li><a href="./delete_tasks.php">Delete Tasks</a></li>
@@ -36,8 +41,13 @@ $data = mysqli_fetch_assoc($fetch);
                 </div>
 
                 <div class="sidebar-finance">
-                    <h2>Finance</h2>
-                    <ul style="padding-left:7px;">
+                    <h2 class="sidebar-heading cursor-pointer d-flex align-items-center justify-content-between" onclick="toggleFinances()">
+                        <div class="d-flex align-items-center gap-1">
+                            <img src="../images/finance.png" class="sidebar-logo" alt=""><span>Finance</span>
+                        </div>
+                        <img src="../icons/arrow_down.png" class="sidebar-logo" id="finance-toggle-logo" alt="">
+                    </h2>
+                    <ul style="padding-left:30px; display:none">
                         <li><a href="../finance/add_income.php">Add Income</a></li>
                         <li><a href="../finance/add_expenses.php">Add Expense</a></li>
                         <li><a href="../finance/view_income.php">View Income</a></li>
