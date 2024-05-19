@@ -23,15 +23,15 @@ $fetch_income = mysqli_query($conn, $get_income_query);
             <div class="row">
                 <div class="col-2">
                     <div class="sidebar d-flex flex-column gap-1">
-                        <h5><a href="#" class="sidebar-heading d-flex align-items-center gap-1"><img src="../images/dashboard.png" class="sidebar-logo"> <span>Dashboard</span></a></h5>
+                        <h5><a href="#" class="active-sidebar sidebar-heading d-flex align-items-center gap-1"><img src="../images/dashboard.png" class="sidebar-logo"> <span>Dashboard</span></a></h5>
                         <div class="sidebar-activities">
-                            <h5 id="task-link" class="cursor-pointer sidebar-heading d-flex align-items-center justify-content-between" onclick="displayTask()">
+                            <h5 id="task-link" class="cursor-pointer sidebar-heading d-flex align-items-center justify-content-between" onclick="displayTaskback()">
                                 <div class="d-flex gap-1 align-items-center">
                                     <img src="../images/to-do-list.png" class="sidebar-logo" alt=""><span>Tasks</span>
                                 </div>
-                                <img src="../icons/arrow_down.png" id="tasks-toggle-icon" class="sidebar-logo" alt="">
+                                <img src="../icons/arrow_down.png" id="tasks-back-toggle-icon" class="sidebar-logo" alt="">
                             </h5>
-                            <ul style="padding-left:30px; display:none;" id="tasks-lists">
+                            <ul style="padding-left:30px; display:none;" id="tasks-lists-back">
                                 <li><a href="./tasks/add_tasks.php">Add Tasks</a></li>
                                 <li><a href="./tasks/view_tasks.php">View Tasks</a></li>
                                 <li><a href="./tasks/delete_tasks.php">Delete Tasks</a></li>
@@ -39,13 +39,13 @@ $fetch_income = mysqli_query($conn, $get_income_query);
                             </ul>
                         </div>
                         <div class="sidebar-finance">
-                            <h2 class="sidebar-heading cursor-pointer d-flex align-items-center justify-content-between" onclick="toggleFinances()">
+                            <h2 class="sidebar-heading cursor-pointer d-flex align-items-center justify-content-between" onclick="toggleFinancesback()">
                                 <div class="d-flex align-items-center gap-1">
                                     <img src="../images/finance.png" class="sidebar-logo" alt=""><span>Finance</span>
                                 </div>
-                                <img src="../icons/arrow_down.png" class="sidebar-logo" id="finance-toggle-logo" alt="">
+                                <img src="../icons/arrow_down.png" class="sidebar-logo" id="finance-back-toggle-logo" alt="">
                             </h2>
-                            <ul style="padding-left:30px; display:none" id="finance-lists">
+                            <ul style="padding-left:30px; display:none" id="finance-lists-back">
                                 <li><a href="./finance/add_income.php">Add Income</a></li>
                                 <li><a href="./finance/view_income.php">View Income</a></li>
                                 <li><a href="./finance/add_expenses.php">Add Expense</a></li>
@@ -66,7 +66,7 @@ $fetch_income = mysqli_query($conn, $get_income_query);
                                 <img src="./../images/people.png" alt="">
                             </div>
                             <ul id="logout-userprofile">
-                                <li><a href="../profile.php">Profile</a></li>
+                                <li><a href="./profile.php">Profile</a></li>
                                 <li><a href="./../logout.php">Logout</a></li>
                             </ul>
                         </div>

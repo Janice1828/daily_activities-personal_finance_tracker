@@ -40,6 +40,18 @@ function displayTask() {
     tasksToggle.src = "../../icons/arrow_down.png";
   }
 }
+function displayTaskback() {
+  let tasksLists = document.getElementById("tasks-lists-back");
+  const tasksToggle = document.getElementById("tasks-back-toggle-icon");
+  if (tasksLists.style.display == "none") {
+    tasksLists.style.display = "block";
+    tasksToggle.src = "./../icons/arrow_up.png";
+  } else {
+    tasksLists.style.display = "none";
+    tasksToggle.src = "./../icons/arrow_down.png";
+  }
+}
+
 function toggleFinances() {
   const financeLists = document.getElementById("finance-lists");
   const financeToggle = document.getElementById("finance-toggle-logo");
@@ -49,6 +61,17 @@ function toggleFinances() {
   } else {
     financeLists.style.display = "none";
     financeToggle.src = "../../icons/arrow_down.png";
+  }
+}
+function toggleFinancesback() {
+  const financeLists = document.getElementById("finance-lists-back");
+  const financeToggle = document.getElementById("finance-back-toggle-logo");
+  if (financeLists.style.display == "none") {
+    financeLists.style.display = "block";
+    financeToggle.src = "./../icons/arrow_up.png";
+  } else {
+    financeLists.style.display = "none";
+    financeToggle.src = "./../icons/arrow_down.png";
   }
 }
 function toggleUsers() {
