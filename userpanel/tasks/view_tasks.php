@@ -111,7 +111,9 @@ $fetch = mysqli_query($conn, $selectQuery);
                                                     } else {
                                                     ?>
                                                         <a href="./complete_task.php?id=<?php echo $row['id'] ?>" class="btn-primary">Complete</a>
+                                                        <a href="./delete.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a>
                                                     <?php }
+
                                                     ?>
                                                 </td>
                                             </tr>

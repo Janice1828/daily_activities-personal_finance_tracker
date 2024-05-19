@@ -24,7 +24,6 @@ $fetch_income = mysqli_query($conn, $get_income_query);
                 <div class="col-2">
                     <div class="sidebar d-flex flex-column gap-1">
                         <h5><a href="#" class="sidebar-heading d-flex align-items-center gap-1"><img src="../images/dashboard.png" class="sidebar-logo"> <span>Dashboard</span></a></h5>
-
                         <div class="sidebar-activities">
                             <h5 id="task-link" class="cursor-pointer sidebar-heading d-flex align-items-center justify-content-between" onclick="displayTask()">
                                 <div class="d-flex gap-1 align-items-center">
