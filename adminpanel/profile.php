@@ -22,46 +22,46 @@
         <div class="sidebar d-flex flex-column gap-1">
           <h5><a href="./dashboard.php" class="sidebar-heading d-flex align-items-center gap-1"><img src="./../images/dashboard.png" class="sidebar-logo"> <span>Dashboard</span></a></h5>
           <div class="sidebar-activities">
-            <h5 class="sidebar-heading cursor-pointer d-flex justify-content-between align-items-center" onclick="toggleMaster()">
+            <h5 class="sidebar-heading cursor-pointer d-flex justify-content-between align-items-center" onclick="toggleMasterback()">
               <div class="d-flex align-items-center gap-1">
                 <img src="./../icons/master.png" class="sidebar-logo" alt="">
                 <span>Master</span>
               </div>
-              <img src="./../icons/arrow_down.png" class="sidebar-logo" id="master-toggle-img" alt="">
+              <img src="./../icons/arrow_down.png" class="sidebar-logo" id="master-back-toggle-img" alt="">
             </h5>
-            <ul style="padding-left:30px; display:none" id="master-lists">
+            <ul style="padding-left:30px; display:none" id="master-back-lists">
               <li><a href="./importances/view_importances.php">Importances</a></li>
             </ul>
-            <h5 class="pt-1 sidebar-heading cursor-pointer d-flex justify-content-between align-items-center" onclick="toggleUsers()">
+            <h5 class="pt-1 sidebar-heading cursor-pointer d-flex justify-content-between align-items-center" onclick="toggleUsersback()">
               <div class=" d-flex align-items-center gap-1">
                 <img src="./../icons/users.png" class="sidebar-logo" alt="">
                 <span>Manage Users</span>
               </div>
-              <img src="./../icons/arrow_down.png" class="sidebar-logo" id="user-toggle-img" alt="">
+              <img src="./../icons/arrow_down.png" class="sidebar-logo" id="user-back-toggle-img" alt="">
             </h5>
-            <ul style=" padding-left:30px; display:none" id="user-lists">
+            <ul style=" padding-left:30px; display:none" id="user-back-lists">
               <li><a href="./manage_user/userlists.php" class="active-sidebar">User Lists</a></li>
             </ul>
-            <h5 class="sidebar-heading cursor-pointer pt-1 d-flex justify-content-between align-items-center" onclick="toggleMotives()">
+            <h5 class="sidebar-heading cursor-pointer pt-1 d-flex justify-content-between align-items-center" onclick="toggleMotivesback()">
               <div class="d-flex align-items-center gap-1">
                 <img src="./../icons/motives.png" class="sidebar-logo" alt="">
                 <span>Motives</span>
               </div>
-              <img src="./../icons/arrow_down.png" class="sidebar-logo" id="motives-toggle-img" alt="">
+              <img src="./../icons/arrow_down.png" class="sidebar-logo" id="motives-back-toggle-img" alt="">
             </h5>
-            <ul style="padding-left:30px; display:none" id="motive-lists">
+            <ul style="padding-left:30px; display:none" id="motive-back-lists">
               <li><a href="../motives/add_motives.php">Add Motives</a></li>
               <li><a href="../motives/motives_list.php">Motives List</a></li>
               <li><a href="../motives/manage_motives.php">Manage Motives</a></li>
             </ul>
-            <h5 class="pt-1 sidebar-heading d-flex justify-content-between align-items-center cursor-pointer" onclick="toggleContactus()">
+            <h5 class="pt-1 sidebar-heading d-flex justify-content-between align-items-center cursor-pointer" onclick="toggleContactusback()">
               <div class="d-flex align-items-center gap-1">
                 <img src="./../icons/contactus.png" class="sidebar-logo" alt="">
                 <span>Contact Us</span>
               </div>
-              <img src="./../icons/arrow_down.png" class="sidebar-logo" id="contact-toggle-img" alt="">
+              <img src="./../icons/arrow_down.png" class="sidebar-logo" id="contact-toggle-back-img" alt="">
             </h5>
-            <ul style="padding-left:30px; display:none" id="message-lists">
+            <ul style="padding-left:30px; display:none" id="message-back-lists">
               <li><a href="../messages/message_list.php">Messages</a></li>
 
             </ul>

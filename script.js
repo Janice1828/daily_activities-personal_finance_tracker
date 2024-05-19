@@ -85,6 +85,17 @@ function toggleUsers() {
     toggleLogo.src = "../../icons/arrow_down.png";
   }
 }
+function toggleUsersback() {
+  const userLists = document.getElementById("user-back-lists");
+  const toggleLogo = document.getElementById("user-back-toggle-img");
+  if (userLists.style.display == "none") {
+    userLists.style.display = "block";
+    toggleLogo.src = "./../icons/arrow_up.png";
+  } else {
+    userLists.style.display = "none";
+    toggleLogo.src = "./../icons/arrow_down.png";
+  }
+}
 function toggleMotives() {
   const motiveLists = document.getElementById("motive-lists");
   const toggleLogo = document.getElementById("motives-toggle-img");
@@ -94,6 +105,17 @@ function toggleMotives() {
   } else {
     motiveLists.style.display = "none";
     toggleLogo.src = "../../icons/arrow_down.png";
+  }
+}
+function toggleMotivesback() {
+  const motiveLists = document.getElementById("motive-back-lists");
+  const toggleLogo = document.getElementById("motives-back-toggle-img");
+  if (motiveLists.style.display == "none") {
+    motiveLists.style.display = "block";
+    toggleLogo.src = "./../icons/arrow_up.png";
+  } else {
+    motiveLists.style.display = "none";
+    toggleLogo.src = "./../icons/arrow_down.png";
   }
 }
 function toggleContactus() {
@@ -107,6 +129,17 @@ function toggleContactus() {
     toggleLogo.src = "../../icons/arrow_down.png";
   }
 }
+function toggleContactusback() {
+  const contactList = document.getElementById("message-back-lists");
+  const toggleLogo = document.getElementById("contact-toggle-back-img");
+  if (contactList.style.display == "none") {
+    contactList.style.display = "block";
+    toggleLogo.src = "./../icons/arrow_up.png";
+  } else {
+    contactList.style.display = "none";
+    toggleLogo.src = "./../icons/arrow_down.png";
+  }
+}
 function toggleMaster() {
   const masterLists = document.getElementById("master-lists");
   const toggleLogo = document.getElementById("master-toggle-img");
@@ -117,5 +150,17 @@ function toggleMaster() {
   } else {
     masterLists.style.display = "none";
     toggleLogo.src = "../../icons/arrow_down.png";
+  }
+}
+function toggleMasterback() {
+  const masterLists = document.getElementById("master-back-lists");
+  const toggleLogo = document.getElementById("master-back-toggle-img");
+
+  if (masterLists.style.display == "none") {
+    masterLists.style.display = "block";
+    toggleLogo.src = "./../icons/arrow_up.png";
+  } else {
+    masterLists.style.display = "none";
+    toggleLogo.src = "./../icons/arrow_down.png";
   }
 }

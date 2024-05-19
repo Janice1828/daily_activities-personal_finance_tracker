@@ -1,3 +1,9 @@
+<?php
+include("../connection.php");
+$fetch_motives_query = "SELECT image, title, content FROM dapf_motives";
+$fetch_motives = mysqli_query($conn, $fetch_motives_query);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,63 +47,21 @@
         <div class="col-12">
           <h1>Our Motives</h1>
         </div>
-        <div class="col-6">
-          <div class="card">
-            <div class="card-body">
-              <img src="../images/motive_three.jpg" alt="Motive 1" />
-              <div class="card-content">
-                <h3 class="pb-1">Aids in Saving Money</h3>
-                <p>
-                  By tracking expenses, we gain insights into how much we
-                  spend in different categories.
-                </p>
+        <?php while ($row = mysqli_fetch_assoc($fetch_motives)) { ?>
+          <div class="col-6">
+            <div class="card">
+              <div class="card-body">
+                <img src="../images/<?php echo $row['image'] ?>" alt="Motive 1" />
+                <div class="card-content">
+                  <h3 class="pb-1"><?php echo $row['title'] ?></h3>
+                  <p>
+                    <?php echo $row['content'] ?>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-6">
-          <div class="card">
-            <div class="card-body">
-              <img src="../images/motive_one.jpg" alt="Motive 1" />
-              <div class="card-content">
-                <h3 class="pb-1">Lifestyle Awareness</h3>
-                <p>
-                  By analyzing data collected by trackers, we can identify
-                  patterns and trends in our daily routines.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="card">
-            <div class="card-body">
-              <img src="../images/motive_two.jpg" alt="Motive 1" />
-              <div class="card-content">
-                <h3 class="pb-1">Time Management and Productivity</h3>
-                <p>
-                  Keeping a daily log of activities improves time<br />
-                  management. It helps us allocate time to<br />
-                  important tasks and avoid non-core activities
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="card">
-            <div class="card-body">
-              <img src="../images/motive_four.jpg" alt="Motive 1" />
-              <div class="card-content">
-                <h3 class="pb-1">Tracks Spending Habits</h3>
-                <p>
-                  Monitoring where our money goes helps us recognize spending
-                  habits
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <?php } ?>
       </div>
       <!-- <div class="services">
           <div class="row" style="column-gap: 37px; row-gap: 20px">

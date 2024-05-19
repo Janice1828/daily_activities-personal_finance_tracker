@@ -4,8 +4,22 @@
 // if ($login_status != "true") {
 //     header("location:../../login.php");
 // }
-// include("../../connection.php");
-
+include("../../connection.php");
+if (isset($_POST['addmotive'])) {
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+    $file = $_FILES['image']['name'];
+    $tmp_name = $_FILES['image']['tmp_name'];
+    $path = "../../images/" . $file;
+    $file1 = explode('.', $file);
+    $ext = $file1[1];
+    $allowed = array("jpg", "png", "jpeg");
+    if (in_array($ext, $allowed)) {
+        if (move_uploaded_file($tmp_name, $path)) {
+            mysqli_query($conn, "INSERT INTO dapf_motives(image, title, content) VALUES('$file','$title','$content')");
+        }
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -87,7 +101,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="">
-                            <form class="row gap-2" method="post">
+                            <form class="row gap-2" method="post" enctype="multipart/form-data">
                                 <div class="col-12">
                                     <h2 class="ml-2">Add Motives</h2>
                                 </div>

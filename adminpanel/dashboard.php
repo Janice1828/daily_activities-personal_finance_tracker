@@ -22,44 +22,44 @@ $fetch = mysqli_query($conn, $selectQuery);
                 <h5><a href="#" class="sidebar-heading d-flex active-sidebar align-items-center gap-1"><img src="../images/dashboard.png" class="sidebar-logo"> <span>Dashboard</span></a></h5>
 
                 <div class="sidebar-activities">
-                    <h5 class="cursor-pointer sidebar-heading d-flex justify-content-between" onclick="toggleMaster()">
+                    <h5 class="cursor-pointer sidebar-heading d-flex justify-content-between" onclick="toggleMasterback()">
                         <div class="d-flex gap-1 align-items-center">
                             <img src="../icons/master.png" class="sidebar-logo" alt="">
                             <span>Master</span>
                         </div>
-                        <img src="../icons/arrow_down.png" class="sidebar-logo" alt="" id="master-toggle-img">
+                        <img src="../icons/arrow_down.png" class="sidebar-logo" alt="" id="master-back-toggle-img">
                     </h5>
-                    <ul style="padding-left:30px; display:none" id="master-lists">
+                    <ul style="padding-left:30px; display:none" id="master-back-lists">
                         <li><a href="./importances/view_importances.php">Importances</a></li>
                     </ul>
-                    <h5 class="pt-1 sidebar-heading cursor-pointer d-flex justify-content-between align-items-center" onclick="toggleUsers()">
+                    <h5 class="pt-1 sidebar-heading cursor-pointer d-flex justify-content-between align-items-center" onclick="toggleUsersback()">
                         <div class="d-flex align-items-center gap-1">
                             <img src="../icons/users.png" alt="" class="sidebar-logo"><span>Manage Users</span>
                         </div>
-                        <img src="../icons/arrow_down.png" class="sidebar-logo" id="user-toggle-img" alt="">
+                        <img src="../icons/arrow_down.png" class="sidebar-logo" id="user-back-toggle-img" alt="">
                     </h5>
-                    <ul style="padding-left:30px; display:none" id="user-lists">
+                    <ul style="padding-left:30px; display:none" id="user-back-lists">
                         <li><a href="./manage_user/userlists.php">User Lists</a></li>
                     </ul>
 
-                    <h5 class="pt-1 sidebar-heading cursor-pointer d-flex align-items-center justify-content-between" onclick="toggleMotives()">
+                    <h5 class="pt-1 sidebar-heading cursor-pointer d-flex align-items-center justify-content-between" onclick="toggleMotivesback()">
                         <div class="d-flex gap-1 align-items-center">
                             <img src="../icons/motives.png" alt="" class="sidebar-logo"><span>Motives</span>
                         </div>
-                        <img src="../icons/arrow_down.png" class="sidebar-logo" id="motives-toggle-img" alt="">
+                        <img src="../icons/arrow_down.png" class="sidebar-logo" id="motives-back-toggle-img" alt="">
                     </h5>
-                    <ul style="padding-left:30px; display:none" id="motive-lists">
+                    <ul style="padding-left:30px; display:none" id="motive-back-lists">
                         <li><a href="./motives/add_motives.php">Add Motives</a></li>
                         <li><a href="./motives/motives_list.php">Motives List</a></li>
                         <li><a href="./motives/manage_motives.php">Manage Motives</a></li>
                     </ul>
-                    <h5 class="pt-1 sidebar-heading cursor-pointer d-flex align-items-center justify-content-between" onclick="toggleContactus()">
+                    <h5 class="pt-1 sidebar-heading cursor-pointer d-flex align-items-center justify-content-between" onclick="toggleContactusback()">
                         <div class="d-flex gap-1 align-items-center">
                             <img src="../icons/contactus.png" alt="" class="sidebar-logo"><span>Contact Us</span>
                         </div>
-                        <img src="../icons/arrow_down.png" class="sidebar-logo" id="contact-toggle-img" alt="">
+                        <img src="../icons/arrow_down.png" class="sidebar-logo" id="contact-toggle-back-img" alt="">
                     </h5>
-                    <ul style="padding-left:30px; display:none" id="message-lists">
+                    <ul style="padding-left:30px; display:none" id="message-back-lists">
                         <li><a href="./messages/message_list.php">Messages Lists</a></li>
                     </ul>
                 </div>

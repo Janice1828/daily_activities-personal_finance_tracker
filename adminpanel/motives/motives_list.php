@@ -4,9 +4,9 @@
 // if ($login_status != "true") {
 //     header("location:../../login.php");
 // }
-// include("../../connection.php");
-// $selectQuery = "SELECT id,date, task_name, task_due_date,status, importance FROM dapf_tasks WHERE `deleted_status` = 0";
-// $fetch = mysqli_query($conn, $selectQuery);
+include("../../connection.php");
+$selectQuery = "SELECT id,image, title, content FROM dapf_motives";
+$fetch = mysqli_query($conn, $selectQuery);
 
 ?>
 
@@ -98,16 +98,20 @@
                                             <th>SN</th>
                                             <th>Title</th>
                                             <th>Image</th>
-                                            <th>Content</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
+                                        <?php
+                                        $id = 1;
+                                        while ($row = mysqli_fetch_assoc($fetch)) {
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $id;
+                                                    $id++; ?></td>
+                                                <td><?php echo $row['title'] ?></td>
+                                                <td><img src="../../images/<?php echo $row['image'] ?>" style="height:50px; width:50px;" /></td>
+                                            </tr>
+                                        <?php } ?>
 
                                     </tbody>
                                 </table>
