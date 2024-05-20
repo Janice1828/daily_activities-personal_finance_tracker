@@ -43,7 +43,7 @@ if (isset($_POST['addfinance'])) {
                     <ul style="padding-left:30px">
                         <li><a href="../tasks/add_tasks.php">Add Tasks</a></li>
                         <li><a href="../tasks/view_tasks.php">View Tasks</a></li>
-                        <li><a href="../tasks/delete_tasks.php">Delete Tasks</a></li>
+                        <li><a href="../tasks/incomplete_task.php">Expired Tasks</a></li>
                         <li><a href="../tasks/completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>

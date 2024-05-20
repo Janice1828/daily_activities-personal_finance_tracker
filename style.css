@@ -457,6 +457,14 @@ footer h3 {
   outline: none;
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
+
+#edit_task_summary {
+  width: 97%;
+  padding: 7px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
 .contact-us {
   background-color: #adadad;
   padding: 100px 20px;

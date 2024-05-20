@@ -1,9 +1,13 @@
 <?php
-include("../connection.php");
+include("../../connection.php");
 $id = $_GET['id'];
-$getQuery = "SELECT date, day, activity, started_from, until,summary FROM dapf_activities WHERE id=$id";
+$getQuery = "SELECT date, importance, task_name, task_due_date,status, summary FROM dapf_tasks WHERE id=$id";
 $data = mysqli_query($conn, $getQuery);
 $result = mysqli_fetch_assoc($data);
+$fetch_importances = "SELECT title FROM dapf_importances";
+$importances = mysqli_query($conn, $fetch_importances);
+print_r($result['importance'])
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +16,7 @@ $result = mysqli_fetch_assoc($data);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
@@ -22,41 +26,31 @@ $result = mysqli_fetch_assoc($data);
                 <div class="p-3">
                     <form class="row gap-2" method="post">
                         <div class="col-12">
-                            <h2>Add Activity</h2>
+                            <h2>Update Tasks</h2>
                         </div>
                         <div class="col-6">
-                            <label for="">Day</label>
-                            <input type="sunday" name="day" value="<?php echo $result['day'] ?>">
-                        </div>
-                        <div class="col-6">
-                            <label for="">Date</label>
-                            <input type="date" name="date" value="<?php echo $result['date'] ?>" id="date" readonly>
-                        </div>
-                        <div class="col-6">
-                            <label for="">Activity</label>
-                            <input type="text" name="activity" value="<?php echo $result['activity'] ?>">
+                            <label for="">Task Name</label>
+                            <input type="text" name="task_name" value="<?php echo $result['task_name'] ?>">
                         </div>
                         <div class="col-6">
                             <label for="">Importance</label>
-                            <select id="select" name="importance" value="<?php echo $result['importance'] ?>">
+                            <select id="select" name="importance" value="<?php $result['importance'] ?>">
                                 <option value="">Select Option</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                                <?php while ($title = mysqli_fetch_assoc($importances)) { ?>
+                                    <option value="<?php echo $title['title'];  ?>"><?php echo $title['title'] ?></option>
+                                <?php } ?>
                             </select>
                         </div>
                         <div class="col-6">
-                            <label for="">Started From</label>
-                            <input type="" name="started_from" value="<?php echo $result['started_from'] ?>">
+                            <label for="">Due Date</label>
+                            <input type="date" name="task_due_date" value="<?php echo $result['task_due_date'] ?>">
+                        </div>
+
+                        <div class="col-6">
+                            <label for="">Summary</label>
+                            <textarea name="summary" id="edit_task_summary"><?php echo $result['summary'] ?></textarea>
                         </div>
                         <div class="col-6">
-                            <label for="">Until</label>
-                            <input type="" name="until" value="<?php echo $result['until'] ?>">
-                        </div>
-                        <div class="col-12">
-                            <label for="">Summary</label>
-                            <textarea name="summary"><?php echo $result['summary'] ?></textarea>
-                        </div>
-                        <div class="col-12">
                             <button type="submit" name="updateactivity">Add Activity</button>
                         </div>
                     </form>
@@ -72,16 +66,13 @@ $result = mysqli_fetch_assoc($data);
 </html>
 <?php
 if (isset($_POST['updateactivity'])) {
-    $date = $_POST['date'];
-    $day = $_POST['day'];
-    $activity = $_POST['activity'];
-    $startedFrom = $_POST['started_from'];
-    $until = $_POST['until'];
+    $task_name = $_POST['task_name'];
+    $task_due_date = $_POST['task_due_date'];
     $importance = $_POST['importance'];
     $summary = $_POST['summary'];
-    $sql = "UPDATE dapf_activities SET date='$date', day='$day', activity='$activity', started_from='$startedFrom',until='$until',importance='$importance',summary='$summary' WHERE id=$id ";
+    $sql = "UPDATE dapf_tasks SET task_name='$task_name', task_due_date='$task_due_date', importance='$importance',importance='$importance',summary='$summary' WHERE id=$id ";
     $sub = mysqli_query($conn, $sql);
-    header("location:./edit_activities.php");
+    header("location:./view_tasks.php");
 }
 
 

@@ -36,7 +36,7 @@ $data = mysqli_fetch_assoc($fetch);
                     <ul style="padding-left:30px;" id="tasks-lists">
                         <li><a href="./add_tasks.php">Add Tasks</a></li>
                         <li><a href="./view_tasks.php">View Tasks</a></li>
-                        <li><a href="./delete_tasks.php">Delete Tasks</a></li>
+                        <li><a href="./incomplete_task.php">Incomplete Tasks</a></li>
                         <li><a href="./completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>

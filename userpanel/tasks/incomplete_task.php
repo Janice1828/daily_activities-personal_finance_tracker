@@ -8,7 +8,7 @@ $user_id = $_SESSION['user_id'];
 include("../../connection.php");
 $selectQuery = "SELECT id,date, task_name, task_due_date,user_id ,importance FROM dapf_tasks WHERE `status`!='completed' AND `deleted_status`= 0 AND `user_id`=$user_id";
 $fetch = mysqli_query($conn, $selectQuery);
-
+$date = date("Y-m-d");
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +37,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                     <ul style="padding-left:30px;" id="tasks-lists">
                         <li><a href="./add_tasks.php">Add Tasks</a></li>
                         <li><a href="./view_tasks.php">View Tasks</a></li>
-                        <li><a href="#" class="active-sidebar">Delete Tasks</a></li>
+                        <li><a href="#" class="active-sidebar">Expired Tasks</a></li>
                         <li><a href="./completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>
@@ -80,7 +80,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                         <div class="">
                             <form class="row gap-2">
                                 <div class="col-12">
-                                    <h2>Delete Tasks</h2>
+                                    <h2>Expired Tasks</h2>
                                 </div>
                                 <table class="col-12" cellpadding="10" cellspacing="0">
                                     <thead>
@@ -89,24 +89,25 @@ $fetch = mysqli_query($conn, $selectQuery);
                                             <th>Task Name</th>
                                             <th>Importance</th>
                                             <th>Task Due Date</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
+
                                         $i = 0;
                                         while ($row = mysqli_fetch_assoc($fetch)) {
+                                            if ($row['task_due_date'] < $date) {
                                         ?>
-                                            <tr>
-                                                <td><?php echo ++$i; ?></td>
-                                                <td><a style="text-decoration: none; color:blue" href="./task_detail.php?id=<?php echo $row['id'] ?>"><?php echo $row['task_name'] ?></a></td>
-                                                <td><?php echo $row['importance']  ?></td>
-                                                <td><?php echo $row['task_due_date']  ?></td>
-                                                <td><a class="btn-danger" href="./delete.php?id=<?php echo $row['id'] ?>">Delete</a></td>
+                                                <tr>
+                                                    <td><?php echo ++$i; ?></td>
+                                                    <td><a style="text-decoration: none; color:blue" href="./task_detail.php?id=<?php echo $row['id'] ?>"><?php echo $row['task_name'] ?></a></td>
+                                                    <td><?php echo $row['importance']  ?></td>
+                                                    <td><?php echo $row['task_due_date']  ?></td>
 
 
-                                            </tr>
-                                        <?php } ?>
+                                                </tr>
+                                        <?php }
+                                        } ?>
 
                                     </tbody>
                                 </table>

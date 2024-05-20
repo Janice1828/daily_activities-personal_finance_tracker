@@ -10,7 +10,7 @@ include("../../connection.php");
 if (isset($_POST['addtasks'])) {
     $date = $_POST['date'];
     $task_name = $_POST['task_name'];
-    $tasks_due_date = $_POST['tasks_due_date'];
+    $tasks_due_date = $_POST['task_due_date'];
     $importance = $_POST['importance'];
     $summary = $_POST['summary'];
     $sql = "INSERT INTO dapf_tasks(date, task_name, task_due_date, importance,summary,user_id) VALUES ('$date', '$task_name','$tasks_due_date', '$importance','$summary','$user_id')";
@@ -47,7 +47,7 @@ $importances = mysqli_query($conn, $fetch_importances);
                     <ul style="padding-left:30px;" id="tasks-lists">
                         <li><a href="#" class="active-sidebar">Add Tasks</a></li>
                         <li><a href="./view_tasks.php">View Tasks</a></li>
-                        <li><a href="./delete_tasks.php">Delete Tasks</a></li>
+                        <li><a href="./incomplete_task.php">Expired Tasks</a></li>
                         <li><a href="./completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>

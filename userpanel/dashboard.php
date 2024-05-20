@@ -94,7 +94,7 @@ $fetch_income = mysqli_query($conn, $get_income_query);
                                     ?>
                                         <tr>
                                             <td><?php echo ++$i; ?></td>
-                                            <td><a style="text-decoration: none; color:blue" href="./task_detail.php?id=<?php echo $row['id'] ?>"><?php echo $row['task_name'] ?></a></td>
+                                            <td><a style="text-decoration: none; color:blue" href="./tasks/task_detail.php?id=<?php echo $row['id'] ?>"><?php echo $row['task_name'] ?></a></td>
                                             <td><?php echo $row['importance'] ?></td>
                                             <td><?php echo $row['task_due_date']  ?></td>
                                             <td><?php echo $row['status']  ?></td>

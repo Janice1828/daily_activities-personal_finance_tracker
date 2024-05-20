@@ -1,14 +1,14 @@
 <?php
 session_start();
-$login_status = $_SESSION['logged_in'];
-if ($login_status != "true") {
-    header("location:../../login.php");
-}
+// $login_status = $_SESSION['logged_in'];
+// if ($login_status != "true") {
+//     header("location:../../login.php");
+// }
 include("../../connection.php");
 $user_id = $_SESSION['user_id'];
-// echo $user_id;
 $selectQuery = "SELECT id,date, user_id,importance, task_name, task_due_date,status, importance FROM dapf_tasks WHERE `deleted_status` = 0 AND `user_id`=$user_id ORDER BY status DESC ";
 $fetch = mysqli_query($conn, $selectQuery);
+$date = date("Y-m-d");
 
 ?>
 
@@ -37,7 +37,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                     <ul style="padding-left:30px;" id="tasks-lists">
                         <li><a href="./add_tasks.php">Add Tasks</a></li>
                         <li><a href="#" class="active-sidebar">View Tasks</a></li>
-                        <li><a href="./delete_tasks.php">Delete Tasks</a></li>
+                        <li><a href="./incomplete_task.php">Expired Tasks</a></li>
                         <li><a href="./completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>
@@ -97,27 +97,30 @@ $fetch = mysqli_query($conn, $selectQuery);
                                         <?php
                                         $i = 0;
                                         while ($row = mysqli_fetch_assoc($fetch)) {
+                                            if ($row['task_due_date'] >= $date || $row['status'] === 'completed') {
                                         ?>
-                                            <tr>
-                                                <td><?php echo ++$i; ?></td>
-                                                <td><a style="text-decoration: none; color:blue" href="./task_detail.php?id=<?php echo $row['id'] ?>"><?php echo $row['task_name'] ?></a></td>
-                                                <td><?php echo $row['importance'] ?></td>
-                                                <td><?php echo $row['task_due_date']  ?></td>
-                                                <td><?php echo $row['status']  ?></td>
-                                                <td>
-                                                    <?php
-                                                    if ($row['status'] == "completed") {
-                                                        echo "completed";
-                                                    } else {
-                                                    ?>
-                                                        <a href="./complete_task.php?id=<?php echo $row['id'] ?>" class="btn-primary">Complete</a>
-                                                        <a href="./delete.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a>
-                                                    <?php }
+                                                <tr>
+                                                    <td><?php echo ++$i; ?></td>
+                                                    <td><a style="text-decoration: none; color:blue" href="./task_detail.php?id=<?php echo $row['id'] ?>"><?php echo $row['task_name'] ?></a></td>
+                                                    <td><?php echo $row['importance'] ?></td>
+                                                    <td><?php echo $row['task_due_date']  ?></td>
+                                                    <td><?php echo $row['status']  ?></td>
+                                                    <td>
+                                                        <?php
+                                                        if ($row['status'] == "completed") {
+                                                            echo "completed";
+                                                        } else {
+                                                        ?>
+                                                            <a href="./complete_task.php?id=<?php echo $row['id'] ?>" class="btn-primary">Complete</a>
+                                                            <a href="./editform.php?id=<?php echo $row['id'] ?>" class="btn-secondary">Update</a>
+                                                            <a href="./delete.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a>
+                                                        <?php }
 
-                                                    ?>
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
+                                                        ?>
+                                                    </td>
+                                                </tr>
+                                        <?php }
+                                        } ?>
 
                                     </tbody>
                                 </table>

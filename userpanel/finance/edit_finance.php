@@ -33,7 +33,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                     <ul style="padding-left:30px; display:none">
                         <li><a href="../tasks/add_tasks.php">Add Tasks</a></li>
                         <li><a href="../tasks/view_tasks.php">View Tasks</a></li>
-                        <li><a href="../tasks/delete_tasks.php">Delete Tasks</a></li>
+                        <li><a href="../tasks/incomplete_task.php">Expired Tasks</a></li>
                         <li><a href="../tasks/completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>
