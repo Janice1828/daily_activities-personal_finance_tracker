@@ -20,6 +20,7 @@ if (isset($_POST['addtasks'])) {
 }
 $fetch_importances = "SELECT title FROM dapf_importances";
 $importances = mysqli_query($conn, $fetch_importances);
+$date = date("Y-m-d");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,6 +86,7 @@ $importances = mysqli_query($conn, $fetch_importances);
                 </div>
             </nav>
             <div class="p-5">
+                <h4 style="display:flex; justify-content:flex-end; padding:10px 0px;">Date: &nbsp;<span id="displayDate" style="font-weight: 400;"></span></h4>
                 <div class="card">
                     <div class="card-body">
                         <div class="">
@@ -92,9 +94,8 @@ $importances = mysqli_query($conn, $fetch_importances);
                                 <div class="col-12">
                                     <h2 class="ml-2">Add Tasks</h2>
                                 </div>
-                                <div class="col-6">
-                                    <label for="">Date</label>
-                                    <input type="date" name="date" value="" id="date">
+                                <div>
+                                    <input type="date" hidden name="date" value="" id="date">
                                 </div>
                                 <div class="col-6">
                                     <label for="">Task Name</label>
@@ -109,9 +110,9 @@ $importances = mysqli_query($conn, $fetch_importances);
                                         <?php } ?>
                                     </select>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12" style="width:95%">
                                     <label for="">Due Date</label>
-                                    <input type="date" name="tasks_due_date">
+                                    <input type="date" min="<?php echo $date; ?>" name="task_due_date">
                                 </div>
                                 <div class="col-12 ml-2">
                                     <label for="">Summary</label>
