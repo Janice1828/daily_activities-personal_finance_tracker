@@ -36,7 +36,7 @@ $data = mysqli_fetch_assoc($fetch);
                     <ul style="padding-left:30px;" id="tasks-lists">
                         <li><a href="./add_tasks.php">Add Tasks</a></li>
                         <li><a href="./view_tasks.php">View Tasks</a></li>
-                        <li><a href="./incomplete_task.php">Incomplete Tasks</a></li>
+                        <li><a href="./incomplete_task.php">Expired Tasks</a></li>
                         <li><a href="./completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>
@@ -52,7 +52,9 @@ $data = mysqli_fetch_assoc($fetch);
                         <li><a href="../finance/add_income.php">Add Income</a></li>
                         <li><a href="../finance/view_income.php">View Income</a></li>
                         <li><a href="../finance/add_expenses.php">Add Expense</a></li>
-                        <li><a href=" ../finance/view_expense.php">View Expenses</a></li>
+                        <li><a href="../finance/view_expense.php">View Expenses</a></li>
+                        <li><a href="../finance/add_monthly_income.php">Add Monthly Income</a></li>
+                        <li><a href="../finance/view_monthly_income.php">View Monthly Incomes</a></li>
                         <li><a href="../finance/add_monthly_expense.php">Add Monthly Expenses</a></li>
                         <li><a href="../finance/view_monthly_expense.php">View Monthly Expenses</a></li>
                         <li><a href="../finance/allocate_budget.php">Allocate Budget</a></li>

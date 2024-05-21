@@ -58,6 +58,8 @@ $get_expenses = mysqli_query($conn, $fetch_expenses);
                         <li><a href="./view_income.php">View Income</a></li>
                         <li><a href="./add_expenses.php">Add Expense</a></li>
                         <li><a href="./view_expense.php">View Expenses</a></li>
+                        <li><a href="./add_monthly_income.php">Add Monthly Income</a></li>
+                        <li><a href="./view_monthly_income.php">View Monthly Incomes</a></li>
                         <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
                         <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
                         <li><a href="./allocate_budget.php" class="active-sidebar">Allocate Budget</a></li>

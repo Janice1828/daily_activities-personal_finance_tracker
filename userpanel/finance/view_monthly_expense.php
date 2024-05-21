@@ -53,6 +53,8 @@ $fetch = mysqli_query($conn, $selectQuery);
                         <li><a href="./view_income.php">View Income</a></li>
                         <li><a href="./add_expenses.php">Add Expense</a></li>
                         <li><a href="#">View Expenses</a></li>
+                        <li><a href="./add_monthly_income.php">Add Monthly Income</a></li>
+                        <li><a href="./view_monthly_income.php">View Monthly Incomes</a></li>
                         <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
                         <li><a href="./view_monthly_expense.php" class="active-sidebar">View Monthly Expenses</a></li>
                         <li><a href="./allocate_budget.php">Allocate Budget</a></li>
@@ -87,6 +89,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                                         <tr>
                                             <th>SN</th>
                                             <th>Title</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -96,6 +99,10 @@ $fetch = mysqli_query($conn, $selectQuery);
                                             <tr>
                                                 <td><?php echo ++$i; ?></td>
                                                 <td><?php echo $row['title'] ?></td>
+                                                <td>
+                                                    <a href="./update_monthlyexpense.php?id=<?php echo $row['id'] ?>" class="btn-secondary">Update</a>
+                                                    <a href="./delete_monthlyexpense.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a>
+                                                </td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>

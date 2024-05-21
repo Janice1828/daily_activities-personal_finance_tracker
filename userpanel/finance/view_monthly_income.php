@@ -6,7 +6,7 @@ if ($login_status != "true") {
 }
 include("../../connection.php");
 $user_id = $_SESSION['user_id'];
-$selectQuery = "SELECT id,allocation_for,estimated_money FROM dapf_allocatebudget WHERE user_id=$user_id";
+$selectQuery = "SELECT id,title FROM dapf_monthlyincome WHERE user_id=$user_id";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>
@@ -40,6 +40,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                         <li><a href="../tasks/completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>
+
                 <div class="sidebar-finance">
                     <h2 class="sidebar-heading cursor-pointer d-flex align-items-center justify-content-between" onclick="toggleFinances()">
                         <div class="d-flex align-items-center gap-1">
@@ -53,11 +54,11 @@ $fetch = mysqli_query($conn, $selectQuery);
                         <li><a href="./add_expenses.php">Add Expense</a></li>
                         <li><a href="./view_expense.php">View Expenses</a></li>
                         <li><a href="./add_monthly_income.php">Add Monthly Income</a></li>
-                        <li><a href="./view_monthly_income.php">View Monthly Incomes</a></li>
+                        <li><a href="#" class="active-sidebar">View Monthly Incomes</a></li>
                         <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
                         <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
                         <li><a href="./allocate_budget.php">Allocate Budget</a></li>
-                        <li><a href="./view_allocatedbudget.php" class="active-sidebar">View Allocated Budget</a></li>
+                        <li><a href="./view_allocatedbudget.php">View Allocated Budget</a></li>
 
                     </ul>
                 </div>
@@ -87,8 +88,8 @@ $fetch = mysqli_query($conn, $selectQuery);
                                     <thead>
                                         <tr>
                                             <th>SN</th>
-                                            <th>Money Allocation For</th>
-                                            <th>Allocated Money</th>
+                                            <th>Title</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -97,9 +98,13 @@ $fetch = mysqli_query($conn, $selectQuery);
                                         while ($row = mysqli_fetch_assoc($fetch)) { ?>
                                             <tr>
                                                 <td><?php echo ++$i; ?></td>
-                                                <td><?php echo $row['allocation_for'] ?></td>
-                                                <td><?php echo $row['estimated_money'] ?></td>
+                                                <td><?php echo $row['title'] ?></td>
+                                                <td>
+                                                    <a href="./update_monthlyincome.php?id=<?php echo $row['id'] ?>" class="btn-secondary">Update</a>
+                                                    <a href="./delete_monthlyincome.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a>
+                                                </td>
                                             </tr>
+
                                         <?php } ?>
                                     </tbody>
                                 </table>

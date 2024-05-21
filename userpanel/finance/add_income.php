@@ -16,6 +16,8 @@ if (isset($_POST['addincome'])) {
     $sub = mysqli_query($conn, $sql);
     header("location:./view_income.php");
 }
+$fetch_monthly_income = "SELECT id, title FROM dapf_monthlyincome";
+$income_sources = mysqli_query($conn, $fetch_monthly_income);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,6 +62,8 @@ if (isset($_POST['addincome'])) {
                         <li><a href="./view_income.php">View Income</a></li>
                         <li><a href="./add_expenses.php">Add Expense</a></li>
                         <li><a href="./view_expense.php">View Expenses</a></li>
+                        <li><a href="./add_monthly_income.php">Add Monthly Income</a></li>
+                        <li><a href="./view_monthly_income.php">View Monthly Incomes</a></li>
                         <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
                         <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
                         <li><a href="./allocate_budget.php">Allocate Budget</a></li>
@@ -99,7 +103,14 @@ if (isset($_POST['addincome'])) {
                                 </div>
                                 <div class="col-6">
                                     <label for="">Income Source</label>
-                                    <input type="text" name="incomed_from" value="">
+                                    <select name="incomed_from" id="select">
+                                        <option value="">Select Option</option>
+                                        <?php while ($row = mysqli_fetch_assoc($income_sources)) { ?>
+                                            <option value="<?php echo $row['title']; ?>"><?php echo $row['title']; ?></option>
+                                        <?php } ?>
+                                        <option value="Others">Others</option>
+
+                                    </select>
                                 </div>
                                 <div class="col-12 ml-2">
                                     <label for="">Summary</label>

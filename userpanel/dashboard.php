@@ -2,10 +2,12 @@
 session_start();
 include('../connection.php');
 $user_id = $_SESSION['user_id'];
-$fetch_tasks = "SELECT id, status,task_name, task_due_date, importance FROM dapf_tasks WHERE user_id=$user_id AND deleted_status=0";
+$fetch_tasks = "SELECT id, status,task_name, task_due_date, importance FROM dapf_tasks WHERE user_id=$user_id AND deleted_status=0 ORDER BY status DESC";
 $fetch = mysqli_query($conn, $fetch_tasks);
 $get_income_query = "SELECT id,date,  incomed_money, incomed_from FROM dapf_income WHERE user_id=$user_id";
 $fetch_income = mysqli_query($conn, $get_income_query);
+$date = date("Y-m-d");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,16 +93,19 @@ $fetch_income = mysqli_query($conn, $get_income_query);
                                     <?php
                                     $i = 0;
                                     while ($row = mysqli_fetch_assoc($fetch)) {
-                                    ?>
-                                        <tr>
-                                            <td><?php echo ++$i; ?></td>
-                                            <td><a style="text-decoration: none; color:blue" href="./tasks/task_detail.php?id=<?php echo $row['id'] ?>"><?php echo $row['task_name'] ?></a></td>
-                                            <td><?php echo $row['importance'] ?></td>
-                                            <td><?php echo $row['task_due_date']  ?></td>
-                                            <td><?php echo $row['status']  ?></td>
+                                        if ($row['task_due_date'] >= $date || $row['status'] === 'completed') {
 
-                                        </tr>
-                                    <?php } ?>
+                                    ?>
+                                            <tr>
+                                                <td><?php echo ++$i; ?></td>
+                                                <td><a style="text-decoration: none; color:blue" href="./tasks/task_detail.php?id=<?php echo $row['id'] ?>"><?php echo $row['task_name'] ?></a></td>
+                                                <td><?php echo $row['importance'] ?></td>
+                                                <td><?php echo $row['task_due_date']  ?></td>
+                                                <td><?php echo $row['status']  ?></td>
+
+                                            </tr>
+                                    <?php }
+                                    } ?>
 
                                 </tbody>
                             </table>
