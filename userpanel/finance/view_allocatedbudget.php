@@ -6,7 +6,7 @@ if ($login_status != "true") {
 }
 include("../../connection.php");
 $user_id = $_SESSION['user_id'];
-$selectQuery = "SELECT id,allocation_for,estimated_money FROM dapf_allocatebudget WHERE user_id=$user_id";
+$selectQuery = "SELECT dapf_allocatebudget.id,dapf_allocatebudget.allocation_for,dapf_allocatebudget.estimated_money, dapf_monthlyexpense.title FROM dapf_allocatebudget LEFT JOIN dapf_monthlyexpense ON dapf_monthlyexpense.id=dapf_allocatebudget.allocation_for WHERE dapf_allocatebudget.user_id=$user_id";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>
@@ -97,7 +97,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                                         while ($row = mysqli_fetch_assoc($fetch)) { ?>
                                             <tr>
                                                 <td><?php echo ++$i; ?></td>
-                                                <td><?php echo $row['allocation_for'] ?></td>
+                                                <td><?php echo $row['title'] ?></td>
                                                 <td><?php echo $row['estimated_money'] ?></td>
                                             </tr>
                                         <?php } ?>

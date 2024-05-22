@@ -11,12 +11,11 @@ if (isset($_POST['addexpenses'])) {
     $moneySpent = $_POST['money_spent'];
     $spentOn = $_POST['spent_on'];
     $summary = $_POST['summary'];
-    // $allocated_budget = "null";
     $sql = "INSERT INTO dapf_expense(date, money_spent, spent_on, summary, user_id) VALUES ('$date','$moneySpent', '$spentOn','$summary','$user_id')";
     $sub = mysqli_query($conn, $sql);
     header("location:./view_expense.php");
 }
-$getexpenses = "SELECT id, allocation_for FROM dapf_allocatebudget WHERE user_id=$user_id";
+$getexpenses = "SELECT dapf_allocatebudget.id, dapf_allocatebudget.allocation_for,dapf_monthlyexpense.title,dapf_monthlyexpense.id AS monthly_expense_id FROM dapf_allocatebudget LEFT JOIN dapf_monthlyexpense ON dapf_monthlyexpense.id=dapf_allocatebudget.allocation_for WHERE dapf_allocatebudget.user_id=$user_id";
 $data = mysqli_query($conn, $getexpenses);
 ?>
 <!DOCTYPE html>
@@ -106,7 +105,7 @@ $data = mysqli_query($conn, $getexpenses);
                                     <label for="">Money Spent On</label>
                                     <select name="spent_on" id="select">
                                         <?php while ($row = mysqli_fetch_assoc($data)) { ?>
-                                            <option value="<?php echo $row['id'] ?>"><?php echo $row['allocation_for'] ?></option>
+                                            <option value="<?php echo $row['monthly_expense_id'] ?>"><?php echo $row['title'] ?></option>
                                         <?php } ?>
                                         <option value="others">Others</option>
                                     </select>

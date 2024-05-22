@@ -93,7 +93,7 @@ $get_expenses = mysqli_query($conn, $fetch_expenses);
                                     <label for="">Allocation For</label>
                                     <select id="select" name="allocation_for">
                                         <?php while ($data = mysqli_fetch_assoc($get_expenses)) { ?>
-                                            <option value="<?php echo $data['title'] ?>"><?php echo $data['title']; ?></option>
+                                            <option value="<?php echo $data['id'] ?>"><?php echo $data['title']; ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>

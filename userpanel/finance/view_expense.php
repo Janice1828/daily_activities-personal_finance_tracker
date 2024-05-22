@@ -6,7 +6,8 @@ if ($login_status != "true") {
 }
 $user_id = $_SESSION['user_id'];
 include("../../connection.php");
-$selectQuery = "SELECT dapf_expense.id, dapf_expense.date, dapf_expense.money_spent, dapf_allocatebudget.allocation_for, dapf_allocatebudget.estimated_money,dapf_allocatebudget.estimated_money FROM dapf_expense LEFT JOIN dapf_allocatebudget ON  dapf_expense.spent_on = dapf_allocatebudget.id WHERE dapf_expense.user_id=$user_id ORDER BY dapf_expense.id DESC ";
+// $selectQuery = "SELECT dapf_expense.id, dapf_expense.date, dapf_expense.money_spent, dapf_allocatebudget.allocation_for, dapf_allocatebudget.estimated_money,dapf_allocatebudget.estimated_money FROM dapf_expense LEFT JOIN dapf_allocatebudget ON  dapf_expense.spent_on = dapf_allocatebudget.id WHERE dapf_expense.user_id=$user_id ORDER BY dapf_expense.id DESC ";
+$selectQuery = "SELECT spent_on, SUM(money_spent) AS total_spent, dapf_monthlyexpense.title, dapf_allocatebudget.estimated_money FROM dapf_expense LEFT JOIN dapf_monthlyexpense ON dapf_expense.spent_on=dapf_monthlyexpense.id LEFT JOIN dapf_allocatebudget ON dapf_allocatebudget.allocation_for=dapf_expense.spent_on GROUP BY dapf_expense.spent_on";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>
@@ -88,11 +89,10 @@ $fetch = mysqli_query($conn, $selectQuery);
                                     <thead>
                                         <tr>
                                             <th>SN</th>
-                                            <th>Date</th>
-                                            <th>Money Spent</th>
                                             <th>Spent On</th>
+                                            <th>Money Spent</th>
                                             <th>Allocated Money</th>
-                                            <th>Remaining Allocated Money</th>
+                                            <th>Remaining Allocated Budget</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -101,17 +101,11 @@ $fetch = mysqli_query($conn, $selectQuery);
                                         while ($row = mysqli_fetch_assoc($fetch)) { ?>
                                             <tr>
                                                 <td><?php echo ++$i; ?></td>
-                                                <td><?php echo $row['date'] ?></td>
-                                                <td><?php echo $row['money_spent'] ?></td>
-                                                <td><?php
-                                                    if (strlen($row['allocation_for']) > 0) {
-                                                        echo $row['allocation_for'];
-                                                    } else {
-                                                        echo "Others";
-                                                    }
-                                                    ?></td>
+                                                <td><?php echo $row['title'] ?></td>
+                                                <td><?php echo $row['total_spent'] ?></td>
                                                 <td><?php echo $row['estimated_money'] ?></td>
-                                                <td></td>
+                                                <td><?php echo $row['estimated_money'] - $row['total_spent'] ?></td>
+
                                             </tr>
                                         <?php } ?>
                                     </tbody>
