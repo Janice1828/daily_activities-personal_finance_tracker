@@ -16,7 +16,7 @@ if (isset($_POST['addincome'])) {
     $sub = mysqli_query($conn, $sql);
     header("location:./view_income.php");
 }
-$fetch_monthly_income = "SELECT id, title FROM dapf_monthlyincome";
+$fetch_monthly_income = "SELECT id, title FROM dapf_monthlyincome WHERE user_id=$user_id";
 $income_sources = mysqli_query($conn, $fetch_monthly_income);
 ?>
 <!DOCTYPE html>
@@ -85,6 +85,8 @@ $income_sources = mysqli_query($conn, $fetch_monthly_income);
                 </div>
             </nav>
             <div class="p-5">
+                <h4 style="display:flex; justify-content:flex-end; padding:10px 0px;">Date: &nbsp;<span id="displayDate" style="font-weight: 400;"></span></h4>
+
                 <div class="card">
                     <div class="card-body">
                         <div class="">
@@ -93,10 +95,7 @@ $income_sources = mysqli_query($conn, $fetch_monthly_income);
                                     <h2 class="ml-2">Add Income</h2>
                                 </div>
 
-                                <div class="col-12" style="width:95%">
-                                    <label for="">Date</label>
-                                    <input type="date" name="date" value="" id="date" readonly>
-                                </div>
+                                <input type="date" name="date" value="" id="date" readonly hidden>
                                 <div class="col-6">
                                     <label for="">Incomed Money</label>
                                     <input type="text" name="incomed_money" value="">

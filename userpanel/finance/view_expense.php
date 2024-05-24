@@ -7,7 +7,7 @@ if ($login_status != "true") {
 $user_id = $_SESSION['user_id'];
 include("../../connection.php");
 // $selectQuery = "SELECT dapf_expense.id, dapf_expense.date, dapf_expense.money_spent, dapf_allocatebudget.allocation_for, dapf_allocatebudget.estimated_money,dapf_allocatebudget.estimated_money FROM dapf_expense LEFT JOIN dapf_allocatebudget ON  dapf_expense.spent_on = dapf_allocatebudget.id WHERE dapf_expense.user_id=$user_id ORDER BY dapf_expense.id DESC ";
-$selectQuery = "SELECT spent_on, SUM(money_spent) AS total_spent, dapf_monthlyexpense.title, dapf_allocatebudget.estimated_money FROM dapf_expense LEFT JOIN dapf_monthlyexpense ON dapf_expense.spent_on=dapf_monthlyexpense.id LEFT JOIN dapf_allocatebudget ON dapf_allocatebudget.allocation_for=dapf_expense.spent_on GROUP BY dapf_expense.spent_on";
+$selectQuery = "SELECT spent_on, SUM(money_spent) AS total_spent, dapf_monthlyexpense.title, dapf_allocatebudget.estimated_money FROM dapf_expense LEFT JOIN dapf_monthlyexpense ON dapf_expense.spent_on=dapf_monthlyexpense.id LEFT JOIN dapf_allocatebudget ON dapf_allocatebudget.allocation_for=dapf_expense.spent_on WHERE dapf_expense.user_id=$user_id GROUP BY dapf_expense.spent_on";
 $fetch = mysqli_query($conn, $selectQuery);
 
 ?>

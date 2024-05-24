@@ -85,6 +85,7 @@ $data = mysqli_query($conn, $getexpenses);
                 </div>
             </nav>
             <div class="p-5">
+                <h4 style="display:flex; justify-content:flex-end; padding:10px 0px;">Date: &nbsp;<span id="displayDate" style="font-weight: 400;"></span></h4>
                 <div class="card">
                     <div class="card-body">
                         <div class="">
@@ -92,11 +93,7 @@ $data = mysqli_query($conn, $getexpenses);
                                 <div class="col-12">
                                     <h2 class="ml-2">Add Expenses</h2>
                                 </div>
-                                <div class="col-12" style="width:95%">
-                                    <label for="">Date</label>
-                                    <input type="date" name="date" value="" id="date" readonly>
-                                </div>
-
+                                <input type="date" name="date" value="" id="date" readonly hidden>
                                 <div class="col-6">
                                     <label for="">Money Spent</label>
                                     <input type="text" name="money_spent" value="">
