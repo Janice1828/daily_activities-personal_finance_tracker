@@ -510,6 +510,12 @@ footer h3 {
 .services-card-body {
   width: 100%;
 }
+#invalid-userErr,
+.erorr-color {
+  color: red;
+  font-size: 13px;
+  padding-top: 2px;
+}
 .services-card-body img {
   width: 100%;
 }

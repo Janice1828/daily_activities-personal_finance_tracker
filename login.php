@@ -1,5 +1,30 @@
 <?php
 session_start();
+include("connection.php");
+$tbl_name = "users";
+$invalidUserErr = "";
+if (isset($_POST["login"])) {
+  $email = $_POST["email"];
+  $password = $_POST["password"];
+  $selectQuery = "SELECT id,fullname, email, password,usertype FROM $tbl_name where email='$email' && password='$password'";
+  $execute = mysqli_query($conn, $selectQuery);
+  $fetchedData = mysqli_fetch_assoc($execute);
+
+  if ($fetchedData) {
+    if ($fetchedData['email'] === $email && $fetchedData['password'] === $password && $fetchedData['usertype'] == "user") {
+      $_SESSION['logged_in'] = "true";
+      $_SESSION['user_id'] = $fetchedData['id'];
+      $_SESSION['fullname'] = $fetchedData['fullname'];
+      header("location:./userpanel/dashboard.php");
+    } else if ($fetchedData['email'] === $email && $fetchedData['password'] === $password && $fetchedData['usertype'] == "admin") {
+      $_SESSION['user_id'] = $fetchedData['id'];
+      $_SESSION['fullname'] = $fetchedData['fullname'];
+      header("location:./adminpanel/dashboard.php");
+    }
+  } else {
+    $invalidUserErr = "User Not Found!";
+  }
+}
 
 ?>
 <!DOCTYPE html>
@@ -17,41 +42,18 @@ session_start();
     <form action="" method="post" id="loginForm">
       <h2 style="text-align:center">Login</h2>
 
-      <div><label for="">Email</label> <input type="text" name="email" /></div>
-      <div class="position-relative"><label for="">Password</label> <input name="password" type="password" id="password" /><span class="position-absolute cursor-pointer" id="loginShowPassword">Show</span></div>
+      <div><label for="">Email</label> <input type="email" name="email" required /></div>
+      <div class="position-relative"><label for="">Password</label> <input name="password" type="password" id="password" required /><span class="position-absolute cursor-pointer" id="loginShowPassword">Show</span></div>
       <div><button name="login">Login</button></div>
+      <div class="invalid-user-error-displayer">
+        <p id="invalid-userErr"><?php echo $invalidUserErr; ?></p>
+      </div>
       <div>
         or <a href="./registration.php">register?</a>
       </div>
     </form>
   </div>
-  <?php
-  include("connection.php");
-  $tbl_name = "users";
-  try {
-    if (isset($_POST["login"])) {
-      $email = $_POST["email"];
-      $password = $_POST["password"];
-      $selectQuery = "SELECT id,fullname, email, password,usertype FROM $tbl_name where email='$email' && password='$password'";
-      $execute = mysqli_query($conn, $selectQuery);
-      $fetchedData = mysqli_fetch_assoc($execute);
-      if ($fetchedData['email'] === $email && $fetchedData['password'] === $password && $fetchedData['usertype'] == "user") {
-        $_SESSION['logged_in'] = "true";
-        $_SESSION['user_id'] = $fetchedData['id'];
-        $_SESSION['fullname'] = $fetchedData['fullname'];
-        header("location:./userpanel/dashboard.php");
-      } else if ($fetchedData['email'] === $email && $fetchedData['password'] === $password && $fetchedData['usertype'] == "admin") {
-        $_SESSION['user_id'] = $fetchedData['id'];
-        $_SESSION['fullname'] = $fetchedData['fullname'];
-        header("location:./adminpanel/dashboard.php");
-      } else {
-        echo "login failed";
-      }
-    }
-  } catch (Exception $e) {
-    echo $e->getMessage();
-  }
-  ?>
+
 </body>
 
 </html>

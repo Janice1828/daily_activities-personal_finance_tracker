@@ -1,3 +1,25 @@
+<?php
+include("connection.php");
+$emailValidationErr = " ";
+$passwordValidationErr = " ";
+if (isset($_POST['register'])) {
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $fullname = $_POST['fullname'];
+
+  if (preg_match('/^[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}$/', $email)) {
+    if (preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/', $password)) {
+      $insertQuery = "INSERT INTO users(fullname, email, password) VALUES ('$fullname', '$email', '$password') ";
+      $response = mysqli_query($conn, $insertQuery);
+      header("location:./login.php");
+    } else {
+      $passwordValidationErr = "Password Format didn't matched";
+    }
+  } else {
+    $emailValidationErr = "Email Format didn't matched";
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,8 +36,12 @@
     <form action="" method="post" id="registrationForm">
       <h2 style="text-align: center;">Registration</h2>
       <div><label for="">Full Name</label> <input type="text" name="fullname" required /></div>
-      <div><label for="">Email</label> <input name="email" type="email" required /></div>
-      <div class="position-relative"><label for="">Password</label> <input name="password" type="password" required id="password" /><span class="position-absolute cursor-pointer" id="registerShowPassword">Show</span></div>
+      <div><label for="">Email</label> <input name="email" type="email" required />
+        <p class="erorr-color"><?php echo $emailValidationErr; ?></p>
+      </div>
+      <div class="position-relative"><label for="">Password</label> <input name="password" type="password" required id="password" /><span class="position-absolute cursor-pointer" id="registerShowPassword">Show</span>
+        <p class="erorr-color"><?php echo $passwordValidationErr ?></p>
+      </div>
       <div><button name="register">Registration</button></div>
       <div>
         or <a href="./login.php">Login?</a>
@@ -23,18 +49,7 @@
     </form>
 
   </div>
-  <?php
-  include("connection.php");
-  if (isset($_POST['register'])) {
-    $fullname = $_POST['fullname'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $insertQuery = "INSERT INTO users(fullname, email, password) VALUES ('$fullname', '$email', '$password') ";
-    $response = mysqli_query($conn, $insertQuery);
-    header("location:./login.php");
-  }
 
-  ?>
 </body>
 
 </html>
