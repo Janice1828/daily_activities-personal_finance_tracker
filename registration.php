@@ -37,10 +37,10 @@ if (isset($_POST['register'])) {
       <h2 style="text-align: center;">Registration</h2>
       <div><label for="">Full Name</label> <input type="text" name="fullname" required /></div>
       <div><label for="">Email</label> <input name="email" type="email" required />
-        <p class="erorr-color"><?php echo $emailValidationErr; ?></p>
+        <p class="error-color"><?php echo $emailValidationErr; ?></p>
       </div>
       <div class="position-relative"><label for="">Password</label> <input name="password" type="password" required id="password" /><span class="position-absolute cursor-pointer" id="registerShowPassword">Show</span>
-        <p class="erorr-color"><?php echo $passwordValidationErr ?></p>
+        <p class="error-color"><?php echo $passwordValidationErr ?></p>
       </div>
       <div><button name="register">Registration</button></div>
       <div>

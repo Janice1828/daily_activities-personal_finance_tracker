@@ -15,8 +15,12 @@ if (isset($_POST['addexpenses'])) {
     $sub = mysqli_query($conn, $sql);
     header("location:./view_expense.php");
 }
-$getexpenses = "SELECT dapf_allocatebudget.id, dapf_allocatebudget.allocation_for,dapf_monthlyexpense.title,dapf_monthlyexpense.id AS monthly_expense_id FROM dapf_allocatebudget LEFT JOIN dapf_monthlyexpense ON dapf_monthlyexpense.id=dapf_allocatebudget.allocation_for WHERE dapf_allocatebudget.user_id=$user_id";
+// $getexpenses = "";
+// $getexpenses = "SELECT dapf_allocatebudget.id, dapf_allocatebudget.allocation_for,dapf_monthlyexpense.title,dapf_monthlyexpense.id AS monthly_expense_id FROM dapf_allocatebudget LEFT JOIN dapf_monthlyexpense ON dapf_monthlyexpense.id=dapf_allocatebudget.allocation_for WHERE dapf_allocatebudget.user_id=$user_id";
+$getexpenses = "SELECT id, user_id, title FROM dapf_monthlyexpense WHERE user_id=$user_id";
 $data = mysqli_query($conn, $getexpenses);
+// $data = " ";
+// echo mysqli_num_rows($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,16 +100,28 @@ $data = mysqli_query($conn, $getexpenses);
                                 <input type="date" name="date" value="" id="date" readonly hidden>
                                 <div class="col-6">
                                     <label for="">Money Spent</label>
-                                    <input type="text" name="money_spent" value="">
+                                    <input type="text" name="money_spent" value="" required>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Money Spent On</label>
-                                    <select name="spent_on" id="select">
-                                        <?php while ($row = mysqli_fetch_assoc($data)) { ?>
-                                            <option value="<?php echo $row['monthly_expense_id'] ?>"><?php echo $row['title'] ?></option>
-                                        <?php } ?>
-                                        <option value="others">Others</option>
-                                    </select>
+                                    <?php
+                                    if (mysqli_num_rows($data) >= 1) {
+                                    ?>
+                                        <select name="spent_on" id="select" required>
+                                            <?php
+                                            while ($row = mysqli_fetch_assoc($data)) { ?>
+                                                <option value="<?php echo $row['title'] ?>"><?php echo $row['title'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <select id="invalid-select" required>
+                                        </select>
+                                        <p class="error-color">First Add Monthly Expenses</p>
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
                                 <div class="col-12 ml-2">
                                     <label for="">Summary</label>

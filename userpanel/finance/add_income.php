@@ -98,18 +98,27 @@ $income_sources = mysqli_query($conn, $fetch_monthly_income);
                                 <input type="date" name="date" value="" id="date" readonly hidden>
                                 <div class="col-6">
                                     <label for="">Incomed Money</label>
-                                    <input type="text" name="incomed_money" value="">
+                                    <input type="text" name="incomed_money" value="" required>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Income Source</label>
-                                    <select name="incomed_from" id="select">
-                                        <option value="">Select Option</option>
-                                        <?php while ($row = mysqli_fetch_assoc($income_sources)) { ?>
-                                            <option value="<?php echo $row['title']; ?>"><?php echo $row['title']; ?></option>
+                                    <?php if (mysqli_num_rows($income_sources) >= 1) {
+                                    ?>
+                                        <select name="incomed_from" id="select" required>
+                                            <?php while ($row = mysqli_fetch_assoc($income_sources)) {
+                                            ?>
+                                                <option value="<?php echo $row['title']; ?>"><?php echo $row['title']; ?></option>
+                                            <?php }
+                                        } else {
+                                            ?>
+                                            <select id="invalid-select" required>
+                                            </select>
+                                            <!-- <select disabled id="invalid-select" required></select> -->
+                                            <p class="error-color">First Add Monthly Incomes</p>
                                         <?php } ?>
-                                        <option value="Others">Others</option>
+                                        <!-- <option value="Others">Others</option> -->
 
-                                    </select>
+                                        </select>
                                 </div>
                                 <div class="col-12 ml-2">
                                     <label for="">Summary</label>
