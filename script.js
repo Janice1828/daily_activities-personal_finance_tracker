@@ -165,3 +165,33 @@ function toggleMasterback() {
     toggleLogo.src = "./../icons/arrow_down.png";
   }
 }
+function addExpensesInput() {
+  event.preventDefault();
+  addInput("monthlyexpenses-repeater-fields");
+}
+function addIncomeInput() {
+  event.preventDefault();
+  addInput("monthlyincome-repeater-fields");
+}
+function addInput(containerName) {
+  event.preventDefault();
+  const inputContainer = document.getElementById(containerName);
+  const numInputs = inputContainer.querySelectorAll("input").length;
+  const newInput = document.createElement("input");
+  console.log(numInputs);
+  newInput.setAttribute("name", `title[${numInputs}]`);
+  newInput.setAttribute("type", "text");
+  const divContainer = document.createElement("div");
+  divContainer.setAttribute("class", "d-flex gap-2");
+  const removeCurrentInput = document.createElement("button");
+  removeCurrentInput.innerHTML = "-";
+  removeCurrentInput.setAttribute("class", "btn-danger");
+  divContainer.appendChild(newInput);
+  divContainer.appendChild(removeCurrentInput);
+  console.log(inputContainer);
+  inputContainer.appendChild(divContainer);
+  removeCurrentInput.addEventListener("click", function () {
+    event.preventDefault();
+    divContainer.remove();
+  });
+}

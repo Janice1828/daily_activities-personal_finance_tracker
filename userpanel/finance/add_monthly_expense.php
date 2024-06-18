@@ -7,10 +7,14 @@ if ($login_status != "true") {
 $user_id = $_SESSION['user_id'];
 include("../../connection.php");
 if (isset($_POST['addexpense'])) {
-    $title = $_POST['title'];
-    $sql = "INSERT INTO dapf_monthlyexpense(title,user_id) VALUES ('$title','$user_id')";
-    $sub = mysqli_query($conn, $sql);
-    header("location:./view_monthly_expense.php");
+    foreach ($_POST['title'] as $title) {
+        if (strlen($title) >= 1) {
+            $safe_title = mysqli_real_escape_string($conn, $title);
+            $insertQuery = "INSERT INTO dapf_monthlyexpense(title, user_id) VALUES ('$safe_title','$user_id')";
+            mysqli_query($conn, $insertQuery);
+            header("location:./view_monthly_expense.php");
+        }
+    }
 }
 
 
@@ -90,9 +94,14 @@ if (isset($_POST['addexpense'])) {
                                     <h2 class="ml-2">Add Monthly Expenses</h2>
                                 </div>
 
-                                <div class="col-12" style="width:96%">
+                                <div class="col-12" style="width:90%">
                                     <label for="">Title</label>
-                                    <input type="text" name="title" value="">
+                                    <div id="monthlyexpenses-repeater-fields">
+                                        <div class="d-flex gap-2">
+                                            <input type="text" name="title[]" value="">
+                                            <button onclick="addExpensesInput()">+</button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn-success ml-2" name="addexpense">Add Expenses</button>

@@ -114,7 +114,7 @@ $date = date("Y-m-d");
                                 </div>
                                 <div class="col-12" style="width:95%">
                                     <label for="">Due Date</label>
-                                    <input type="date" min="<?php echo $date; ?>" name="task_due_date">
+                                    <input type="date" value="<?php echo date("Y-m-d") ?>" min="<?php echo $date; ?>" name="task_due_date">
                                 </div>
                                 <div class="col-12 ml-2">
                                     <label for="">Summary</label>
@@ -127,7 +127,6 @@ $date = date("Y-m-d");
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 

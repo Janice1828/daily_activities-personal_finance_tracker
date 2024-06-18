@@ -52,6 +52,18 @@
 .justify-content-between {
   justify-content: space-between;
 }
+#monthlyexpenses-repeater-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#add-daily-tasks-btn {
+  text-decoration: none;
+  background-color: #2c942c;
+  color: #fff;
+  padding: 7px 15px;
+  border-radius: 10px;
+}
 .flex-column {
   flex-direction: column;
 }

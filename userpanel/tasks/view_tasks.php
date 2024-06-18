@@ -81,8 +81,9 @@ $date = date("Y-m-d");
                     <div class="card-body">
                         <div class="">
                             <form class="row gap-2">
-                                <div class="col-12">
-                                    <h2>View Tasks</h2>
+                                <div class="col-12 d-flex justify-content-between">
+                                    <h2>View Tasks</h2>WWWW
+                                    <a href="./daily_tasks.php" id="add-daily-tasks-btn">Add Daily Tasks</a>
                                 </div>
                                 <table class="col-12" cellpadding="10" cellspacing="0">
                                     <thead>
