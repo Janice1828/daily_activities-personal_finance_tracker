@@ -1,9 +1,9 @@
 <?php
-// session_start();
-// $login_status = $_SESSION['logged_in'];
-// if ($login_status != "true") {
-//     header("location:../../login.php");
-// }
+session_start();
+$login_status = $_SESSION['adminlogged_in'];
+if ($login_status != "true") {
+    header("location:../../login.php");
+}
 include("../../connection.php");
 $message_fetch_query = "SELECT id, name, email, phone FROM dapf_messages";
 $res = mysqli_query($conn, $message_fetch_query);

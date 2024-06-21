@@ -1,9 +1,9 @@
 <?php
 session_start();
-// $login_status = $_SESSION['logged_in'];
-// if ($login_status != "true") {
-//     header("location:../../login.php");
-// }
+$login_status = $_SESSION['adminlogged_in'];
+if ($login_status != "true") {
+    header("location:../../login.php");
+}
 $id = $_GET['id'];
 include("../../connection.php");
 $selectQuery = "SELECT id,name, email, phone,message FROM dapf_messages WHERE id=$id";

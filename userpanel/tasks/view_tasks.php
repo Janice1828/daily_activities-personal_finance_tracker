@@ -1,9 +1,9 @@
 <?php
 session_start();
-// $login_status = $_SESSION['logged_in'];
-// if ($login_status != "true") {
-//     header("location:../../login.php");
-// }
+$login_status = $_SESSION['logged_in'];
+if ($login_status != "true") {
+    header("location:../../login.php");
+}
 include("../../connection.php");
 $user_id = $_SESSION['user_id'];
 $start = 0;

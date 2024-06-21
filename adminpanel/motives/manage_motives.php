@@ -1,4 +1,9 @@
 <?php
+session_start();
+$login_status = $_SESSION['adminlogged_in'];
+if ($login_status != "true") {
+    header("location:../../login.php");
+}
 // session_start();
 // $login_status = $_SESSION['logged_in'];
 // if ($login_status != "true") {

@@ -22,6 +22,7 @@ if (isset($_POST["login"])) {
     } else if ($fetchedData['email'] === $email && $fetchedData['password'] === $password && $fetchedData['usertype'] == "admin") {
       $_SESSION['user_id'] = $fetchedData['id'];
       $_SESSION['fullname'] = $fetchedData['fullname'];
+      $_SESSION['adminlogged_in'] = "true";
       header("location:./adminpanel/dashboard.php");
     }
   } else {

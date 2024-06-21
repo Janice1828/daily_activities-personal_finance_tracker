@@ -1,5 +1,10 @@
 <?php
 include("../../connection.php");
+session_start();
+$login_status = $_SESSION['adminlogged_in'];
+if ($login_status != "true") {
+    header("location:../../login.php");
+}
 $selectQuery = "SELECT id,fullname, email, usertype FROM users WHERE status=1";
 $fetch = mysqli_query($conn, $selectQuery);
 

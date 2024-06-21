@@ -1,9 +1,9 @@
 <?php
-// session_start();
-// $login_status = $_SESSION['logged_in'];
-// if ($login_status != "true") {
-//     header("location:../../login.php");
-// }
+session_start();
+$login_status = $_SESSION['adminlogged_in'];
+if ($login_status != "true") {
+    header("location:../../login.php");
+}
 include("../../connection.php");
 $selectQuery = "SELECT id,image, title, content FROM dapf_motives";
 $fetch = mysqli_query($conn, $selectQuery);

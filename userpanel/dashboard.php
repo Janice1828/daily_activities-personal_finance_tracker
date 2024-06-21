@@ -1,7 +1,13 @@
 <?php
 session_start();
 include('../connection.php');
+
+$login_status = $_SESSION['logged_in'];
+if ($login_status != "true") {
+    header("location:../login.php");
+}
 $user_id = $_SESSION['user_id'];
+
 $fetch_tasks = "SELECT id, status,task_name, task_due_date, importance FROM dapf_tasks WHERE user_id=$user_id AND deleted_status=0 ORDER BY status DESC";
 $fetch = mysqli_query($conn, $fetch_tasks);
 $get_income_query = "SELECT id,date,  incomed_money, incomed_from FROM dapf_income WHERE user_id=$user_id";
