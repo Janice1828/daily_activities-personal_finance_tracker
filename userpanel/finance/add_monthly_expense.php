@@ -91,20 +91,22 @@ if (isset($_POST['addexpense'])) {
                         <div class="">
                             <form class="row gap-2" method="post">
                                 <div class="col-12">
-                                    <h2 class="ml-2">Add Monthly Expenses</h2>
+                                    <h2>Add Monthly Expenses</h2>
                                 </div>
 
-                                <div class="col-12" style="width:90%">
+                                <div class="col-12">
                                     <label for="">Title</label>
                                     <div id="monthlyexpenses-repeater-fields">
-                                        <div class="d-flex gap-2">
+                                        <div class="d-flex gap-2 align-items-center">
                                             <input type="text" name="title[]" value="" required>
-                                            <button onclick="addExpensesInput()">+</button>
+                                            <button onclick="addExpensesInput()" class="mt-0 addInputBtn">
+                                                <img src="../../icons/icons8-add-50.png" class="input-add-icon" />
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn-success ml-2" name="addexpense">Add Expenses</button>
+                                    <button type="submit" class="btn-success" name="addexpense">Add Expenses</button>
                                 </div>
                             </form>
                         </div>

@@ -154,7 +154,6 @@ $page_links = createPageLinks($pages, $current_page);
                                     <tbody>
                                         <?php
                                         $i = 0;
-                                        echo $date;
                                         echo "<br/>";
                                         while ($row = mysqli_fetch_assoc($fetch)) {
                                             // echo $row['task_due_date'];

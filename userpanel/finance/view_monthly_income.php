@@ -153,7 +153,7 @@ $page_links = createPageLinks($pages, $current_page);
                                             <tr>
                                                 <td><?php echo ++$i; ?></td>
                                                 <td><?php echo $row['title'] ?></td>
-                                                <td>
+                                                <td class="d-flex gap-2">
                                                     <a href="./update_monthlyincome.php?id=<?php echo $row['id'] ?>" class="btn-secondary">Update</a>
                                                     <a href="./delete_monthlyincome.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a>
                                                 </td>

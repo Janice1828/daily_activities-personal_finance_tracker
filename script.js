@@ -177,25 +177,34 @@ function addInput(containerName) {
   const inputContainer = document.getElementById(containerName);
   const numInputs = inputContainer.querySelectorAll("input").length;
   const newInput = document.createElement("input");
-  console.log(numInputs);
   newInput.setAttribute("name", `title[${numInputs}]`);
   newInput.setAttribute("type", "text");
   const divContainer = document.createElement("div");
-  divContainer.setAttribute("class", "d-flex gap-2");
-  const removeCurrentInput = document.createElement("button");
-  removeCurrentInput.innerHTML = "-";
-  removeCurrentInput.setAttribute("class", "btn-danger");
+  divContainer.setAttribute("class", "d-flex gap-2 align-items-center");
+  const removeCurrentInputBtn = document.createElement("button");
+  const removeIcon = document.createElement("img");
+  removeIcon.src = "../../icons/icons8-subtract-50.png";
+  removeIcon.setAttribute("class", "input-sub-icon");
+  removeCurrentInputBtn.append(removeIcon);
+  removeCurrentInputBtn.setAttribute("class", "btn-danger  m-0 addInputBtn");
   divContainer.appendChild(newInput);
-  divContainer.appendChild(removeCurrentInput);
-  console.log(inputContainer);
+  divContainer.appendChild(removeCurrentInputBtn);
   inputContainer.appendChild(divContainer);
-  removeCurrentInput.addEventListener("click", function () {
+  removeCurrentInputBtn.addEventListener("click", function () {
     event.preventDefault();
     divContainer.remove();
   });
 }
+const dateContainer = document.getElementById("date");
+if (dateContainer) {
+  dateContainer.value = `${year}-${getMonth}-${d}`;
+}
+const displayingDate = document.getElementById("displayDate");
+if (displayingDate) {
+  displayingDate.innerHTML = `${year}-${getMonth}-${d}`;
+}
 let pageLinks = document.querySelectorAll(".page-numbers > a");
-let bodyId = parseInt(document.body.id) - 1;
-pageLinks[bodyId].classList.add("active-page");
-document.getElementById("date").value = `${year}-${getMonth}-${d}`;
-document.getElementById("displayDate").innerHTML = `${year}-${getMonth}-${d}`;
+if (pageLinks) {
+  let bodyId = parseInt(document.body.id) - 1;
+  pageLinks[bodyId].classList.add("active-page");
+}

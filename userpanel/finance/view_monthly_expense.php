@@ -150,7 +150,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                                             <tr>
                                                 <td><?php echo ++$i; ?></td>
                                                 <td><?php echo $row['title'] ?></td>
-                                                <td>
+                                                <td class="d-flex gap-2">
                                                     <a href="./update_monthlyexpense.php?id=<?php echo $row['id'] ?>" class="btn-secondary">Update</a>
                                                     <a href="./delete_monthlyexpense.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a>
                                                 </td>

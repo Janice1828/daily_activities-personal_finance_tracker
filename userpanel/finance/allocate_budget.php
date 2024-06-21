@@ -87,9 +87,9 @@ $get_expenses = mysqli_query($conn, $fetch_expenses);
                         <div class="">
                             <form class="row gap-2" method="post">
                                 <div class="col-12">
-                                    <h2 class="ml-2">Allocate Budget</h2>
+                                    <h2>Allocate Budget</h2>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-6" style="transform:translateX(-25px)">
                                     <label for="">Allocation For</label>
                                     <select id="select" name="allocation_for" required>
                                         <?php while ($data = mysqli_fetch_assoc($get_expenses)) { ?>
@@ -97,12 +97,12 @@ $get_expenses = mysqli_query($conn, $fetch_expenses);
                                         <?php } ?>
                                     </select>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-6" style="transform:translateX(25px)">
                                     <label for="">Estimated Money</label>
                                     <input type="number" name="estimated_money" value="" required>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn-success ml-2" name="allocatemoney">Allocate</button>
+                                    <button type="submit" class="btn-success" name="allocatemoney">Allocate</button>
                                 </div>
                             </form>
                         </div>

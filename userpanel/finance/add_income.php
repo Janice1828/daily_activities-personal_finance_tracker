@@ -85,22 +85,22 @@ $income_sources = mysqli_query($conn, $fetch_monthly_income);
                 </div>
             </nav>
             <div class="p-5">
-                <h4 style="display:flex; justify-content:flex-end; padding:10px 0px;">Date: &nbsp;<span id="displayDate" style="font-weight: 400;"></span></h4>
+                <h4 style="display:flex; justify-content:flex-end; padding:0px 0px 20px 0px;">Date: &nbsp;<span id="displayDate" style="font-weight: 400;"></span></h4>
 
                 <div class="card">
                     <div class="card-body">
                         <div class="">
                             <form class="row gap-2" method="post">
                                 <div class="col-12">
-                                    <h2 class="ml-2">Add Income</h2>
+                                    <h2>Add Income</h2>
                                 </div>
 
                                 <input type="date" name="date" value="" id="date" readonly hidden>
-                                <div class="col-6">
+                                <div class="col-6" style="transform:translateX(-22px)">
                                     <label for="">Incomed Money</label>
                                     <input type="text" name="incomed_money" value="" required>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-6" style="transform:translateX(22px)">
                                     <label for="">Income Source</label>
                                     <?php if (mysqli_num_rows($income_sources) >= 1) {
                                     ?>
@@ -120,12 +120,12 @@ $income_sources = mysqli_query($conn, $fetch_monthly_income);
 
                                         </select>
                                 </div>
-                                <div class="col-12 ml-2">
+                                <div class="col-12">
                                     <label for="">Summary</label>
                                     <textarea rows="" cols="" name="summary"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn-success ml-2" name="addincome">Add Income</button>
+                                    <button type="submit" class="btn-success" name="addincome">Add Income</button>
                                 </div>
                             </form>
                         </div>

@@ -88,23 +88,23 @@ $date = date("Y-m-d");
                 </div>
             </nav>
             <div class="p-5">
-                <h4 style="display:flex; justify-content:flex-end; padding:10px 0px;">Date: &nbsp;<span id="displayDate" style="font-weight: 400;"></span></h4>
+                <h4 style="display:flex; justify-content:flex-end; padding:0px 0px 20px 0px;">Date: &nbsp;<span id="displayDate" style="font-weight: 400;"></span></h4>
                 <div class="card">
                     <div class="card-body">
                         <div class="">
                             <form class="row gap-2" method="post">
                                 <div class="col-12">
-                                    <h2 class="ml-2">Add Tasks</h2>
+                                    <h2>Add Tasks</h2>
                                 </div>
                                 <div>
                                     <input type="date" hidden name="date" value="" id="date">
                                 </div>
-                                <div class="col-6">
-                                    <label for="">Task Name</label>
-                                    <input type="text" name="task_name" value="" required>
+                                <div class="col-6" style="transform:translateX(-35px)">
+                                    <label for="taskName" class="cursor-pointer">Task Name</label>
+                                    <input id="taskName" type="text" name="task_name" value="" required>
                                 </div>
-                                <div class="col-6">
-                                    <label for="">Importance</label>
+                                <div class="col-6" style="transform:translateX(10px)">
+                                    <label for="select" class="cursor-pointer">Importance</label>
                                     <select id="select" name="importance" required>
                                         <option value="">Select Option</option>
                                         <?php while ($title = mysqli_fetch_assoc($importances)) { ?>
@@ -112,16 +112,16 @@ $date = date("Y-m-d");
                                         <?php } ?>
                                     </select>
                                 </div>
-                                <div class="col-12" style="width:95%">
-                                    <label for="">Due Date</label>
-                                    <input type="date" value="<?php echo date("Y-m-d") ?>" min="<?php echo $date; ?>" name="task_due_date" required>
+                                <div class="col-12">
+                                    <label for="task_due_date" class="cursor-pointer">Due Date</label>
+                                    <input type="date" value="<?php echo date("Y-m-d") ?>" min="<?php echo $date; ?>" name="task_due_date" id="task_due_date" required>
                                 </div>
-                                <div class="col-12 ml-2">
-                                    <label for="">Summary</label>
-                                    <textarea rows="" cols="" name="summary"></textarea>
+                                <div class="col-12 overflow-hidden">
+                                    <label for="summary" class="cursor-pointer">Summary</label>
+                                    <textarea id="summary" rows="" cols="" name="summary"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" name="addtasks" class="btn-success ml-2">Add Tasks</button>
+                                    <button type="submit" name="addtasks" class="btn-success">Add Tasks</button>
                                 </div>
                             </form>
                         </div>

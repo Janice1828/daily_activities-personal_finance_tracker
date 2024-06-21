@@ -102,17 +102,17 @@ $fetch_motives = mysqli_query($conn, $fetch_motives_query);
       <div class="row align-items-center">
         <h1 class="col-12 text-center contact-us-title">Contact us</h1>
         <div class="col-5 justify-content-center d-flex">
-          <div class="contact-us-details">
+          <div class="contact-us-details gap-2">
             <div class="d-flex gap-1 align-items-center">
-              <img src="../icons/location.png" alt="" />
+              <img src="../icons/pin.png" alt="" />
               <p>Imadol, Lalitpur, Nepal</p>
             </div>
             <div class="d-flex gap-1 align-items-center">
-              <img src="../icons/telephone.png" alt="" />
+              <img src="../icons/call.png" alt="" />
               <p>+977 9812345678</p>
             </div>
             <div class="d-flex gap-1 align-items-center">
-              <img src="../icons/email.png" alt="" />
+              <img src="../icons/mail.png" alt="" />
               <p>test@gmail.com</p>
             </div>
           </div>

@@ -41,14 +41,17 @@ if (isset($_POST["login"])) {
   <link rel="stylesheet" href="./style.css">
 </head>
 
-<body style="background-color: #adadad; display:flex; height:100vh; align-items:center; justify-content:center">
+<body style="background-color: #f5f2f2; display:flex; height:100vh; align-items:center; justify-content:center">
   <div class="p-5">
     <form action="" method="post" id="loginForm">
       <h2 style="text-align:center">Login</h2>
 
       <div><label for="">Email</label> <input type="email" name="email" required /></div>
-      <div class="position-relative"><label for="">Password</label> <input name="password" type="password" id="password" required /><span class="position-absolute cursor-pointer" id="loginShowPassword">Show</span></div>
-      <div><button name="login">Login</button></div>
+      <div class="position-relative"><label for="">Password</label>
+        <input name="password" type="password" id="password" required />
+        <img src="./icons/view.png" class="position-absolute cursor-pointer" id="loginShowPassword" alt="">
+      </div>
+      <div><button name="login" class="w-100">Login</button></div>
       <div class="invalid-user-error-displayer">
         <p id="invalid-userErr"><?php echo $invalidUserErr; ?></p>
       </div>
@@ -66,10 +69,10 @@ if (isset($_POST["login"])) {
     const password = document.getElementById('password');
     if (password.type == 'password') {
       password.type = "text"
-      this.innerHTML = "Hide"
+      this.src = "./icons/hide.png"
     } else {
       password.type = "password";
-      this.innerHTML = "Show"
+      this.src = "./icons/view.png"
     }
   })
 </script>

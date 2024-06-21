@@ -15,12 +15,8 @@ if (isset($_POST['addexpenses'])) {
     $sub = mysqli_query($conn, $sql);
     header("location:./view_expense.php");
 }
-// $getexpenses = "";
-// $getexpenses = "SELECT dapf_allocatebudget.id, dapf_allocatebudget.allocation_for,dapf_monthlyexpense.title,dapf_monthlyexpense.id AS monthly_expense_id FROM dapf_allocatebudget LEFT JOIN dapf_monthlyexpense ON dapf_monthlyexpense.id=dapf_allocatebudget.allocation_for WHERE dapf_allocatebudget.user_id=$user_id";
 $getexpenses = "SELECT id, user_id, title FROM dapf_monthlyexpense WHERE user_id=$user_id";
 $data = mysqli_query($conn, $getexpenses);
-// $data = " ";
-// echo mysqli_num_rows($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,20 +85,20 @@ $data = mysqli_query($conn, $getexpenses);
                 </div>
             </nav>
             <div class="p-5">
-                <h4 style="display:flex; justify-content:flex-end; padding:10px 0px;">Date: &nbsp;<span id="displayDate" style="font-weight: 400;"></span></h4>
+                <h4 style="display:flex; justify-content:flex-end; padding:0px 0px 20px 0px;">Date: &nbsp;<span id="displayDate" style="font-weight: 400;"></span></h4>
                 <div class="card">
                     <div class="card-body">
                         <div class="">
                             <form class="row gap-2" method="post">
                                 <div class="col-12">
-                                    <h2 class="ml-2">Add Expenses</h2>
+                                    <h2>Add Expenses</h2>
                                 </div>
                                 <input type="date" name="date" value="" id="date" readonly hidden>
-                                <div class="col-6">
+                                <div class="col-6" style="transform: translateX(-24px);">
                                     <label for="">Money Spent</label>
                                     <input type="text" name="money_spent" value="" required>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-6" style="transform: translateX(20px);">
                                     <label for="">Money Spent On</label>
                                     <?php
                                     if (mysqli_num_rows($data) >= 1) {
@@ -123,12 +119,12 @@ $data = mysqli_query($conn, $getexpenses);
                                     }
                                     ?>
                                 </div>
-                                <div class="col-12 ml-2">
+                                <div class="col-12">
                                     <label for="">Summary</label>
                                     <textarea rows="" cols="" name="summary"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn-success ml-2" name="addexpenses">Add Expenses</button>
+                                    <button type="submit" class="btn-success" name="addexpenses">Add Expenses</button>
                                 </div>
                             </form>
                         </div>

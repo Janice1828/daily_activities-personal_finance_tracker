@@ -30,7 +30,7 @@ if (isset($_POST['register'])) {
   <link rel="stylesheet" href="./style.css">
 </head>
 
-<body style="background-color: #adadad; display:flex; height:100vh; align-items:center; justify-content:center">
+<body style="background-color: #f5f2f2; display:flex; height:100vh; align-items:center; justify-content:center">
 
   <div class="p-5">
     <form action="" method="post" id="registrationForm">
@@ -39,11 +39,13 @@ if (isset($_POST['register'])) {
       <div><label for="">Email</label> <input name="email" type="email" required />
         <p class="error-color"><?php echo $emailValidationErr; ?></p>
       </div>
-      <div class="position-relative"><label for="">Password</label> <input name="password" type="password" required id="password" /><span class="position-absolute cursor-pointer" id="registerShowPassword">Show</span>
+      <div class="position-relative"><label for="">Password</label>
+        <input name="password" type="password" required id="password" />
+        <img src="./icons/view.png" class="position-absolute cursor-pointer" id="registerShowPassword" alt="">
         <p class="error-color"><?php echo $passwordValidationErr ?></p>
       </div>
-      <div><button name="register">Registration</button></div>
-      <div>
+      <div><button name="register" class="w-100">Register</button></div>
+      <div style="margin-top:25px;">
         or <a href="./login.php">Login?</a>
       </div>
     </form>
@@ -58,10 +60,10 @@ if (isset($_POST['register'])) {
     const password = document.getElementById('password');
     if (password.type == 'password') {
       password.type = "text"
-      this.innerHTML = "Hide"
+      this.src = "./icons/hide.png"
     } else {
       password.type = "password";
-      this.innerHTML = "Show"
+      this.src = "./icons/view.png"
     }
   })
 </script>
