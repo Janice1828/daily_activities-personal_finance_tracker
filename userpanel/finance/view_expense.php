@@ -6,9 +6,57 @@ if ($login_status != "true") {
 }
 $user_id = $_SESSION['user_id'];
 include("../../connection.php");
+
+$start = 0;
+$rows_per_page = 10;
+$expenses = $conn->query("SELECT * FROM dapf_expense WHERE `user_id`=$user_id");
+$no_of_pages = mysqli_num_rows($expenses);
+
 // $selectQuery = "SELECT dapf_expense.id, dapf_expense.date, dapf_expense.money_spent, dapf_allocatebudget.allocation_for, dapf_allocatebudget.estimated_money,dapf_allocatebudget.estimated_money FROM dapf_expense LEFT JOIN dapf_allocatebudget ON  dapf_expense.spent_on = dapf_allocatebudget.id WHERE dapf_expense.user_id=$user_id ORDER BY dapf_expense.id DESC ";
-$selectQuery = "SELECT spent_on, SUM(money_spent) AS total_spent, dapf_monthlyexpense.title, dapf_allocatebudget.estimated_money FROM dapf_expense LEFT JOIN dapf_monthlyexpense ON dapf_expense.spent_on=dapf_monthlyexpense.id LEFT JOIN dapf_allocatebudget ON dapf_allocatebudget.allocation_for=dapf_expense.spent_on WHERE dapf_expense.user_id=$user_id GROUP BY dapf_expense.spent_on";
+$selectQuery = "SELECT spent_on, SUM(money_spent) AS total_spent, dapf_monthlyexpense.title, dapf_allocatebudget.estimated_money FROM dapf_expense LEFT JOIN dapf_monthlyexpense ON dapf_expense.spent_on=dapf_monthlyexpense.id LEFT JOIN dapf_allocatebudget ON dapf_allocatebudget.allocation_for=dapf_expense.spent_on WHERE dapf_expense.user_id=$user_id GROUP BY dapf_expense.spent_on LIMIT $start, $rows_per_page";
 $fetch = mysqli_query($conn, $selectQuery);
+
+$pages = ceil($no_of_pages / $rows_per_page);
+if (isset($_GET['page-nr'])) {
+    $id = $_GET['page-nr'];
+    $page = $id - 1;
+    $start = $page * $rows_per_page;
+} else {
+    $id = 1;
+}
+$current_page = isset($_GET['page-nr']) ? (int)$_GET['page-nr'] : 1;
+function createPageLinks($total_pages, $current_page, $limit = 5)
+{
+    $start_page = max(1, $current_page - intval($limit / 2));
+    $end_page = min($total_pages, $current_page + intval($limit / 2));
+
+    if ($end_page - $start_page < $limit) {
+        $start_page = max(1, $end_page - $limit + 1);
+    }
+
+    $page_links = [];
+    if ($start_page > 1) {
+        $page_links[] = 1;
+        if ($start_page > 2) {
+            $page_links[] = '...';
+        }
+    }
+
+    for ($i = $start_page; $i <= $end_page; $i++) {
+        $page_links[] = $i;
+    }
+
+    if ($end_page < $total_pages) {
+        if ($end_page < $total_pages - 1) {
+            $page_links[] = '...';
+        }
+        $page_links[] = $total_pages;
+    }
+
+    return $page_links;
+}
+
+$page_links = createPageLinks($pages, $current_page);
 
 ?>
 <!DOCTYPE html>
@@ -81,7 +129,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                 <div class="card">
                     <div class="card-body">
                         <div class="">
-                            <form class="row gap-2">
+                            <div class="row gap-2">
                                 <div class="col-12">
                                     <h2>View Expenses</h2>
                                 </div>
@@ -110,7 +158,27 @@ $fetch = mysqli_query($conn, $selectQuery);
                                         <?php } ?>
                                     </tbody>
                                 </table>
-                            </form>
+                            </div>
+                            <div class="col-12">
+                                <div class="pagination d-flex gap-1 align-items-center">
+                                    <a href="?page-nr=<?php echo 1 ?>" class="start-page pagination-btns">First</a>
+                                    <div class="page-numbers d-flex gap-1">
+                                        <?php
+                                        foreach ($page_links as $link) {
+                                            if ($link == '...') {
+                                                echo '<span class="pagination-ellipsis">...</span>';
+                                            } else {
+                                                $active_class = ($link == $current_page) ? 'active-page' : '';
+                                                echo '<a href="?page-nr=' . $link . '" class="pagination-btns ' . $active_class . '">' . $link . '</a>';
+                                            }
+                                        }
+                                        ?>
+
+                                    </div>
+                                    <a href="?page-nr=<?php echo $pages ?>" class="end-page pagination-btns">Last</a>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>

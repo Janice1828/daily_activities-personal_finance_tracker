@@ -28,8 +28,7 @@ if (getMonth < 10) {
 if (d < 10) {
   d = "0" + d;
 }
-document.getElementById("date").value = `${year}-${getMonth}-${d}`;
-document.getElementById("displayDate").innerHTML = `${year}-${getMonth}-${d}`;
+
 function displayTask() {
   let tasksLists = document.getElementById("tasks-lists");
   const tasksToggle = document.getElementById("tasks-toggle-icon");
@@ -195,3 +194,8 @@ function addInput(containerName) {
     divContainer.remove();
   });
 }
+let pageLinks = document.querySelectorAll(".page-numbers > a");
+let bodyId = parseInt(document.body.id) - 1;
+pageLinks[bodyId].classList.add("active-page");
+document.getElementById("date").value = `${year}-${getMonth}-${d}`;
+document.getElementById("displayDate").innerHTML = `${year}-${getMonth}-${d}`;

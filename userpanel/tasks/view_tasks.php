@@ -6,9 +6,55 @@ session_start();
 // }
 include("../../connection.php");
 $user_id = $_SESSION['user_id'];
-$selectQuery = "SELECT id,date, user_id,importance, task_name, task_due_date,status, importance FROM dapf_tasks WHERE `deleted_status` = 0 AND `user_id`=$user_id ORDER BY status DESC ";
+$start = 0;
+$rows_per_page = 10;
+$tasks = $conn->query("SELECT * FROM dapf_tasks WHERE `deleted_status` = 0 AND `user_id`=$user_id");
+$no_of_rows = mysqli_num_rows($tasks);
+$pages = ceil($no_of_rows / $rows_per_page);
+if (isset($_GET['page-nr'])) {
+    $id = $_GET['page-nr'];
+    $page = $_GET['page-nr'] - 1;
+    $start = $page * $rows_per_page;
+} else {
+    $id = 1;
+}
+$selectQuery = "SELECT id,date, user_id,importance, task_name, task_due_date,status, importance FROM dapf_tasks WHERE `deleted_status` = 0 AND `user_id`=$user_id ORDER BY task_due_date DESC LIMIT $start, $rows_per_page";
 $fetch = mysqli_query($conn, $selectQuery);
 $date = date("Y-m-d");
+$current_page = isset($_GET['page-nr']) ? (int)$_GET['page-nr'] : 1;
+
+function createPageLinks($total_pages, $current_page, $limit = 5)
+{
+    $start_page = max(1, $current_page - intval($limit / 2));
+    $end_page = min($total_pages, $current_page + intval($limit / 2));
+
+    if ($end_page - $start_page < $limit) {
+        $start_page = max(1, $end_page - $limit + 1);
+    }
+
+    $page_links = [];
+    if ($start_page > 1) {
+        $page_links[] = 1;
+        if ($start_page > 2) {
+            $page_links[] = '...';
+        }
+    }
+
+    for ($i = $start_page; $i <= $end_page; $i++) {
+        $page_links[] = $i;
+    }
+
+    if ($end_page < $total_pages) {
+        if ($end_page < $total_pages - 1) {
+            $page_links[] = '...';
+        }
+        $page_links[] = $total_pages;
+    }
+
+    return $page_links;
+}
+
+$page_links = createPageLinks($pages, $current_page);
 
 ?>
 
@@ -21,8 +67,17 @@ $date = date("Y-m-d");
     <title>Daily Activities & Personal Finance Tracker</title>
     <link rel="stylesheet" href="../../style.css">
 </head>
+<?php
 
-<body>
+// if (isset($_GET['page-nr'])) {
+//     $id = $_GET['page-nr'];
+// } else {
+//     $id = 1;
+// }
+
+?>
+
+<body id="<?php echo $id; ?>">
     <div class="row">
         <div class="col-2">
             <div class="sidebar d-flex flex-column gap-1">
@@ -80,9 +135,9 @@ $date = date("Y-m-d");
                 <div class="card">
                     <div class="card-body">
                         <div class="">
-                            <form class="row gap-2">
+                            <div class="row gap-2">
                                 <div class="col-12 d-flex justify-content-between">
-                                    <h2>View Tasks</h2>WWWW
+                                    <h2>View Tasks</h2>
                                     <a href="./daily_tasks.php" id="add-daily-tasks-btn">Add Daily Tasks</a>
                                 </div>
                                 <table class="col-12" cellpadding="10" cellspacing="0">
@@ -99,35 +154,63 @@ $date = date("Y-m-d");
                                     <tbody>
                                         <?php
                                         $i = 0;
+                                        echo $date;
+                                        echo "<br/>";
                                         while ($row = mysqli_fetch_assoc($fetch)) {
-                                            if ($row['task_due_date'] >= $date || $row['status'] === 'completed') {
+                                            // echo $row['task_due_date'];
+                                            // echo "<br/>";
+                                            // if ($row['task_due_date'] >= $date || $row['status'] === 'completed') {
                                         ?>
-                                                <tr>
-                                                    <td><?php echo ++$i; ?></td>
-                                                    <td><a style="text-decoration: none; color:blue" href="./task_detail.php?id=<?php echo $row['id'] ?>"><?php echo $row['task_name'] ?></a></td>
-                                                    <td><?php echo $row['importance'] ?></td>
-                                                    <td><?php echo $row['task_due_date']  ?></td>
-                                                    <td><?php echo $row['status']  ?></td>
-                                                    <td>
+                                            <tr>
+                                                <td><?php echo ++$i; ?></td>
+                                                <td><a style="text-decoration: none; color:blue" href="./task_detail.php?id=<?php echo $row['id'] ?>"><?php echo $row['task_name'] ?></a></td>
+                                                <td><?php echo $row['importance'] ?></td>
+                                                <td><?php echo $row['task_due_date']  ?></td>
+                                                <td><?php echo $row['status']  ?></td>
+                                                <td>
+                                                    <?php
+                                                    if ($row['status'] == "completed") {
+                                                        echo "completed";
+                                                    } else if ($row['task_due_date'] < $date) {
+                                                        echo "Expired";
+                                                    } else {
+                                                    ?>
+                                                        <a href="./complete_task.php?id=<?php echo $row['id'] ?>" class="btn-primary">Complete</a>
+                                                        <a href="./editform.php?id=<?php echo $row['id'] ?>" class="btn-secondary">Update</a>
+                                                        <a href="./delete.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a>
                                                         <?php
-                                                        if ($row['status'] == "completed") {
-                                                            echo "completed";
-                                                        } else {
-                                                        ?>
-                                                            <a href="./complete_task.php?id=<?php echo $row['id'] ?>" class="btn-primary">Complete</a>
-                                                            <a href="./editform.php?id=<?php echo $row['id'] ?>" class="btn-secondary">Update</a>
-                                                            <a href="./delete.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a>
-                                                        <?php }
+                                                        // }
 
                                                         ?>
-                                                    </td>
-                                                </tr>
-                                        <?php }
-                                        } ?>
+                                                </td>
+                                            </tr>
+                                    <?php }
+                                                } ?>
 
                                     </tbody>
                                 </table>
-                            </form>
+                                <div class="col-12">
+                                    <div class="pagination d-flex gap-1 align-items-center">
+                                        <a href="?page-nr=<?php echo 1 ?>" class="start-page pagination-btns">First</a>
+                                        <div class="page-numbers d-flex gap-1">
+                                            <?php
+                                            foreach ($page_links as $link) {
+                                                if ($link == '...') {
+                                                    echo '<span class="pagination-ellipsis">...</span>';
+                                                } else {
+                                                    $active_class = ($link == $current_page) ? 'active-page' : '';
+                                                    echo '<a href="?page-nr=' . $link . '" class="pagination-btns ' . $active_class . '">' . $link . '</a>';
+                                                }
+                                            }
+                                            ?>
+
+                                        </div>
+                                        <a href="?page-nr=<?php echo $pages ?>" class="end-page pagination-btns">Last</a>
+
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
 
                     </div>

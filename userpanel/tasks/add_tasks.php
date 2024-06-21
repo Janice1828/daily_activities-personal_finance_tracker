@@ -101,11 +101,11 @@ $date = date("Y-m-d");
                                 </div>
                                 <div class="col-6">
                                     <label for="">Task Name</label>
-                                    <input type="text" name="task_name" value="">
+                                    <input type="text" name="task_name" value="" required>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Importance</label>
-                                    <select id="select" name="importance">
+                                    <select id="select" name="importance" required>
                                         <option value="">Select Option</option>
                                         <?php while ($title = mysqli_fetch_assoc($importances)) { ?>
                                             <option value="<?php echo $title['title'];  ?>"><?php echo $title['title'] ?></option>
@@ -114,7 +114,7 @@ $date = date("Y-m-d");
                                 </div>
                                 <div class="col-12" style="width:95%">
                                     <label for="">Due Date</label>
-                                    <input type="date" value="<?php echo date("Y-m-d") ?>" min="<?php echo $date; ?>" name="task_due_date">
+                                    <input type="date" value="<?php echo date("Y-m-d") ?>" min="<?php echo $date; ?>" name="task_due_date" required>
                                 </div>
                                 <div class="col-12 ml-2">
                                     <label for="">Summary</label>
