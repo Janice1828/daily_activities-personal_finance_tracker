@@ -129,6 +129,28 @@ function toggleContactus() {
     toggleLogo.src = "../../icons/arrow_down.png";
   }
 }
+function toggleIncome() {
+  const sidebarincomesList = document.getElementById("incomes-list");
+  const arrowIcon = document.getElementById("incomeArrow");
+  if (sidebarincomesList.style.display == "none") {
+    sidebarincomesList.style.display = "block";
+    arrowIcon.src = "../../icons/arrow_up.png";
+  } else {
+    arrowIcon.src = "../../icons/arrow_down.png";
+    sidebarincomesList.style.display = "none";
+  }
+}
+function toggleExpenses() {
+  const sidebarexpensesList = document.getElementById("expenses-list");
+  const arrowIcon = document.getElementById("expenseArrow");
+  if (sidebarexpensesList.style.display == "none") {
+    sidebarexpensesList.style.display = "block";
+    arrowIcon.src = "../../icons/arrow_up.png";
+  } else {
+    sidebarexpensesList.style.display = "none";
+    arrowIcon.src = "../../icons/arrow_down.png";
+  }
+}
 function toggleContactusback() {
   const contactList = document.getElementById("message-back-lists");
   const toggleLogo = document.getElementById("contact-toggle-back-img");

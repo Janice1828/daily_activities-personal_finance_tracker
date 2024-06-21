@@ -55,19 +55,33 @@ $data = mysqli_query($conn, $getexpenses);
                         </div>
                         <img src="../../icons/arrow_down.png" class="sidebar-logo" id="finance-toggle-logo" alt="">
                     </h2>
-                    <ul style="padding-left:30px" id="finance-lists">
-                        <li><a href="./add_income.php">Add Income</a></li>
-                        <li><a href="./view_income.php">View Income</a></li>
-                        <li><a href="#" class="active-sidebar">Add Expense</a></li>
-                        <li><a href="./view_expense.php">View Expenses</a></li>
-                        <li><a href="./add_monthly_income.php">Add Monthly Income</a></li>
-                        <li><a href="./view_monthly_income.php">View Monthly Incomes</a></li>
-
-                        <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
-                        <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
-                        <li><a href="./allocate_budget.php">Allocate Budget</a></li>
-                        <li><a href="./view_allocatedbudget.php">View Allocated Budget</a></li>
-
+                    <ul style="padding-left:30px;" id="finance-lists">
+                        <li style="padding-left:5px;">
+                            <div class="d-flex justify-content-between">
+                                <h4 onclick="toggleIncome()" class="cursor-pointer income-expense-title">Incomes</h4>
+                                <img src="../../icons/arrow_down.png" id="incomeArrow" class="incomeExpensesArrow" alt="">
+                            </div>
+                            <ul style="padding-left:5px; display:none" id="incomes-list">
+                                <li><a href="./add_income.php">Add Income</a></li>
+                                <li><a href="./view_income.php">View Income</a></li>
+                                <li><a href="./add_monthly_income.php">Add Monthly Income</a></li>
+                                <li><a href="./view_monthly_income.php">View Monthly Incomes</a></li>
+                            </ul>
+                        </li>
+                        <li style="padding-left:5px">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="cursor-pointer income-expense-title" onclick="toggleExpenses()">Expenses</h4>
+                                <img src="../../icons/arrow_down.png" id="expenseArrow" class="incomeExpensesArrow" alt="">
+                            </div>
+                            <ul style="padding-left:5px; display:none;" id="expenses-list">
+                                <li><a href="#" class="active-sidebar">Add Expense</a></li>
+                                <li><a href="./view_expense.php">View Expenses</a></li>
+                                <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
+                                <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
+                                <li><a href="./allocate_budget.php">Allocate Budget</a></li>
+                                <li><a href="./view_allocatedbudget.php">View Allocated Budget</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>

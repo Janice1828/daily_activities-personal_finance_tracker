@@ -165,6 +165,7 @@ form div button {
   filter: brightness(100%) !important;
   width: 20px !important;
 }
+
 .input-sub-icon {
   height: 25px !important;
   filter: brightness(100%) !important;
@@ -182,8 +183,14 @@ form div button {
   color: rgba(0, 0, 0, 0.7);
   border-radius: 3px;
 }
+.income-expense-title {
+  font-weight: 500;
+}
 .p-5 {
   padding: 50px;
+}
+.incomeExpensesArrow {
+  height: 15px;
 }
 .p-3 {
   padding: 30px;

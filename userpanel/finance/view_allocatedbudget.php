@@ -6,14 +6,10 @@ if ($login_status != "true") {
 }
 include("../../connection.php");
 $user_id = $_SESSION['user_id'];
-
-
 $start = 0;
 $rows_per_page = 10;
 $monthly_expenses = $conn->query("SELECT * FROM dapf_allocatebudget WHERE `user_id`=$user_id");
 $no_of_pages = mysqli_num_rows($monthly_expenses);
-
-
 $pages = ceil($no_of_pages / $rows_per_page);
 if (isset($_GET['page-nr'])) {
     $id = $_GET['page-nr'];
@@ -98,7 +94,33 @@ $fetch = mysqli_query($conn, $selectQuery);
                         <img src="../../icons/arrow_down.png" class="sidebar-logo" id="finance-toggle-logo" alt="">
                     </h2>
                     <ul style="padding-left:30px;" id="finance-lists">
-                        <li><a href="./add_income.php">Add Income</a></li>
+                        <li style="padding-left:5px;">
+                            <div class="d-flex justify-content-between">
+                                <h4 onclick="toggleIncome()" class="cursor-pointer income-expense-title">Incomes</h4>
+                                <img src="../../icons/arrow_down.png" id="incomeArrow" class="incomeExpensesArrow" alt="">
+                            </div>
+                            <ul style="padding-left:5px; display:none" id="incomes-list">
+                                <li><a href="./add_income.php">Add Income</a></li>
+                                <li><a href="./view_income.php">View Income</a></li>
+                                <li><a href="./add_monthly_income.php">Add Monthly Income</a></li>
+                                <li><a href="./view_monthly_income.php">View Monthly Incomes</a></li>
+                            </ul>
+                        </li>
+                        <li style="padding-left:5px">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="cursor-pointer income-expense-title" onclick="toggleExpenses()">Expenses</h4>
+                                <img src="../../icons/arrow_down.png" id="expenseArrow" class="incomeExpensesArrow" alt="">
+                            </div>
+                            <ul style="padding-left:5px; display:none;" id="expenses-list">
+                                <li><a href="./add_expenses.php">Add Expense</a></li>
+                                <li><a href="./view_expense.php">View Expenses</a></li>
+                                <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
+                                <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
+                                <li><a href="./allocate_budget.php">Allocate Budget</a></li>
+                                <li><a href="./view_allocatedbudget.php" class="active-sidebar">View Allocated Budget</a></li>
+                            </ul>
+                        </li>
+                        <!-- <li><a href="./add_income.php">Add Income</a></li>
                         <li><a href="./view_income.php">View Income</a></li>
                         <li><a href="./add_expenses.php">Add Expense</a></li>
                         <li><a href="./view_expense.php">View Expenses</a></li>
@@ -107,7 +129,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                         <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
                         <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
                         <li><a href="./allocate_budget.php">Allocate Budget</a></li>
-                        <li><a href="./view_allocatedbudget.php" class="active-sidebar">View Allocated Budget</a></li>
+                        <li><a href="./view_allocatedbudget.php" class="active-sidebar">View Allocated Budget</a></li> -->
 
                     </ul>
                 </div>

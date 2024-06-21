@@ -49,7 +49,6 @@ if (isset($_POST['addexpense'])) {
                         <li><a href="../tasks/completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>
-
                 <div class="sidebar-finance">
                     <h2 class="sidebar-heading cursor-pointer d-flex align-items-center justify-content-between" onclick="toggleFinances()">
                         <div class="d-flex align-items-center gap-1">
@@ -57,20 +56,36 @@ if (isset($_POST['addexpense'])) {
                         </div>
                         <img src="../../icons/arrow_down.png" class="sidebar-logo" id="finance-toggle-logo" alt="">
                     </h2>
-                    <ul style="padding-left:30px" id="finance-lists">
-                        <li><a href="./add_income.php">Add Income</a></li>
-                        <li><a href="./view_income.php">View Income</a></li>
-                        <li><a href="./add_expenses.php">Add Expense</a></li>
-                        <li><a href="./view_expense.php">View Expenses</a></li>
-                        <li><a href="./add_monthly_income.php">Add Monthly Income</a></li>
-                        <li><a href="./view_monthly_income.php">View Monthly Incomes</a></li>
-                        <li><a href="./add_monthly_expense.php" class="active-sidebar">Add Monthly Expenses</a></li>
-                        <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
-                        <li><a href="./allocate_budget.php">Allocate Budget</a></li>
-                        <li><a href="./view_allocatedbudget.php">View Allocated Budget</a></li>
-
+                    <ul style="padding-left:30px;" id="finance-lists">
+                        <li style="padding-left:5px;">
+                            <div class="d-flex justify-content-between">
+                                <h4 onclick="toggleIncome()" class="cursor-pointer income-expense-title">Incomes</h4>
+                                <img src="../../icons/arrow_down.png" id="incomeArrow" class="incomeExpensesArrow" alt="">
+                            </div>
+                            <ul style="padding-left:5px; display:none" id="incomes-list">
+                                <li><a href="./add_income.php">Add Income</a></li>
+                                <li><a href="./view_income.php">View Income</a></li>
+                                <li><a href="./add_monthly_income.php">Add Monthly Income</a></li>
+                                <li><a href="./view_monthly_income.php">View Monthly Incomes</a></li>
+                            </ul>
+                        </li>
+                        <li style="padding-left:5px">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="cursor-pointer income-expense-title" onclick="toggleExpenses()">Expenses</h4>
+                                <img src="../../icons/arrow_down.png" id="expenseArrow" class="incomeExpensesArrow" alt="">
+                            </div>
+                            <ul style="padding-left:5px; display:none;" id="expenses-list">
+                                <li><a href="./add_expenses.php">Add Expense</a></li>
+                                <li><a href="./view_expense.php">View Expenses</a></li>
+                                <li><a href="#" class="active-sidebar">Add Monthly Expenses</a></li>
+                                <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
+                                <li><a href="./allocate_budget.php">Allocate Budget</a></li>
+                                <li><a href="./view_allocatedbudget.php">View Allocated Budget</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
+
             </div>
         </div>
         <div class="col-10">
