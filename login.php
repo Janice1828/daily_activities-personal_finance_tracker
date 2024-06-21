@@ -6,16 +6,19 @@ $invalidUserErr = "";
 if (isset($_POST["login"])) {
   $email = $_POST["email"];
   $password = $_POST["password"];
-  $selectQuery = "SELECT id,fullname, email, password,usertype FROM $tbl_name where email='$email' && password='$password'";
+  $selectQuery = "SELECT id,fullname, status, email, password,usertype FROM $tbl_name where email='$email' && password='$password'";
   $execute = mysqli_query($conn, $selectQuery);
   $fetchedData = mysqli_fetch_assoc($execute);
-
   if ($fetchedData) {
-    if ($fetchedData['email'] === $email && $fetchedData['password'] === $password && $fetchedData['usertype'] == "user") {
-      $_SESSION['logged_in'] = "true";
-      $_SESSION['user_id'] = $fetchedData['id'];
-      $_SESSION['fullname'] = $fetchedData['fullname'];
-      header("location:./userpanel/dashboard.php");
+    if ($fetchedData['email'] === $email && $fetchedData['password'] === $password &&  $fetchedData['usertype'] == "user") {
+      if ($fetchedData['status'] == 1) {
+        $_SESSION['logged_in'] = "true";
+        $_SESSION['user_id'] = $fetchedData['id'];
+        $_SESSION['fullname'] = $fetchedData['fullname'];
+        header("location:./userpanel/dashboard.php");
+      } else {
+        $invalidUserErr = "User Not Found!";
+      }
     } else if ($fetchedData['email'] === $email && $fetchedData['password'] === $password && $fetchedData['usertype'] == "admin") {
       $_SESSION['user_id'] = $fetchedData['id'];
       $_SESSION['fullname'] = $fetchedData['fullname'];

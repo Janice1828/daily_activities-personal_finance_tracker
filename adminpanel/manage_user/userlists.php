@@ -105,7 +105,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                                                     <td><?php echo ++$i; ?></td>
                                                     <td><?php echo $row['fullname'] ?></td>
                                                     <td><?php echo $row['email'] ?></td>
-                                                    <td><a href="./delete_user.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a></td>
+                                                    <td><a href="./delete_user.php?id=<?php echo $row['id'] ?>" class="btn-danger">Deactivate User</a></td>
                                                 </tr>
                                         <?php
                                             }

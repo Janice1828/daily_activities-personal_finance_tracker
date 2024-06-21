@@ -13,7 +13,6 @@ $start = 0;
 $rows_per_page = 10;
 $monthly_incomes = $conn->query("SELECT * FROM dapf_monthlyincome WHERE `user_id`=$user_id");
 $no_of_pages = mysqli_num_rows($monthly_incomes);
-echo $no_of_pages;
 
 
 

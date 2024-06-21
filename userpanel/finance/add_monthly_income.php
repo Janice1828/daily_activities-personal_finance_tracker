@@ -93,7 +93,7 @@ if (isset($_POST['addincome'])) {
                                     <label for="">Title</label>
                                     <div id="monthlyincome-repeater-fields" class="d-flex flex-column gap-2">
                                         <div class="d-flex gap-2">
-                                            <input type="text" name="title[]" value="">
+                                            <input type="text" name="title[]" value="" required>
                                             <button onclick="addIncomeInput()">+</button>
                                         </div>
 
