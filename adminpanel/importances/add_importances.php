@@ -41,7 +41,7 @@ if (isset($_POST['addimportances'])) {
                         <h2>Motives</h2>
                         <li><a href="#">Add Motives</a></li>
                         <li><a href="./motives_list.php">Motives List</a></li>
-                        <li><a href="./manage_motives.php">Manage Motives</a></li>
+
                     </ul>
                     <ul style="margin-top:15px">
                         <h2>Contact Us</h2>
@@ -71,7 +71,7 @@ if (isset($_POST['addimportances'])) {
                         <div class="">
                             <form class="row gap-2" method="post">
                                 <div class="col-12">
-                                    <h2 class="ml-2">Add Importances</h2>
+                                    <h2>Add Importances</h2>
                                 </div>
 
                                 <div class="col-12">
@@ -79,7 +79,7 @@ if (isset($_POST['addimportances'])) {
                                     <input type="text" name="title" value="">
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" name="addimportances" class="btn-success ml-2">Add Importance</button>
+                                    <button type="submit" name="addimportances" class="btn-success">Add Importance</button>
                                 </div>
                             </form>
                         </div>

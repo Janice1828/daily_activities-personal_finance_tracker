@@ -155,7 +155,6 @@ $page_links = createPageLinks($pages, $current_page);
                             <div class="row gap-2">
                                 <div class="col-12 d-flex justify-content-between">
                                     <h2>View Tasks</h2>
-                                    <a href="./daily_tasks.php" id="add-daily-tasks-btn">Add Daily Tasks</a>
                                 </div>
                                 <table class="col-12" cellpadding="10" cellspacing="0">
                                     <thead>
@@ -171,11 +170,8 @@ $page_links = createPageLinks($pages, $current_page);
                                     <tbody>
                                         <?php
                                         $i = 0;
-                                        echo "<br/>";
                                         while ($row = mysqli_fetch_assoc($fetch)) {
-                                            // echo $row['task_due_date'];
-                                            // echo "<br/>";
-                                            // if ($row['task_due_date'] >= $date || $row['status'] === 'completed') {
+
                                         ?>
                                             <tr>
                                                 <td><?php echo ++$i; ?></td>

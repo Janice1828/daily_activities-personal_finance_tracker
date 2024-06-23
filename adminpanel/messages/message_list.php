@@ -55,7 +55,6 @@ $res = mysqli_query($conn, $message_fetch_query);
                     <ul style="padding-left:30px; display:none" id="motive-lists">
                         <li><a href="../motives/add_motives.php">Add Motives</a></li>
                         <li><a href="../motives/motives_list.php">Motives List</a></li>
-                        <li><a href="../motives/manage_motives.php">Manage Motives</a></li>
                     </ul>
                     <h5 class="pt-1 sidebar-heading d-flex justify-content-between align-items-center cursor-pointer" onclick="toggleContactus()">
                         <div class="d-flex align-items-center gap-1">

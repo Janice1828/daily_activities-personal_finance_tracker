@@ -55,7 +55,6 @@ $fetch = mysqli_query($conn, $selectQuery);
                     <ul style="padding-left:30px; display:none" id="motive-back-lists">
                         <li><a href="./motives/add_motives.php">Add Motives</a></li>
                         <li><a href="./motives/motives_list.php">Motives List</a></li>
-                        <li><a href="./motives/manage_motives.php">Manage Motives</a></li>
                     </ul>
                     <h5 class="pt-1 sidebar-heading cursor-pointer d-flex align-items-center justify-content-between" onclick="toggleContactusback()">
                         <div class="d-flex gap-1 align-items-center">

@@ -68,7 +68,7 @@ if (isset($_POST['addmotive'])) {
                     <ul style="padding-left:30px;" id="motive-lists">
                         <li><a href="#" class="active-sidebar">Add Motives</a></li>
                         <li><a href="./motives_list.php">Motives List</a></li>
-                        <li><a href="./manage_motives.php">Manage Motives</a></li>
+
                     </ul>
                     <h5 class="pt-1 sidebar-heading d-flex justify-content-between align-items-center cursor-pointer" onclick="toggleContactus()">
                         <div class="d-flex align-items-center gap-1">

@@ -56,7 +56,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                     <ul style="padding-left:30px;" id="motive-lists">
                         <li><a href="./add_motives.php">Add Motives</a></li>
                         <li><a href="#" class="active-sidebar">Motives List</a></li>
-                        <li><a href="./manage_motives.php">Manage Motives</a></li>
+
                     </ul>
                     <h5 class="pt-1 sidebar-heading d-flex justify-content-between align-items-center cursor-pointer" onclick="toggleContactus()">
                         <div class="d-flex align-items-center gap-1">
@@ -98,6 +98,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                                             <th>SN</th>
                                             <th>Title</th>
                                             <th>Image</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -110,6 +111,10 @@ $fetch = mysqli_query($conn, $selectQuery);
                                                     $id++; ?></td>
                                                 <td><?php echo $row['title'] ?></td>
                                                 <td><img src="../../images/<?php echo $row['image'] ?>" style="height:50px; width:50px;" /></td>
+                                                <td class="d-flex gap-1">
+                                                    <a href="./update_motives.php?id=<?php echo $row['id']; ?>" class="btn-secondary">Update</a>
+                                                    <a href="./delete_motives.php?id=<?php echo $row['id']; ?>" class="btn-danger">Delete</a>
+                                                </td>
                                             </tr>
                                         <?php } ?>
 
