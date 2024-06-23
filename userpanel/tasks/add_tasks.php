@@ -59,7 +59,7 @@ $date = date("Y-m-d");
                         </div>
                         <img src="../../icons/arrow_down.png" class="sidebar-logo" id="finance-toggle-logo" alt="">
                     </h2>
-                    <ul style="padding-left:30px;" id="finance-lists">
+                    <ul style="padding-left:30px; display:none" id="finance-lists">
                         <li style="padding-left:5px;">
                             <div class="d-flex justify-content-between">
                                 <h4 onclick="toggleIncome()" class="cursor-pointer income-expense-title">Incomes</h4>

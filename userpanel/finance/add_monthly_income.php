@@ -39,7 +39,7 @@ if (isset($_POST['addincome'])) {
                         </div>
                         <img src="../../icons/arrow_down.png" id="tasks-toggle-icon" class="sidebar-logo" alt="">
                     </h5>
-                    <ul style="padding-left:30px; display:none">
+                    <ul style="padding-left:30px; display:none" id="tasks-lists">
                         <li><a href="../tasks/add_tasks.php">Add Tasks</a></li>
                         <li><a href="../tasks/view_tasks.php">View Tasks</a></li>
                         <li><a href="../tasks/incomplete_task.php">Expired Tasks</a></li>
@@ -59,7 +59,7 @@ if (isset($_POST['addincome'])) {
                                 <h4 onclick="toggleIncome()" class="cursor-pointer income-expense-title">Incomes</h4>
                                 <img src="../../icons/arrow_down.png" id="incomeArrow" class="incomeExpensesArrow" alt="">
                             </div>
-                            <ul style="padding-left:5px; display:none" id="incomes-list">
+                            <ul style="padding-left:5px;" id="incomes-list">
                                 <li><a href="./add_income.php">Add Income</a></li>
                                 <li><a href="./view_income.php">View Income</a></li>
                                 <li><a href="./add_monthly_income.php" class="active-sidebar">Add Monthly Income</a></li>

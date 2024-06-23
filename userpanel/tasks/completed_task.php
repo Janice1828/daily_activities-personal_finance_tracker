@@ -96,7 +96,7 @@ $page_links = createPageLinks($pages, $current_page);
                         </div>
                         <img src="../../icons/arrow_down.png" class="sidebar-logo" id="finance-toggle-logo" alt="">
                     </h2>
-                    <ul style="padding-left:30px;" id="finance-lists">
+                    <ul style="padding-left:30px; display:none" id="finance-lists">
                         <li style="padding-left:5px;">
                             <div class="d-flex justify-content-between">
                                 <h4 onclick="toggleIncome()" class="cursor-pointer income-expense-title">Incomes</h4>
@@ -171,23 +171,25 @@ $page_links = createPageLinks($pages, $current_page);
                                     </tbody>
                                 </table>
                                 <div class="col-12">
-                                    <div class="pagination d-flex gap-1 align-items-center">
-                                        <a href="?page-nr=<?php echo 1 ?>" class="start-page pagination-btns">First</a>
-                                        <div class="page-numbers d-flex gap-1">
-                                            <?php
-                                            foreach ($page_links as $link) {
-                                                if ($link == '...') {
-                                                    echo '<span class="pagination-ellipsis">...</span>';
-                                                } else {
-                                                    $active_class = ($link == $current_page) ? 'active-page' : '';
-                                                    echo '<a href="?page-nr=' . $link . '" class="pagination-btns ' . $active_class . '">' . $link . '</a>';
+                                    <?php if (mysqli_num_rows($fetch) >= 1) { ?>
+                                        <div class="pagination d-flex gap-1 align-items-center">
+                                            <a href="?page-nr=<?php echo 1 ?>" class="start-page pagination-btns">First</a>
+                                            <div class="page-numbers d-flex gap-1">
+                                                <?php
+                                                foreach ($page_links as $link) {
+                                                    if ($link == '...') {
+                                                        echo '<span class="pagination-ellipsis">...</span>';
+                                                    } else {
+                                                        $active_class = ($link == $current_page) ? 'active-page' : '';
+                                                        echo '<a href="?page-nr=' . $link . '" class="pagination-btns ' . $active_class . '">' . $link . '</a>';
+                                                    }
                                                 }
-                                            }
-                                            ?>
+                                                ?>
 
+                                            </div>
+                                            <a href="?page-nr=<?php echo $pages ?>" class="end-page pagination-btns">Last</a>
                                         </div>
-                                        <a href="?page-nr=<?php echo $pages ?>" class="end-page pagination-btns">Last</a>
-                                    </div>
+                                    <?php } ?>
                                 </div>
 
                             </div>

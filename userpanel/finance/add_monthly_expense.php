@@ -42,7 +42,7 @@ if (isset($_POST['addexpense'])) {
                         </div>
                         <img src="../../icons/arrow_down.png" id="tasks-toggle-icon" class="sidebar-logo" alt="">
                     </h5>
-                    <ul style="padding-left:30px; display:none">
+                    <ul style="padding-left:30px; display:none" id="tasks-lists">
                         <li><a href="../tasks/add_tasks.php">Add Tasks</a></li>
                         <li><a href="../tasks/view_tasks.php">View Tasks</a></li>
                         <li><a href="../tasks/incomplete_task.php">Expired Tasks</a></li>
@@ -74,7 +74,7 @@ if (isset($_POST['addexpense'])) {
                                 <h4 class="cursor-pointer income-expense-title" onclick="toggleExpenses()">Expenses</h4>
                                 <img src="../../icons/arrow_down.png" id="expenseArrow" class="incomeExpensesArrow" alt="">
                             </div>
-                            <ul style="padding-left:5px; display:none;" id="expenses-list">
+                            <ul style="padding-left:5px;" id="expenses-list">
                                 <li><a href="./add_expenses.php">Add Expense</a></li>
                                 <li><a href="./view_expense.php">View Expenses</a></li>
                                 <li><a href="#" class="active-sidebar">Add Monthly Expenses</a></li>

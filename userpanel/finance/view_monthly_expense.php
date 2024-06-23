@@ -116,7 +116,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                                 <h4 class="cursor-pointer income-expense-title" onclick="toggleExpenses()">Expenses</h4>
                                 <img src="../../icons/arrow_down.png" id="expenseArrow" class="incomeExpensesArrow" alt="">
                             </div>
-                            <ul style="padding-left:5px; display:none;" id="expenses-list">
+                            <ul style="padding-left:5px;" id="expenses-list">
                                 <li><a href="./add_expenses.php">Add Expense</a></li>
                                 <li><a href="./view_expense.php">View Expenses</a></li>
                                 <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
@@ -173,23 +173,25 @@ $fetch = mysqli_query($conn, $selectQuery);
                                     </tbody>
                                 </table>
                                 <div class="col-12">
-                                    <div class="pagination d-flex gap-1 align-items-center">
-                                        <a href="?page-nr=<?php echo 1 ?>" class="start-page pagination-btns">First</a>
-                                        <div class="page-numbers d-flex gap-1">
-                                            <?php
-                                            foreach ($page_links as $link) {
-                                                if ($link == '...') {
-                                                    echo '<span class="pagination-ellipsis">...</span>';
-                                                } else {
-                                                    $active_class = ($link == $current_page) ? 'active-page' : '';
-                                                    echo '<a href="?page-nr=' . $link . '" class="pagination-btns ' . $active_class . '">' . $link . '</a>';
+                                    <?php if (mysqli_num_rows($fetch) >= 1) { ?>
+                                        <div class="pagination d-flex gap-1 align-items-center">
+                                            <a href="?page-nr=<?php echo 1 ?>" class="start-page pagination-btns">First</a>
+                                            <div class="page-numbers d-flex gap-1">
+                                                <?php
+                                                foreach ($page_links as $link) {
+                                                    if ($link == '...') {
+                                                        echo '<span class="pagination-ellipsis">...</span>';
+                                                    } else {
+                                                        $active_class = ($link == $current_page) ? 'active-page' : '';
+                                                        echo '<a href="?page-nr=' . $link . '" class="pagination-btns ' . $active_class . '">' . $link . '</a>';
+                                                    }
                                                 }
-                                            }
-                                            ?>
+                                                ?>
 
+                                            </div>
+                                            <a href="?page-nr=<?php echo $pages ?>" class="end-page pagination-btns">Last</a>
                                         </div>
-                                        <a href="?page-nr=<?php echo $pages ?>" class="end-page pagination-btns">Last</a>
-                                    </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

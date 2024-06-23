@@ -62,7 +62,7 @@ $income_sources = mysqli_query($conn, $fetch_monthly_income);
                                 <h4 onclick="toggleIncome()" class="cursor-pointer income-expense-title">Incomes</h4>
                                 <img src="../../icons/arrow_down.png" id="incomeArrow" class="incomeExpensesArrow" alt="">
                             </div>
-                            <ul style="padding-left:5px; display:none" id="incomes-list">
+                            <ul style="padding-left:5px;" id="incomes-list">
                                 <li><a href="#" class="active-sidebar">Add Income</a></li>
                                 <li><a href="./view_income.php">View Income</a></li>
                                 <li><a href="./add_monthly_income.php">Add Monthly Income</a></li>

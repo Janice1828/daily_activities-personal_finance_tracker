@@ -53,7 +53,7 @@ $date = date("Y-m-d");
                                 </div>
                                 <img src="../icons/arrow_down.png" class="sidebar-logo" id="finance-back-toggle-logo" alt="">
                             </h2>
-                            <ul style="padding-left:30px;" id="finance-lists-back">
+                            <ul style="padding-left:30px; display:none" id="finance-lists-back">
                                 <li style="padding-left:5px;">
                                     <div class="d-flex justify-content-between">
                                         <h4 onclick="toggleDashboardIncome()" class="cursor-pointer income-expense-title">Incomes</h4>
@@ -66,7 +66,7 @@ $date = date("Y-m-d");
                                         <li><a href="./finance/view_monthly_income.php">View Monthly Incomes</a></li>
                                     </ul>
                                 </li>
-                                <li style="padding-left:5px">
+                                <li style="padding-left:5px;">
                                     <div class="d-flex justify-content-between">
                                         <h4 class="cursor-pointer income-expense-title" onclick="toggleDashboardExpenses()">Expenses</h4>
                                         <img src="../icons/arrow_down.png" id="dashboardExpenseArrow" class="incomeExpensesArrow" alt="">

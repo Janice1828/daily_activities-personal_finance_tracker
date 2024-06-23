@@ -71,7 +71,7 @@ $get_expenses = mysqli_query($conn, $fetch_expenses);
                                 <h4 class="cursor-pointer income-expense-title" onclick="toggleExpenses()">Expenses</h4>
                                 <img src="../../icons/arrow_down.png" id="expenseArrow" class="incomeExpensesArrow" alt="">
                             </div>
-                            <ul style="padding-left:5px; display:none;" id="expenses-list">
+                            <ul style="padding-left:5px;" id="expenses-list">
                                 <li><a href="./add_expenses.php">Add Expense</a></li>
                                 <li><a href="./view_expense.php">View Expenses</a></li>
                                 <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
