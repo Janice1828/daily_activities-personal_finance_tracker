@@ -275,6 +275,7 @@ table tbody tr:last-child {
   background: red;
   color: #fff;
   border: 0;
+  border-radius: 3px;
 }
 .addInputBtn {
   width: 60px !important;
@@ -285,14 +286,14 @@ table tbody tr:last-child {
   margin-top: 0px !important;
 }
 .btn-primary {
-  padding: 4px 15px;
+  padding: 8px 20px;
   cursor: pointer;
   text-decoration: none;
   outline: none;
   background: #308ced;
   color: #fff;
   border: 0;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 .btn-secondary {
   padding: 8px 20px;
@@ -302,6 +303,7 @@ table tbody tr:last-child {
   background: rgba(159, 159, 159, 1);
   color: #fff;
   border: 0;
+  border-radius: 3px;
 }
 .btn-success {
   padding: 8px 20px;

@@ -53,17 +53,37 @@ $date = date("Y-m-d");
                                 </div>
                                 <img src="../icons/arrow_down.png" class="sidebar-logo" id="finance-back-toggle-logo" alt="">
                             </h2>
-                            <ul style="padding-left:30px; display:none" id="finance-lists-back">
-                                <li><a href="./finance/add_income.php">Add Income</a></li>
-                                <li><a href="./finance/view_income.php">View Income</a></li>
-                                <li><a href="./finance/add_expenses.php">Add Expense</a></li>
-                                <li><a href="./finance/view_expense.php">View Expenses</a></li>
-                                <li><a href="./finance/add_monthly_expense.php">Add Monthly Expenses</a></li>
-                                <li><a href="./finance/view_monthly_expense.php">View Monthly Expenses</a></li>
-                                <li><a href="./finance/allocate_budget.php">Allocate Budget</a></li>
-                                <li><a href="./finance/view_allocatedbudget.php">View Allocated Budget</a></li>
+                            <ul style="padding-left:30px;" id="finance-lists-back">
+                                <li style="padding-left:5px;">
+                                    <div class="d-flex justify-content-between">
+                                        <h4 onclick="toggleDashboardIncome()" class="cursor-pointer income-expense-title">Incomes</h4>
+                                        <img src="../icons/arrow_down.png" id="dashboardIncomeArrow" class="incomeExpensesArrow" alt="">
+                                    </div>
+                                    <ul style="padding-left:5px; display:none" id="dashboard-incomes-list">
+                                        <li><a href="./finance/add_income.php">Add Income</a></li>
+                                        <li><a href="./finance/view_income.php">View Income</a></li>
+                                        <li><a href="./finance/add_monthly_income.php">Add Monthly Income</a></li>
+                                        <li><a href="./finance/view_monthly_income.php">View Monthly Incomes</a></li>
+                                    </ul>
+                                </li>
+                                <li style="padding-left:5px">
+                                    <div class="d-flex justify-content-between">
+                                        <h4 class="cursor-pointer income-expense-title" onclick="toggleDashboardExpenses()">Expenses</h4>
+                                        <img src="../icons/arrow_down.png" id="dashboardExpenseArrow" class="incomeExpensesArrow" alt="">
+                                    </div>
+                                    <ul style="padding-left:5px; display:none;" id="dashboard-expenses-list">
+                                        <li><a href="./finance/add_expenses.php">Add Expense</a></li>
+                                        <li><a href="./finance/view_expense.php">View Expenses</a></li>
+                                        <li><a href="./finance/add_monthly_expense.php">Add Monthly Expenses</a></li>
+                                        <li><a href="./finance/view_monthly_expense.php">View Monthly Expenses</a></li>
+                                        <li><a href="./finance/allocate_budget.php">Allocate Budget</a></li>
+                                        <li><a href="./finance/view_allocatedbudget.php">View Allocated Budget</a></li>
+                                    </ul>
+                                </li>
+
                             </ul>
                         </div>
+
                     </div>
                 </div>
                 <div class="col-10">

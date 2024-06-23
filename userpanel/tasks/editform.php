@@ -6,7 +6,6 @@ $data = mysqli_query($conn, $getQuery);
 $result = mysqli_fetch_assoc($data);
 $fetch_importances = "SELECT title FROM dapf_importances";
 $importances = mysqli_query($conn, $fetch_importances);
-print_r($result['importance'])
 
 ?>
 <!DOCTYPE html>
@@ -51,7 +50,7 @@ print_r($result['importance'])
                             <textarea name="summary" id="edit_task_summary"><?php echo $result['summary'] ?></textarea>
                         </div>
                         <div class="col-6">
-                            <button type="submit" name="updateactivity">Add Activity</button>
+                            <button type="submit" name="updateactivity">Update Tasks</button>
                         </div>
                     </form>
                 </div>

@@ -183,7 +183,7 @@ $page_links = createPageLinks($pages, $current_page);
                                                 <td><?php echo $row['importance'] ?></td>
                                                 <td><?php echo $row['task_due_date']  ?></td>
                                                 <td><?php echo $row['status']  ?></td>
-                                                <td>
+                                                <td class="d-flex gap-1">
                                                     <?php
                                                     if ($row['status'] == "completed") {
                                                         echo "completed";

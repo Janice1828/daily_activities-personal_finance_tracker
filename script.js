@@ -140,6 +140,17 @@ function toggleIncome() {
     sidebarincomesList.style.display = "none";
   }
 }
+function toggleDashboardIncome() {
+  const sidebarincomesList = document.getElementById("dashboard-incomes-list");
+  const arrowIcon = document.getElementById("dashboardIncomeArrow");
+  if (sidebarincomesList.style.display == "none") {
+    sidebarincomesList.style.display = "block";
+    arrowIcon.src = "../icons/arrow_up.png";
+  } else {
+    arrowIcon.src = "../icons/arrow_down.png";
+    sidebarincomesList.style.display = "none";
+  }
+}
 function toggleExpenses() {
   const sidebarexpensesList = document.getElementById("expenses-list");
   const arrowIcon = document.getElementById("expenseArrow");
@@ -149,6 +160,19 @@ function toggleExpenses() {
   } else {
     sidebarexpensesList.style.display = "none";
     arrowIcon.src = "../../icons/arrow_down.png";
+  }
+}
+function toggleDashboardExpenses() {
+  const sidebarexpensesList = document.getElementById(
+    "dashboard-expenses-list"
+  );
+  const arrowIcon = document.getElementById("dashboardExpenseArrow");
+  if (sidebarexpensesList.style.display == "none") {
+    sidebarexpensesList.style.display = "block";
+    arrowIcon.src = "../icons/arrow_up.png";
+  } else {
+    sidebarexpensesList.style.display = "none";
+    arrowIcon.src = "../icons/arrow_down.png";
   }
 }
 function toggleContactusback() {
