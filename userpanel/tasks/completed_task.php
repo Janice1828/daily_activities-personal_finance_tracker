@@ -12,9 +12,8 @@ $rows_per_page = 10;
 
 $completed_tasks = $conn->query("SELECT * FROM dapf_tasks WHERE status='completed' AND `user_id`=$user_id");
 $no_of_pages = mysqli_num_rows($completed_tasks);
-$selectQuery = "SELECT id,date, task_name, task_due_date,status, user_id, importance FROM dapf_tasks WHERE status='completed' AND `user_id`=$user_id LIMIT $start, $rows_per_page";
-$fetch = mysqli_query($conn, $selectQuery);
 $pages = ceil($no_of_pages / $rows_per_page);
+
 if (isset($_GET['page-nr'])) {
     $id = $_GET['page-nr'];
     $page = $id - 1;
@@ -22,6 +21,9 @@ if (isset($_GET['page-nr'])) {
 } else {
     $id = 1;
 }
+$selectQuery = "SELECT id,date, task_name, task_due_date,status, user_id, importance FROM dapf_tasks WHERE status='completed' AND `user_id`=$user_id ORDER BY id DESC LIMIT $start, $rows_per_page";
+$fetch = mysqli_query($conn, $selectQuery);
+
 $current_page = isset($_GET['page-nr']) ? (int)$_GET['page-nr'] : 1;
 function createPageLinks($total_pages, $current_page, $limit = 5)
 {
