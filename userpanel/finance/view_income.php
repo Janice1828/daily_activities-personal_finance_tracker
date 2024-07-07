@@ -15,8 +15,6 @@ $no_of_pages = mysqli_num_rows($incomes);
 $selectQuery = "SELECT id,date, incomed_money, incomed_from FROM dapf_income WHERE user_id=$user_id LIMIT $start, $rows_per_page";
 $fetch = mysqli_query($conn, $selectQuery);
 
-
-
 $pages = ceil($no_of_pages / $rows_per_page);
 if (isset($_GET['page-nr'])) {
     $id = $_GET['page-nr'];

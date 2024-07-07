@@ -100,9 +100,12 @@ $date = date("Y-m-d");
                         </div>
                     </nav>
                     <div class="dashboard-content">
-                        <h1>Welcome <?php
-                                    echo $_SESSION['fullname'];
-                                    ?></h1>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h1>Welcome <?php
+                                        echo $_SESSION['fullname'];
+                                        ?></h1>
+                            <a href="./Notes/note_lists.php" class="btn-secondary">Notes</a>
+                        </div>
                         <div class="new-tasks pt-2">
                             <h2 class="pb-1">Tasks</h2>
                             <table class="col-12" cellpadding="10" cellspacing="0">

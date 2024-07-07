@@ -12,7 +12,6 @@ $rows_per_page = 10;
 $expenses = $conn->query("SELECT * FROM dapf_expense WHERE `user_id`=$user_id");
 $no_of_pages = mysqli_num_rows($expenses);
 
-// $selectQuery = "SELECT dapf_expense.id, dapf_expense.date, dapf_expense.money_spent, dapf_allocatebudget.allocation_for, dapf_allocatebudget.estimated_money,dapf_allocatebudget.estimated_money FROM dapf_expense LEFT JOIN dapf_allocatebudget ON  dapf_expense.spent_on = dapf_allocatebudget.id WHERE dapf_expense.user_id=$user_id ORDER BY dapf_expense.id DESC ";
 $selectQuery = "SELECT spent_on, SUM(money_spent) AS total_spent, dapf_monthlyexpense.title, dapf_allocatebudget.estimated_money FROM dapf_expense LEFT JOIN dapf_monthlyexpense ON dapf_expense.spent_on=dapf_monthlyexpense.id LEFT JOIN dapf_allocatebudget ON dapf_allocatebudget.allocation_for=dapf_expense.spent_on WHERE dapf_expense.user_id=$user_id GROUP BY dapf_expense.spent_on LIMIT $start, $rows_per_page";
 $fetch = mysqli_query($conn, $selectQuery);
 
@@ -164,7 +163,7 @@ $page_links = createPageLinks($pages, $current_page);
                                         while ($row = mysqli_fetch_assoc($fetch)) { ?>
                                             <tr>
                                                 <td><?php echo ++$i; ?></td>
-                                                <td><?php echo $row['title'] ?></td>
+                                                <td><?php echo $row['dapf_monthlyexpense.title'] ?></td>
                                                 <td><?php echo $row['total_spent'] ?></td>
                                                 <td><?php echo $row['estimated_money'] ?></td>
                                                 <td><?php echo $row['estimated_money'] - $row['total_spent'] ?></td>
