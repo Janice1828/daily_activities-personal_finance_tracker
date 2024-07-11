@@ -146,7 +146,6 @@ $page_links = createPageLinks($pages, $current_page);
                             <h1>Welcome <?php
                                         echo $_SESSION['fullname'];
                                         ?>!</h1>
-                            <!-- <a href="./Notes/note_lists.php" class="btn-secondary">Notes</a> -->
                         </div>
                         <?php
                         $totalTasks = "SELECT COUNT(id) AS totalTasks FROM `dapf_tasks` WHERE user_id=$user_id";
@@ -202,11 +201,11 @@ $page_links = createPageLinks($pages, $current_page);
                             <div class="tasks-report d-flex" style="gap:25px">
                                 <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
                                     <h3 class="details-title">Incomes</h3>
-                                    <span class="summary-data"><?php echo $total_income['totalIncome']; ?></span>
+                                    <span class="summary-data"><?php echo (($total_income['totalIncome']) >= 1) ? $total_income['totalIncome'] : 0 ?></span>
                                 </div>
                                 <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
                                     <h3 class="details-title">Expenses</h3>
-                                    <span class="summary-data"><?php echo $total_expenses['totalExpenses']; ?></span>
+                                    <span class="summary-data"><?php echo $total_expenses['totalExpenses'] >= 1 ? $total_expenses['totalExpenses'] : 0 ?></span>
                                 </div>
                                 <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
                                     <h3 class="details-title">Summary</h3>

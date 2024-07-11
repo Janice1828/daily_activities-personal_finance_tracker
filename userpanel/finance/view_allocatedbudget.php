@@ -151,6 +151,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                                             <th>SN</th>
                                             <th>Money Allocation For</th>
                                             <th>Allocated Money</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -161,6 +162,10 @@ $fetch = mysqli_query($conn, $selectQuery);
                                                 <td><?php echo ++$i; ?></td>
                                                 <td><?php echo $row['title'] ?></td>
                                                 <td><?php echo $row['estimated_money'] ?></td>
+                                                <td class="d-flex gap-1">
+                                                    <a href="./update_allocated_budget.php?id=<?php echo $row['id'] ?>" class="btn-secondary">Update</a>
+                                                    <a href="./delete_allocate_budget.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a>
+                                                </td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>

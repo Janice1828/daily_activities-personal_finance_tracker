@@ -154,6 +154,7 @@ $page_links = createPageLinks($pages, $current_page);
                                             <th>Date</th>
                                             <th>Incomed Money</th>
                                             <th>Income Source</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -165,6 +166,10 @@ $page_links = createPageLinks($pages, $current_page);
                                                 <td><?php echo $row['date'] ?></td>
                                                 <td><?php echo $row['incomed_money'] ?></td>
                                                 <td><?php echo $row['incomed_from'] ?></td>
+                                                <td class="d-flex gap-1">
+                                                    <a href="./edit_income.php?id=<?php echo $row['id'] ?>" class="btn-secondary">Edit</a>
+                                                    <a href="./delete_income.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a>
+                                                </td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
