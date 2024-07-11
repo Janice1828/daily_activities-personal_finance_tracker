@@ -107,7 +107,7 @@ $income_sources = mysqli_query($conn, $fetch_monthly_income);
                         <div class="">
                             <form class="row gap-2" method="post">
                                 <div class="col-12">
-                                    <h2>Add Income</h2>
+                                    <h2 class="page-title">Add Income</h2>
                                 </div>
 
                                 <input type="date" name="date" value="" id="date" readonly hidden>

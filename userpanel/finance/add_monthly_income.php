@@ -102,7 +102,7 @@ if (isset($_POST['addincome'])) {
                         <div class="">
                             <form class="row gap-2" method="post">
                                 <div class="col-12">
-                                    <h2>Add Monthly Incomes</h2>
+                                    <h2 class="page-title">Add Monthly Incomes</h2>
                                 </div>
                                 <div class="col-12">
                                     <label for="">Title</label>

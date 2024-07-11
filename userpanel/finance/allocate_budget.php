@@ -102,7 +102,7 @@ $get_expenses = mysqli_query($conn, $fetch_expenses);
                         <div class="">
                             <form class="row gap-2" method="post">
                                 <div class="col-12">
-                                    <h2>Allocate Budget</h2>
+                                    <h2 class="page-title">Allocate Budget</h2>
                                 </div>
                                 <div class="col-6" style="transform:translateX(-25px)">
                                     <label for="">Allocation For</label>

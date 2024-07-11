@@ -105,7 +105,7 @@ $data = mysqli_query($conn, $getexpenses);
                         <div class="">
                             <form class="row gap-2" method="post">
                                 <div class="col-12">
-                                    <h2>Add Expenses</h2>
+                                    <h2 class="page-title">Add Expense</h2>
                                 </div>
                                 <input type="date" name="date" value="" id="date" readonly hidden>
                                 <div class="col-6" style="transform: translateX(-24px);">
@@ -138,7 +138,7 @@ $data = mysqli_query($conn, $getexpenses);
                                     <textarea rows="" cols="" name="summary"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn-success" name="addexpenses">Add Expenses</button>
+                                    <button type="submit" class="btn-success" name="addexpenses">Add Expense</button>
                                 </div>
                             </form>
                         </div>

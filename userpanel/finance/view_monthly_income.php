@@ -151,7 +151,7 @@ $page_links = createPageLinks($pages, $current_page);
                         <div class="">
                             <div class="row gap-2">
                                 <div class="col-12">
-                                    <h2>View Monthly Incomes</h2>
+                                    <h2 class="page-title">View Monthly Incomes</h2>
                                 </div>
                                 <table class="col-12" cellpadding="10" cellspacing="0">
                                     <thead>
