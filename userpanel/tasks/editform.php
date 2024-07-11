@@ -6,7 +6,6 @@ $data = mysqli_query($conn, $getQuery);
 $result = mysqli_fetch_assoc($data);
 $fetch_importances = "SELECT title FROM dapf_importances";
 $importances = mysqli_query($conn, $fetch_importances);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +24,7 @@ $importances = mysqli_query($conn, $fetch_importances);
                 <div class="p-3">
                     <form class="row gap-2" method="post">
                         <div class="col-12">
-                            <h2>Update Tasks</h2>
+                            <h2 class="page-title">Update Tasks</h2>
                         </div>
                         <div class="col-6">
                             <label for="">Task Name</label>
@@ -33,10 +32,15 @@ $importances = mysqli_query($conn, $fetch_importances);
                         </div>
                         <div class="col-6">
                             <label for="">Importance</label>
-                            <select id="select" name="importance" value="<?php $result['importance'] ?>">
+                            <select id="select" name="importance">
                                 <option value="">Select Option</option>
-                                <?php while ($title = mysqli_fetch_assoc($importances)) { ?>
-                                    <option value="<?php echo $title['title'];  ?>"><?php echo $title['title'] ?></option>
+                                <?php
+                                while ($title = mysqli_fetch_assoc($importances)) {
+                                    $selected = ($title['title'] == $result['importance']) ? 'selected' : '';
+                                ?>
+                                    <option value="<?php echo $title['title']; ?>" <?php echo $selected; ?>>
+                                        <?php echo $title['title']; ?>
+                                    </option>
                                 <?php } ?>
                             </select>
                         </div>

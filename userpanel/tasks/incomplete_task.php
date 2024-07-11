@@ -148,7 +148,7 @@ $page_links = createPageLinks($pages, $current_page);
                         <div class="">
                             <form class="row gap-2">
                                 <div class="col-12">
-                                    <h2>Expired Tasks</h2>
+                                    <h2 class="page-title">Expired Tasks</h2>
                                 </div>
                                 <table class="col-12" cellpadding="10" cellspacing="0">
                                     <thead>

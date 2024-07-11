@@ -111,19 +111,19 @@ $date = date("Y-m-d");
                         <div class="">
                             <form class="row gap-2" method="post">
                                 <div class="col-12">
-                                    <h2>Add Tasks</h2>
+                                    <h2 class="page-title">Add Task</h2>
                                 </div>
                                 <div>
                                     <input type="date" hidden name="date" value="" id="date">
                                 </div>
                                 <div class="col-6" style="transform:translateX(-35px)">
-                                    <label for="taskName" class="cursor-pointer">Task Name</label>
+                                    <label for="taskName" class="cursor-pointer">Title</label>
                                     <input id="taskName" type="text" name="task_name" value="" required>
                                 </div>
                                 <div class="col-6" style="transform:translateX(10px)">
                                     <label for="select" class="cursor-pointer">Importance</label>
                                     <select id="select" name="importance" required>
-                                        <option value="">Select Option</option>
+                                        <option selected disabled>Select Option</option>
                                         <?php while ($title = mysqli_fetch_assoc($importances)) { ?>
                                             <option value="<?php echo $title['title'];  ?>"><?php echo $title['title'] ?></option>
                                         <?php } ?>
@@ -138,7 +138,7 @@ $date = date("Y-m-d");
                                     <textarea id="summary" rows="" cols="" name="summary"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" name="addtasks" class="btn-success">Add Tasks</button>
+                                    <button type="submit" name="addtasks" class="btn-success">Add Task</button>
                                 </div>
                             </form>
                         </div>

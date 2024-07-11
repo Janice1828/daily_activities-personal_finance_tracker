@@ -322,15 +322,24 @@ table tbody tr:last-child {
   border: 0;
   border-radius: 3px;
 }
+table thead tr th {
+  font-weight: 500;
+}
+.page-title {
+  font-size: 24px;
+  font-weight: 600;
+}
 .btn-success {
   padding: 8px 20px;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: 450;
   text-decoration: none;
   outline: none;
   background: #2c942c;
   color: #fff;
   border: 0;
+  border-radius: 2px;
 }
 .gap-2 {
   gap: 20px;

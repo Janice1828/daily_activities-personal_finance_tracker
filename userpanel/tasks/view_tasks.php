@@ -146,8 +146,8 @@ $page_links = createPageLinks($pages, $current_page);
                     <div class="card-body">
                         <div class="">
                             <div class="row gap-2">
-                                <div class="col-12 d-flex justify-content-between">
-                                    <h2>View Tasks</h2>
+                                <div class="col-12">
+                                    <h2 class="page-title">View Tasks</h2>
                                 </div>
                                 <table class="col-12" cellpadding="10" cellspacing="0">
                                     <thead>
