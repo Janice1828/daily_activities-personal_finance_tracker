@@ -7,12 +7,56 @@ if ($login_status != "true") {
     header("location:../login.php");
 }
 $user_id = $_SESSION['user_id'];
-
-$fetch_tasks = "SELECT id, status,task_name, task_due_date, importance FROM dapf_tasks WHERE user_id=$user_id AND deleted_status=0 ORDER BY status DESC";
-$fetch = mysqli_query($conn, $fetch_tasks);
-$get_income_query = "SELECT id,date,  incomed_money, incomed_from FROM dapf_income WHERE user_id=$user_id";
-$fetch_income = mysqli_query($conn, $get_income_query);
+$start = 0;
+$rows_per_page = 10;
+$tasks = $conn->query("SELECT * FROM dapf_tasks WHERE `deleted_status` = 0 AND `user_id`=$user_id");
+$no_of_rows = mysqli_num_rows($tasks);
+$pages = ceil($no_of_rows / $rows_per_page);
+if (isset($_GET['page-nr'])) {
+    $id = $_GET['page-nr'];
+    $page = $_GET['page-nr'] - 1;
+    $start = $page * $rows_per_page;
+} else {
+    $id = 1;
+}
+$selectQuery = "SELECT id,date, user_id,importance, task_name, task_due_date,status, importance FROM dapf_tasks WHERE `deleted_status` = 0 AND `user_id`=$user_id ORDER BY task_due_date DESC LIMIT $start, $rows_per_page";
+$fetch = mysqli_query($conn, $selectQuery);
 $date = date("Y-m-d");
+$current_page = isset($_GET['page-nr']) ? (int)$_GET['page-nr'] : 1;
+
+function createPageLinks($total_pages, $current_page, $limit = 5)
+{
+    $start_page = max(1, $current_page - intval($limit / 2));
+    $end_page = min($total_pages, $current_page + intval($limit / 2));
+
+    if ($end_page - $start_page < $limit) {
+        $start_page = max(1, $end_page - $limit + 1);
+    }
+
+    $page_links = [];
+    if ($start_page > 1) {
+        $page_links[] = 1;
+        if ($start_page > 2) {
+            $page_links[] = '...';
+        }
+    }
+
+    for ($i = $start_page; $i <= $end_page; $i++) {
+        $page_links[] = $i;
+    }
+
+    if ($end_page < $total_pages) {
+        if ($end_page < $total_pages - 1) {
+            $page_links[] = '...';
+        }
+        $page_links[] = $total_pages;
+    }
+
+    return $page_links;
+}
+
+$page_links = createPageLinks($pages, $current_page);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -98,10 +142,10 @@ $date = date("Y-m-d");
                         </div>
                     </nav>
                     <div class="dashboard-content">
-                        <div class="d-flex justify-content-center align-items-center">
+                        <div class="d-flex justify-content-center align-items-center border-bottom">
                             <h1>Welcome <?php
                                         echo $_SESSION['fullname'];
-                                        ?></h1>
+                                        ?>!</h1>
                             <!-- <a href="./Notes/note_lists.php" class="btn-secondary">Notes</a> -->
                         </div>
                         <?php
@@ -121,25 +165,25 @@ $date = date("Y-m-d");
                         ?>
 
                         <div class="new-tasks">
-                            <h2 class="pb-2 pt-2 d-flex">Tasks Summary</h2>
-                            <div class="tasks-report d-flex gap-2">
+                            <h2 class="pb-2 pt-2 d-flex summary-title">Tasks Summary</h2>
+                            <div class="tasks-report d-flex " style="gap:25px;">
                                 <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
-                                    <h3>Total Tasks</h3>
-                                    <span><?php echo $totalData['totalTasks']; ?></span>
+                                    <h3 class="details-title">Total Tasks</h3>
+                                    <span class="summary-data"><?php echo $totalData['totalTasks']; ?></span>
 
                                 </div>
                                 <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
-                                    <h3>New Tasks</h3>
-                                    <span><?php echo $new_task['newTasks'] ?></span>
+                                    <h3 class="details-title">New Tasks</h3>
+                                    <span class="summary-data"><?php echo $new_task['newTasks'] ?></span>
 
                                 </div>
                                 <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
-                                    <h3>Completed Tasks</h3>
-                                    <span><?php echo $completed_tasks['completedTasks']; ?></span>
+                                    <h3 class="details-title">Completed Tasks</h3>
+                                    <span class="summary-data"><?php echo $completed_tasks['completedTasks']; ?></span>
                                 </div>
                                 <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
-                                    <h3>Incomplete/Expired Tasks</h3>
-                                    <span><?php echo $expired_query['expiredTasks']; ?></span>
+                                    <h3 class="details-title">Incomplete/Expired Tasks</h3>
+                                    <span class="summary-data"><?php echo $expired_query['expiredTasks']; ?></span>
                                 </div>
 
                             </div>
@@ -154,22 +198,23 @@ $date = date("Y-m-d");
 
 
                             ?>
-                            <h2 class="pb-2 d-flex">Finance Summary</h2>
-                            <div class="tasks-report d-flex gap-2">
+                            <h2 class="pb-2 d-flex summary-title">Finance Summary</h2>
+                            <div class="tasks-report d-flex" style="gap:25px">
                                 <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
-                                    <h3>Incomes</h3>
-                                    <span><?php echo $total_income['totalIncome']; ?></span>
+                                    <h3 class="details-title">Incomes</h3>
+                                    <span class="summary-data"><?php echo $total_income['totalIncome']; ?></span>
                                 </div>
                                 <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
-                                    <h3>Expenses</h3>
-                                    <span><?php echo $total_expenses['totalExpenses']; ?></span>
+                                    <h3 class="details-title">Expenses</h3>
+                                    <span class="summary-data"><?php echo $total_expenses['totalExpenses']; ?></span>
                                 </div>
                                 <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
-                                    <h3>Summary</h3>
-                                    <span><?php echo $total_income['totalIncome'] - $total_expenses['totalExpenses']; ?></span>
+                                    <h3 class="details-title">Summary</h3>
+                                    <span class="summary-data"><?php echo $total_income['totalIncome'] - $total_expenses['totalExpenses']; ?></span>
                                 </div>
 
                             </div>
+                            <h2 class="pb-2 d-flex summary-title border-top">Tasks Lists</h2>
                             <table class="col-12" cellpadding="10" cellspacing="0">
                                 <thead>
                                     <tr>
@@ -184,53 +229,46 @@ $date = date("Y-m-d");
                                     <?php
                                     $i = 0;
                                     while ($row = mysqli_fetch_assoc($fetch)) {
-                                        if ($row['task_due_date'] >= $date || $row['status'] === 'completed') {
 
                                     ?>
-                                            <tr>
-                                                <td><?php echo ++$i; ?></td>
-                                                <td><a style="text-decoration: none; color:blue" href="./tasks/task_detail.php?id=<?php echo $row['id'] ?>"><?php echo $row['task_name'] ?></a></td>
-                                                <td><?php echo $row['importance'] ?></td>
-                                                <td><?php echo $row['task_due_date']  ?></td>
-                                                <td><?php echo $row['status']  ?></td>
+                                        <tr>
+                                            <td><?php echo ++$i; ?></td>
+                                            <td><a style="text-decoration: none; color:blue" href="./task_detail.php?id=<?php echo $row['id'] ?>"><?php echo $row['task_name'] ?></a></td>
+                                            <td><?php echo $row['importance'] ?></td>
+                                            <td><?php echo $row['task_due_date']  ?></td>
+                                            <td><?php echo $row['status']  ?></td>
 
-                                            </tr>
-                                    <?php }
+                                        </tr>
+                                    <?php
                                     } ?>
 
                                 </tbody>
                             </table>
+                            <div class="col-12">
+                                <?php if (mysqli_num_rows($fetch) >= 1) { ?>
+                                    <div class="pagination d-flex gap-1 align-items-center">
+                                        <a href="?page-nr=<?php echo 1 ?>" class="start-page pagination-btns">First</a>
+                                        <div class="page-numbers d-flex gap-1">
+                                            <?php
+                                            foreach ($page_links as $link) {
+                                                if ($link == '...') {
+                                                    echo '<span class="pagination-ellipsis">...</span>';
+                                                } else {
+                                                    $active_class = ($link == $current_page) ? 'active-page' : '';
+                                                    echo '<a href="?page-nr=' . $link . '" class="pagination-btns ' . $active_class . '">' . $link . '</a>';
+                                                }
+                                            }
+                                            ?>
+
+                                        </div>
+                                        <a href="?page-nr=<?php echo $pages ?>" class="end-page pagination-btns">Last</a>
+
+                                    </div><?php } ?>
+
+                            </div>
 
                         </div>
-                        <div class="income-lists pt-2">
-                            <h2 class="pb-1">
-                                Incomes
-                            </h2>
-                            <table>
-                                <table class="col-12" cellpadding="10" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>SN</th>
-                                            <th>Date</th>
-                                            <th>Incomed Money</th>
-                                            <th>Income From</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $i = 0;
-                                        while ($row = mysqli_fetch_assoc($fetch_income)) { ?>
-                                            <tr>
-                                                <td><?php echo ++$i; ?></td>
-                                                <td><?php echo $row['date'] ?></td>
-                                                <td><?php echo $row['incomed_money'] ?></td>
-                                                <td><?php echo $row['incomed_from'] ?></td>
-                                            </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
-                            </table>
-                        </div>
+
                     </div>
 
                 </div>
