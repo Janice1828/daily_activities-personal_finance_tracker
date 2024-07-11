@@ -42,9 +42,17 @@
 .justify-content-center {
   justify-content: center;
 }
+.box {
+  border: 1px solid #c9c6c6;
+  padding: 15px 20px;
+  border-radius: 3px;
+}
 .position-sticky {
   position: sticky;
   top: 0;
+}
+.tasks-report {
+  margin: 0px 0px 25px 0px;
 }
 .align-items-center {
   align-items: center;

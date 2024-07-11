@@ -13,7 +13,6 @@ $fetch = mysqli_query($conn, $fetch_tasks);
 $get_income_query = "SELECT id,date,  incomed_money, incomed_from FROM dapf_income WHERE user_id=$user_id";
 $fetch_income = mysqli_query($conn, $get_income_query);
 $date = date("Y-m-d");
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,7 +79,6 @@ $date = date("Y-m-d");
                                         <li><a href="./finance/view_allocatedbudget.php">View Allocated Budget</a></li>
                                     </ul>
                                 </li>
-
                             </ul>
                         </div>
 
@@ -100,14 +98,54 @@ $date = date("Y-m-d");
                         </div>
                     </nav>
                     <div class="dashboard-content">
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-center align-items-center">
                             <h1>Welcome <?php
                                         echo $_SESSION['fullname'];
                                         ?></h1>
-                            <a href="./Notes/note_lists.php" class="btn-secondary">Notes</a>
+                            <!-- <a href="./Notes/note_lists.php" class="btn-secondary">Notes</a> -->
                         </div>
-                        <div class="new-tasks pt-2">
-                            <h2 class="pb-1">Tasks</h2>
+                        <?php
+                        $totalTasks = "SELECT COUNT(id) AS totalTasks FROM `dapf_tasks` WHERE user_id=$user_id";
+                        $completedTasks = "SELECT status,COUNT(id) AS completedTasks FROM `dapf_tasks` WHERE user_id=$user_id AND status='completed'";
+                        $resul = mysqli_query($conn, $totalTasks);
+                        $totalData = mysqli_fetch_assoc($resul);
+                        $completed = mysqli_query($conn, $completedTasks);
+                        $completed_tasks = mysqli_fetch_assoc($completed);
+                        $expired_query = "SELECT status, task_due_date,COUNT(id) AS expiredTasks FROM `dapf_tasks` WHERE user_id=$user_id AND status='new task' AND task_due_date < '$date'";
+                        $expired = mysqli_query($conn, $expired_query);
+                        $expired_query = mysqli_fetch_assoc($expired);
+
+                        $new_task_query = "SELECT status, task_due_date,COUNT(id) AS newTasks FROM `dapf_tasks` WHERE user_id=$user_id AND status='new task' AND task_due_date >= '$date'";
+                        $new = mysqli_query($conn, $new_task_query);
+                        $new_task = mysqli_fetch_assoc($new);
+
+
+                        // echo $date;
+                        ?>
+
+                        <div class="new-tasks">
+                            <h2 class="pb-2 pt-2 d-flex">Tasks</h2>
+                            <div class="tasks-report d-flex gap-2">
+                                <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
+                                    <h3>Total Tasks</h3>
+                                    <span><?php echo $totalData['totalTasks']; ?></span>
+
+                                </div>
+                                <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
+                                    <h3>New Tasks</h3>
+                                    <span><?php echo $new_task['newTasks'] ?></span>
+
+                                </div>
+                                <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
+                                    <h3>Completed Tasks</h3>
+                                    <span><?php echo $completed_tasks['completedTasks']; ?></span>
+                                </div>
+                                <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
+                                    <h3>Expired Tasks</h3>
+                                    <span><?php echo $expired_query['expiredTasks']; ?></span>
+                                </div>
+
+                            </div>
                             <table class="col-12" cellpadding="10" cellspacing="0">
                                 <thead>
                                     <tr>

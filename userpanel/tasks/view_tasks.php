@@ -68,13 +68,6 @@ $page_links = createPageLinks($pages, $current_page);
     <link rel="stylesheet" href="../../style.css">
 </head>
 <?php
-
-// if (isset($_GET['page-nr'])) {
-//     $id = $_GET['page-nr'];
-// } else {
-//     $id = 1;
-// }
-
 ?>
 
 <body id="<?php echo $id; ?>">
