@@ -20,8 +20,7 @@
     <div class="row">
       <div class="col-2">
         <div class="sidebar d-flex flex-column gap-1">
-          <h5><a href="./dashboard.php" class="sidebar-heading d-flex align-items-center gap-1"><img src="../images/dashboard.png" class="sidebar-logo"> <span>Dashboard</span></a></h5>
-
+          <h5><a href="#" class="sidebar-heading d-flex align-items-center gap-1"><img src="../images/dashboard.png" class="sidebar-logo"> <span>Dashboard</span></a></h5>
           <div class="sidebar-activities">
             <h5 id="task-link" class="cursor-pointer sidebar-heading d-flex align-items-center justify-content-between" onclick="displayTaskback()">
               <div class="d-flex gap-1 align-items-center">
@@ -29,14 +28,13 @@
               </div>
               <img src="../icons/arrow_down.png" id="tasks-back-toggle-icon" class="sidebar-logo" alt="">
             </h5>
-            <ul style="padding-left:30px; display:none" id="tasks-lists-back">
+            <ul style="padding-left:30px; display:none;" id="tasks-lists-back">
               <li><a href="./tasks/add_tasks.php">Add Tasks</a></li>
               <li><a href="./tasks/view_tasks.php">View Tasks</a></li>
               <li><a href="./tasks/delete_tasks.php">Delete Tasks</a></li>
               <li><a href="./tasks/completed_task.php">Completed Tasks</a></li>
             </ul>
           </div>
-
           <div class="sidebar-finance">
             <h2 class="sidebar-heading cursor-pointer d-flex align-items-center justify-content-between" onclick="toggleFinancesback()">
               <div class="d-flex align-items-center gap-1">
@@ -45,20 +43,35 @@
               <img src="../icons/arrow_down.png" class="sidebar-logo" id="finance-back-toggle-logo" alt="">
             </h2>
             <ul style="padding-left:30px; display:none" id="finance-lists-back">
-              <li>
-                <a href="./finance/add_finance.php">Add Income/Expenses</a>
+              <li style="padding-left:5px;">
+                <div class="d-flex justify-content-between">
+                  <h4 onclick="toggleDashboardIncome()" class="cursor-pointer income-expense-title">Incomes</h4>
+                  <img src="../icons/arrow_down.png" id="dashboardIncomeArrow" class="incomeExpensesArrow" alt="">
+                </div>
+                <ul style="padding-left:5px; display:none" id="dashboard-incomes-list">
+                  <li><a href="./finance/add_income.php">Add Income</a></li>
+                  <li><a href="./finance/view_income.php">View Income</a></li>
+                  <li><a href="./finance/add_monthly_income.php">Add Monthly Income</a></li>
+                  <li><a href="./finance/view_monthly_income.php">View Monthly Incomes</a></li>
+                </ul>
               </li>
-              <li>
-                <a href="./finance/view_finance.php">View Income/Expenses</a>
-              </li>
-              <li>
-                <a href="./finance/edit_finance.php">Edit Income/Expenses</a>
-              </li>
-              <li>
-                <a href="./finance/delete_finance.php">Delete Income/Expenses</a>
+              <li style="padding-left:5px;">
+                <div class="d-flex justify-content-between">
+                  <h4 class="cursor-pointer income-expense-title" onclick="toggleDashboardExpenses()">Expenses</h4>
+                  <img src="../icons/arrow_down.png" id="dashboardExpenseArrow" class="incomeExpensesArrow" alt="">
+                </div>
+                <ul style="padding-left:5px; display:none;" id="dashboard-expenses-list">
+                  <li><a href="./finance/add_expenses.php">Add Expense</a></li>
+                  <li><a href="./finance/view_expense.php">View Expenses</a></li>
+                  <li><a href="./finance/add_monthly_expense.php">Add Monthly Expenses</a></li>
+                  <li><a href="./finance/view_monthly_expense.php">View Monthly Expenses</a></li>
+                  <li><a href="./finance/allocate_budget.php">Allocate Budget</a></li>
+                  <li><a href="./finance/view_allocatedbudget.php">View Allocated Budget</a></li>
+                </ul>
               </li>
             </ul>
           </div>
+
         </div>
       </div>
       <div class="col-10">

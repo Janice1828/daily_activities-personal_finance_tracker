@@ -118,13 +118,10 @@ $date = date("Y-m-d");
                         $new_task_query = "SELECT status, task_due_date,COUNT(id) AS newTasks FROM `dapf_tasks` WHERE user_id=$user_id AND status='new task' AND task_due_date >= '$date'";
                         $new = mysqli_query($conn, $new_task_query);
                         $new_task = mysqli_fetch_assoc($new);
-
-
-                        // echo $date;
                         ?>
 
                         <div class="new-tasks">
-                            <h2 class="pb-2 pt-2 d-flex">Tasks</h2>
+                            <h2 class="pb-2 pt-2 d-flex">Tasks Summary</h2>
                             <div class="tasks-report d-flex gap-2">
                                 <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
                                     <h3>Total Tasks</h3>
@@ -143,6 +140,33 @@ $date = date("Y-m-d");
                                 <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
                                     <h3>Incomplete/Expired Tasks</h3>
                                     <span><?php echo $expired_query['expiredTasks']; ?></span>
+                                </div>
+
+                            </div>
+                            <?php
+                            $income = "SELECT SUM(incomed_money) AS totalIncome FROM dapf_income WHERE user_id='$user_id'";
+                            $incomed_money = mysqli_query($conn, $income);
+                            $total_income = mysqli_fetch_assoc($incomed_money);
+                            $expense = "SELECT SUM(money_spent) AS totalExpenses FROM dapf_expense WHERE user_id='$user_id'";
+                            $expenses_money = mysqli_query($conn, $expense);
+                            $total_expenses = mysqli_fetch_assoc($expenses_money);
+
+
+
+                            ?>
+                            <h2 class="pb-2 d-flex">Finance Summary</h2>
+                            <div class="tasks-report d-flex gap-2">
+                                <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
+                                    <h3>Incomes</h3>
+                                    <span><?php echo $total_income['totalIncome']; ?></span>
+                                </div>
+                                <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
+                                    <h3>Expenses</h3>
+                                    <span><?php echo $total_expenses['totalExpenses']; ?></span>
+                                </div>
+                                <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
+                                    <h3>Summary</h3>
+                                    <span><?php echo $total_income['totalIncome'] - $total_expenses['totalExpenses']; ?></span>
                                 </div>
 
                             </div>

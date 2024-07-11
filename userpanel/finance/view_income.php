@@ -153,7 +153,7 @@ $page_links = createPageLinks($pages, $current_page);
                                             <th>SN</th>
                                             <th>Date</th>
                                             <th>Incomed Money</th>
-                                            <th>Income From</th>
+                                            <th>Income Source</th>
                                         </tr>
                                     </thead>
                                     <tbody>
