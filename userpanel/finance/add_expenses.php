@@ -120,7 +120,7 @@ $data = mysqli_query($conn, $getexpenses);
                                         <select name="spent_on" id="select" required>
                                             <?php
                                             while ($row = mysqli_fetch_assoc($data)) { ?>
-                                                <option value="<?php echo $row['title'] ?>"><?php echo $row['title'] ?></option>
+                                                <option value="<?php echo $row['id'] ?>"><?php echo $row['title'] ?></option>
                                             <?php } ?>
                                         </select>
                                     <?php

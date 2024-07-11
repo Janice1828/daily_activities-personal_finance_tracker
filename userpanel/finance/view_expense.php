@@ -163,7 +163,7 @@ $page_links = createPageLinks($pages, $current_page);
                                         while ($row = mysqli_fetch_assoc($fetch)) { ?>
                                             <tr>
                                                 <td><?php echo ++$i; ?></td>
-                                                <td><?php echo $row['dapf_monthlyexpense.title'] ?></td>
+                                                <td><?php echo $row['title'] ?></td>
                                                 <td><?php echo $row['total_spent'] ?></td>
                                                 <td><?php echo $row['estimated_money'] ?></td>
                                                 <td><?php echo $row['estimated_money'] - $row['total_spent'] ?></td>

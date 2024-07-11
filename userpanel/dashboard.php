@@ -141,7 +141,7 @@ $date = date("Y-m-d");
                                     <span><?php echo $completed_tasks['completedTasks']; ?></span>
                                 </div>
                                 <div class="box d-flex flex-column gap-1 align-items-center justify-content-center">
-                                    <h3>Expired Tasks</h3>
+                                    <h3>Incomplete/Expired Tasks</h3>
                                     <span><?php echo $expired_query['expiredTasks']; ?></span>
                                 </div>
 
