@@ -25,46 +25,36 @@ $res = mysqli_query($conn, $message_fetch_query);
             <div class="sidebar d-flex flex-column gap-1">
                 <h5><a href="../dashboard.php" class="sidebar-heading d-flex align-items-center gap-1"><img src="../../images/dashboard.png" class="sidebar-logo"> <span>Dashboard</span></a></h5>
                 <div class="sidebar-activities">
-                    <h5 class="sidebar-heading cursor-pointer d-flex justify-content-between align-items-center" onclick="toggleMaster()">
-                        <div class="d-flex align-items-center gap-1">
-                            <img src="../../icons/master.png" class="sidebar-logo" alt="">
-                            <span>Master</span>
-                        </div>
-                        <img src="../../icons/arrow_down.png" class="sidebar-logo" id="master-toggle-img" alt="">
-                    </h5>
-                    <ul style="padding-left:30px; display:none" id="master-lists">
-                        <li><a href="../importances/view_importances.php">Importances</a></li>
-                    </ul>
                     <h5 class="pt-1 sidebar-heading cursor-pointer d-flex justify-content-between align-items-center" onclick="toggleUsers()">
                         <div class=" d-flex align-items-center gap-1">
                             <img src="../../icons/users.png" class="sidebar-logo" alt="">
-                            <span>Manage Users</span>
+                            <span class="sidebar-title">Manage Users</span>
                         </div>
                         <img src="../../icons/arrow_down.png" class="sidebar-logo" id="user-toggle-img" alt="">
                     </h5>
                     <ul style=" padding-left:30px; display:none" id="user-lists">
-                        <li><a href="../manage_user/userlists.php">User Lists</a></li>
+                        <li class="admin-sidebar-content-list"><a href="../manage_user/userlists.php" class="sidebar-content-lists">User Lists</a></li>
                     </ul>
                     <h5 class="sidebar-heading cursor-pointer pt-1 d-flex justify-content-between align-items-center" onclick="toggleMotives()">
                         <div class="d-flex align-items-center gap-1">
                             <img src="../../icons/motives.png" class="sidebar-logo" alt="">
-                            <span>Motives</span>
+                            <span class="sidebar-title">Motives</span>
                         </div>
                         <img src="../../icons/arrow_down.png" class="sidebar-logo" id="motives-toggle-img" alt="">
                     </h5>
                     <ul style="padding-left:30px; display:none" id="motive-lists">
-                        <li><a href="../motives/add_motives.php">Add Motives</a></li>
-                        <li><a href="../motives/motives_list.php">Motives List</a></li>
+                        <li class="admin-sidebar-content-list"><a href="../motives/add_motives.php" class="sidebar-content-lists">Add Motives</a></li>
+                        <li class="admin-sidebar-content-list"><a href="../motives/motives_list.php" class="sidebar-content-lists">Motives List</a></li>
                     </ul>
                     <h5 class="pt-1 sidebar-heading d-flex justify-content-between align-items-center cursor-pointer" onclick="toggleContactus()">
                         <div class="d-flex align-items-center gap-1">
-                            <img src="../../icons/contactus.png" class="sidebar-logo" alt="">
-                            <span>Contact Us</span>
+                            <img src="../../icons/icons8-comment-50 (1).png" class="sidebar-logo" alt="">
+                            <span class="sidebar-title">Contact Us</span>
                         </div>
                         <img src="../../icons/arrow_down.png" class="sidebar-logo" id="contact-toggle-img" alt="">
                     </h5>
                     <ul style="padding-left:30px;" id="message-lists">
-                        <li><a href="#" class="active-sidebar">Messages</a></li>
+                        <li class="admin-sidebar-content-list"><a href="#" class="sidebar-content-lists active-sidebar">Messages</a></li>
 
                     </ul>
                 </div>

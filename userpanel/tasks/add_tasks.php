@@ -124,9 +124,10 @@ $date = date("Y-m-d");
                                     <label for="select" class="cursor-pointer">Importance</label>
                                     <select id="select" name="importance" required>
                                         <option selected disabled>Select Option</option>
-                                        <?php while ($title = mysqli_fetch_assoc($importances)) { ?>
-                                            <option value="<?php echo $title['title'];  ?>"><?php echo $title['title'] ?></option>
-                                        <?php } ?>
+                                        <option value="low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                        <option value="Critical">Critical</option>
                                     </select>
                                 </div>
                                 <div class="col-12">
