@@ -57,7 +57,7 @@ $fetch = mysqli_query($conn, $selectQuery);
                         <img src="../../icons/arrow_down.png" class="sidebar-logo" id="contact-toggle-img" alt="">
                     </h5>
                     <ul style="padding-left:30px; display:none" id="message-lists">
-                        <li class="admin-sidebar-content-list"><a href="../messages/message_list.php" class="sidebar-content-lists">Messages</a></li>
+                        <li class="admin-sidebar-content-list"><a href="../messages/message_list.php" class="sidebar-content-lists">Messages List</a></li>
 
                     </ul>
                 </div>

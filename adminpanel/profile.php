@@ -135,11 +135,12 @@
     $file1 = explode('.', $file);
     $ext = $file1[1];
     $allowed = array("jpg", "png", "jpeg");
-    // if (in_array($ext, $allowed)) {
-    // if (move_uploaded_file($tmp_name, $path)) {
-    mysqli_query($conn, "UPDATE users SET fullname='$fullName', email='$email', profile='$file' WHERE id=$id");
-    // }
-    // }
+    if (in_array($ext, $allowed)) {
+      if (move_uploaded_file($tmp_name, $path)) {
+        mysqli_query($conn, "UPDATE users SET fullname='$fullName', email='$email', profile='$file' WHERE id=$id");
+      }
+    } else {
+      mysqli_query($conn, "UPDATE users SET fullname='$fullName', email='$email' WHERE id=$id");
+    }
   }
-
   ?>

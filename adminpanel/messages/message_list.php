@@ -49,7 +49,7 @@ $res = mysqli_query($conn, $message_fetch_query);
                     <h5 class="pt-1 sidebar-heading d-flex justify-content-between align-items-center cursor-pointer" onclick="toggleContactus()">
                         <div class="d-flex align-items-center gap-1">
                             <img src="../../icons/icons8-comment-50 (1).png" class="sidebar-logo" alt="">
-                            <span class="sidebar-title">Contact Us</span>
+                            <span class="sidebar-title">Messages</span>
                         </div>
                         <img src="../../icons/arrow_down.png" class="sidebar-logo" id="contact-toggle-img" alt="">
                     </h5>
