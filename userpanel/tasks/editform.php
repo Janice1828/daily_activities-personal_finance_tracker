@@ -4,8 +4,7 @@ $id = $_GET['id'];
 $getQuery = "SELECT date, importance, task_name, task_due_date,status, summary FROM dapf_tasks WHERE id=$id";
 $data = mysqli_query($conn, $getQuery);
 $result = mysqli_fetch_assoc($data);
-$fetch_importances = "SELECT title FROM dapf_importances";
-$importances = mysqli_query($conn, $fetch_importances);
+$importances = ['low', 'Medium', 'High', 'Critical'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,17 +31,16 @@ $importances = mysqli_query($conn, $fetch_importances);
                         </div>
                         <div class="col-6">
                             <label for="">Importance</label>
-                            <select id="select" name="importance">
-                                <option value="">Select Option</option>
-                                <?php
-                                while ($title = mysqli_fetch_assoc($importances)) {
-                                    $selected = ($title['title'] == $result['importance']) ? 'selected' : '';
+                            <select id="select" name="importance" required value="<?php echo $result['importance'] ?>">
+
+                                <?php foreach ($importances as $important) {
+                                    $selected = $important == $result['importance'] ? 'selected' : '';
                                 ?>
-                                    <option value="<?php echo $title['title']; ?>" <?php echo $selected; ?>>
-                                        <?php echo $title['title']; ?>
-                                    </option>
+                                    <option value="<?php echo $important ?>" <?php echo $selected ?>><?php echo $important  ?></option>
+
                                 <?php } ?>
                             </select>
+
                         </div>
                         <div class="col-6">
                             <label for="">Due Date</label>

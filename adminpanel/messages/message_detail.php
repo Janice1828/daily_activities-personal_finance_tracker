@@ -62,7 +62,7 @@ $res = mysqli_query($conn, $message_fetch_query);
                         <div class="">
                             <form class="row gap-2">
                                 <div class="col-12">
-                                    <h2>View Messages</h2>
+                                    <h2 class="page-title">View Messages</h2>
                                 </div>
                                 <table class="col-12" cellpadding="10" cellspacing="0">
                                     <thead>

@@ -20,7 +20,7 @@
     <div class="row">
       <div class="col-2">
         <div class="sidebar d-flex flex-column gap-1">
-          <h5><a href="#" class="sidebar-heading d-flex align-items-center gap-1"><img src="../images/dashboard.png" class="sidebar-logo"> <span>Dashboard</span></a></h5>
+          <h5><a href="./dashboard.php" class="sidebar-heading d-flex align-items-center gap-1"><img src="../images/dashboard.png" class="sidebar-logo"> <span>Dashboard</span></a></h5>
           <div class="sidebar-activities">
             <h5 id="task-link" class="cursor-pointer sidebar-heading d-flex align-items-center justify-content-between" onclick="displayTaskback()">
               <div class="d-flex gap-1 align-items-center">
@@ -31,7 +31,6 @@
             <ul style="padding-left:30px; display:none;" id="tasks-lists-back">
               <li><a href="./tasks/add_tasks.php">Add Tasks</a></li>
               <li><a href="./tasks/view_tasks.php">View Tasks</a></li>
-              <li><a href="./tasks/delete_tasks.php">Delete Tasks</a></li>
               <li><a href="./tasks/completed_task.php">Completed Tasks</a></li>
             </ul>
           </div>
@@ -51,8 +50,8 @@
                 <ul style="padding-left:5px; display:none" id="dashboard-incomes-list">
                   <li><a href="./finance/add_income.php">Add Income</a></li>
                   <li><a href="./finance/view_income.php">View Income</a></li>
-                  <li><a href="./finance/add_monthly_income.php">Add Monthly Income</a></li>
-                  <li><a href="./finance/view_monthly_income.php">View Monthly Incomes</a></li>
+                  <li><a href="./finance/add_monthly_income.php">Add Income Sources</a></li>
+                  <li><a href="./finance/view_monthly_income.php">View Income Sources</a></li>
                 </ul>
               </li>
               <li style="padding-left:5px;">
@@ -63,8 +62,8 @@
                 <ul style="padding-left:5px; display:none;" id="dashboard-expenses-list">
                   <li><a href="./finance/add_expenses.php">Add Expense</a></li>
                   <li><a href="./finance/view_expense.php">View Expenses</a></li>
-                  <li><a href="./finance/add_monthly_expense.php">Add Monthly Expenses</a></li>
-                  <li><a href="./finance/view_monthly_expense.php">View Monthly Expenses</a></li>
+                  <li><a href="./finance/add_monthly_expense.php">Add Expenses Outflow</a></li>
+                  <li><a href="./finance/view_monthly_expense.php">View Expenses Outflows</a></li>
                   <li><a href="./finance/allocate_budget.php">Allocate Budget</a></li>
                   <li><a href="./finance/view_allocatedbudget.php">View Allocated Budget</a></li>
                 </ul>

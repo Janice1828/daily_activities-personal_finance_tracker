@@ -74,11 +74,11 @@ $fetch = mysqli_query($conn, $selectQuery);
             <div class="p-5">
                 <div class="card">
                     <div class="card-body">
-                        <div>
-                            <h1>Welcome <?php echo $_SESSION['fullname'] ?></h1>
+                        <div class="d-flex justify-content-center">
+                            <h1>Welcome Admin!</h1>
                         </div>
-                        <div class="user-lists pt-2 pb-1">
-                            <h2>User Lists</h2>
+                        <div class="user-lists pt-2 pb-1 ">
+                            <h2 class="summary-title">User Lists</h2>
                         </div>
                         <div>
                             <table class="col-12" cellpadding="10" cellspacing="0">

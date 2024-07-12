@@ -61,7 +61,7 @@ $data = mysqli_fetch_assoc($fetch);
                         <div class="">
                             <form class="row gap-2" method="post" enctype="multipart/form-data">
                                 <div class="col-12">
-                                    <h2 class="ml-2">Update Motives</h2>
+                                    <h2 class="ml-2 page-title">Update Motives</h2>
                                 </div>
 
                                 <div class="col-6">

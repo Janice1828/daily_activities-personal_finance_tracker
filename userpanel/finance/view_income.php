@@ -105,8 +105,8 @@ $page_links = createPageLinks($pages, $current_page);
                             <ul style="padding-left:5px;" id="incomes-list">
                                 <li><a href="./add_income.php">Add Income</a></li>
                                 <li><a href="#" class="active-sidebar">View Income</a></li>
-                                <li><a href="./add_monthly_income.php">Add Monthly Income</a></li>
-                                <li><a href="./view_monthly_income.php">View Monthly Incomes</a></li>
+                                <li><a href="./add_monthly_income.php">Add Income Sources</a></li>
+                                <li><a href="./view_monthly_income.php">View Income Sources</a></li>
                             </ul>
                         </li>
                         <li style="padding-left:5px">
@@ -117,8 +117,8 @@ $page_links = createPageLinks($pages, $current_page);
                             <ul style="padding-left:5px; display:none;" id="expenses-list">
                                 <li><a href="./add_expenses.php">Add Expense</a></li>
                                 <li><a href="./view_expense.php">View Expenses</a></li>
-                                <li><a href="./add_monthly_expense.php">Add Monthly Expenses</a></li>
-                                <li><a href="./view_monthly_expense.php">View Monthly Expenses</a></li>
+                                <li><a href="./add_monthly_expense.php">Add Expenses Outflow</a></li>
+                                <li><a href="./view_monthly_expense.php">View Expenses Outflows</a></li>
                                 <li><a href="./allocate_budget.php">Allocate Budget</a></li>
                                 <li><a href="./view_allocatedbudget.php">View Allocated Budget</a></li>
                             </ul>
