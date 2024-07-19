@@ -85,7 +85,9 @@ $page_links = createPageLinks($pages, $current_page);
                             <ul style="padding-left:30px; display:none;" id="tasks-lists-back">
                                 <li><a href="./tasks/add_tasks.php">Add Tasks</a></li>
                                 <li><a href="./tasks/view_tasks.php">View Tasks</a></li>
+                                <li><a href="./tasks/incomplete_task.php">Expired Tasks</a></li>
                                 <li><a href="./tasks/completed_task.php">Completed Tasks</a></li>
+                                <li><a href="./tasks/summary.php">Summary</a></li>
                             </ul>
                         </div>
                         <div class="sidebar-finance">
@@ -106,6 +108,7 @@ $page_links = createPageLinks($pages, $current_page);
                                         <li><a href="./finance/view_income.php">View Income</a></li>
                                         <li><a href="./finance/add_monthly_income.php">Add Income Sources</a></li>
                                         <li><a href="./finance/view_monthly_income.php">View Income Sources</a></li>
+                                        <li><a href="./finance/view_monthly_income.php">View Income Sources</a></li>
                                     </ul>
                                 </li>
                                 <li style="padding-left:5px;">
@@ -121,6 +124,15 @@ $page_links = createPageLinks($pages, $current_page);
                                         <li><a href="./finance/allocate_budget.php">Allocate Budget</a></li>
                                         <li><a href="./finance/view_allocatedbudget.php">View Allocated Budget</a></li>
                                     </ul>
+                                </li>
+                                <li style="padding-left:5px;">
+                                    <div class="d-flex justify-content-between">
+                                        <a href="./finance/summary.php">
+                                            <h4 class="cursor-pointer income-expense-title">
+                                                Summary
+                                            </h4>
+                                        </a>
+                                    </div>
                                 </li>
                             </ul>
                         </div>

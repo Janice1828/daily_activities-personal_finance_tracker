@@ -113,7 +113,7 @@ if (isset($_POST['addexpense'])) {
                                     <label for="">Title</label>
                                     <div id="monthlyexpenses-repeater-fields">
                                         <div class="d-flex gap-2 align-items-center">
-                                            <input type="text" name="title[]" value="" required>
+                                            <input type="text" name="title[]" value="" required style="width:50%">
                                             <button onclick="addExpensesInput()" class="mt-0 addInputBtn">
                                                 <img src="../../icons/icons8-add-50.png" class="input-add-icon" />
                                             </button>

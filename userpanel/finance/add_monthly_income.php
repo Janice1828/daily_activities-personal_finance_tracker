@@ -102,13 +102,13 @@ if (isset($_POST['addincome'])) {
                         <div class="">
                             <form class="row gap-2" method="post">
                                 <div class="col-12">
-                                    <h2 class="page-title">Add Income Sourcess</h2>
+                                    <h2 class="page-title">Add Income Sources</h2>
                                 </div>
                                 <div class="col-12">
                                     <label for="">Title</label>
                                     <div id="monthlyincome-repeater-fields" class="d-flex flex-column gap-2">
                                         <div class="d-flex gap-2 align-items-center">
-                                            <input type="text" name="title[]" value="" required>
+                                            <input type="text" name="title[]" value="" required style="width:50%">
                                             <button onclick="addIncomeInput()" style="margin-top:0px" class="addInputBtn">
                                                 <img src="../../icons/icons8-add-50.png" alt="" class="input-add-icon">
                                             </button>
@@ -116,7 +116,7 @@ if (isset($_POST['addincome'])) {
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn-success" name="addincome">Add Incomes</button>
+                                    <button type="submit" class="btn-success" name="addincome">Add Income</button>
                                 </div>
                             </form>
                         </div>
