@@ -95,12 +95,6 @@ $user_id = $_SESSION['user_id'];
             <div class="p-5">
                 <div class="pb-2 d-flex justify-content-between align-items-center">
                     <h3>Summary</h3>
-                    <!-- <select class="timely-summary">
-                        <option value="" selected>1 Day</option>
-                        <option value="">Monthly</option>
-                        <option value="">Quaterly</option>
-                        <option value="">Yearly</option>
-                    </select> -->
                     <?php
                     $income = 0;
                     $expense = 0;
