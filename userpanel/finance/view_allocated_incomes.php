@@ -8,21 +8,17 @@ include("../../connection.php");
 $user_id = $_SESSION['user_id'];
 $start = 0;
 $rows_per_page = 10;
-$tasks = $conn->query("SELECT * FROM dapf_tasks WHERE `deleted_status` = 0 AND `user_id`=$user_id");
-$no_of_rows = mysqli_num_rows($tasks);
-$pages = ceil($no_of_rows / $rows_per_page);
+$monthly_expenses = $conn->query("SELECT * FROM dapf_allocatebudget WHERE `user_id`=$user_id");
+$no_of_pages = mysqli_num_rows($monthly_expenses);
+$pages = ceil($no_of_pages / $rows_per_page);
 if (isset($_GET['page-nr'])) {
     $id = $_GET['page-nr'];
-    $page = $_GET['page-nr'] - 1;
+    $page = $id - 1;
     $start = $page * $rows_per_page;
 } else {
     $id = 1;
 }
-$selectQuery = "SELECT id,date, user_id,importance, task_name, task_due_date,status, importance FROM dapf_tasks WHERE `deleted_status` = 0 AND `user_id`=$user_id ORDER BY task_due_date DESC LIMIT $start, $rows_per_page";
-$fetch = mysqli_query($conn, $selectQuery);
-$date = date("Y-m-d");
 $current_page = isset($_GET['page-nr']) ? (int)$_GET['page-nr'] : 1;
-
 function createPageLinks($total_pages, $current_page, $limit = 5)
 {
     $start_page = max(1, $current_page - intval($limit / 2));
@@ -56,8 +52,10 @@ function createPageLinks($total_pages, $current_page, $limit = 5)
 
 $page_links = createPageLinks($pages, $current_page);
 
-?>
+$selectQuery = "SELECT dapf_allocatebudget.id,dapf_allocatebudget.allocation_for,dapf_allocatebudget.estimated_money, dapf_monthlyexpense.title FROM dapf_allocatebudget LEFT JOIN dapf_monthlyexpense ON dapf_monthlyexpense.id=dapf_allocatebudget.allocation_for WHERE dapf_allocatebudget.user_id=$user_id";
+$fetch = mysqli_query($conn, $selectQuery);
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,14 +65,13 @@ $page_links = createPageLinks($pages, $current_page);
     <title>Daily Activities & Personal Finance Tracker</title>
     <link rel="stylesheet" href="../../style.css">
 </head>
-<?php
-?>
 
-<body id="<?php echo $id; ?>">
+<body>
     <div class="row">
         <div class="col-2">
             <div class="sidebar d-flex flex-column gap-1">
                 <h5><a href="../dashboard.php" class="sidebar-heading d-flex align-items-center gap-1"><img src="../../images/dashboard.png" class="sidebar-logo"> <span>Dashboard</span></a></h5>
+
                 <div class="sidebar-activities">
                     <h5 id="task-link" class="cursor-pointer sidebar-heading d-flex align-items-center justify-content-between" onclick="displayTask()">
                         <div class="d-flex gap-1 align-items-center">
@@ -82,14 +79,13 @@ $page_links = createPageLinks($pages, $current_page);
                         </div>
                         <img src="../../icons/arrow_down.png" id="tasks-toggle-icon" class="sidebar-logo" alt="">
                     </h5>
-                    <ul style="padding-left:30px;" id="tasks-lists">
-                        <li><a href="./add_tasks.php">Add Tasks</a></li>
-                        <li><a href="#" class="active-sidebar">View Tasks</a></li>
-                        <li><a href="./incomplete_task.php">Expired Tasks</a></li>
-                        <li><a href="./completed_task.php">Completed Tasks</a></li>
+                    <ul style="padding-left: 30px; display:none" id="tasks-lists">
+                        <li><a href="../tasks/add_tasks.php">Add Tasks</a></li>
+                        <li><a href="../tasks/view_tasks.php">View Tasks</a></li>
+                        <li><a href="../tasks/incomplete_task.php">Expired Tasks</a></li>
+                        <li><a href="../tasks/completed_task.php">Completed Tasks</a></li>
                     </ul>
                 </div>
-
                 <div class="sidebar-finance">
                     <h2 class="sidebar-heading cursor-pointer d-flex align-items-center justify-content-between" onclick="toggleFinances()">
                         <div class="d-flex align-items-center gap-1">
@@ -97,17 +93,18 @@ $page_links = createPageLinks($pages, $current_page);
                         </div>
                         <img src="../../icons/arrow_down.png" class="sidebar-logo" id="finance-toggle-logo" alt="">
                     </h2>
-                    <ul style="padding-left:30px; display:none;" id="finance-lists">
+                    <ul style="padding-left:30px;" id="finance-lists">
                         <li style="padding-left:5px;">
                             <div class="d-flex justify-content-between">
                                 <h4 onclick="toggleIncome()" class="cursor-pointer income-expense-title">Incomes</h4>
                                 <img src="../../icons/arrow_down.png" id="incomeArrow" class="incomeExpensesArrow" alt="">
                             </div>
                             <ul style="padding-left:5px; display:none" id="incomes-list">
-                                <li><a href="../finance/add_income.php">Add Income</a></li>
-                                <li><a href="../finance/view_income.php">View Income</a></li>
-                                <li><a href="../finance/add_monthly_income.php">Add Income Sources</a></li>
-                                <li><a href="../finance/view_monthly_income.php">View Income Sources</a></li>
+                                <li><a href="./add_income.php">Add Income</a></li>
+                                <li><a href="./view_income.php">View Income</a></li>
+                                <li><a href="./add_monthly_income.php">Add Income Sources</a></li>
+                                <li><a href="./view_monthly_income.php">View Income Sources</a></li>
+                                <li><a href="#" class="active-sidebar">Allocated Incomes</a></li>
                             </ul>
                         </li>
                         <li style="padding-left:5px">
@@ -115,16 +112,15 @@ $page_links = createPageLinks($pages, $current_page);
                                 <h4 class="cursor-pointer income-expense-title" onclick="toggleExpenses()">Expenses</h4>
                                 <img src="../../icons/arrow_down.png" id="expenseArrow" class="incomeExpensesArrow" alt="">
                             </div>
-                            <ul style="padding-left:5px; display:none;" id="expenses-list">
-                                <li><a href="../finance/add_expenses.php">Add Expense</a></li>
-                                <li><a href="../finance/view_expense.php">View Expenses</a></li>
-                                <li><a href="../finance/add_monthly_expense.php">Add Expenses Outflow</a></li>
-                                <li><a href="../finance/view_monthly_expense.php">View Expenses Outflows</a></li>
-                                <li><a href="../finance/allocate_budget.php">Allocate Budget</a></li>
-                                <li><a href="../finance/view_allocatedbudget.php">View Allocated Budget</a></li>
+                            <ul style="padding-left:5px;" id="expenses-list">
+                                <li><a href="./add_expenses.php">Add Expense</a></li>
+                                <li><a href="./view_expense.php">View Expenses</a></li>
+                                <li><a href="./add_monthly_expense.php">Add Expenses Outflow</a></li>
+                                <li><a href="./view_monthly_expense.php">View Expenses Outflows</a></li>
+                                <li><a href="./allocate_budget.php">Allocate Budget</a></li>
+                                <li><a href="./view_allocatedbudget.php">View Allocated Budget</a></li>
                             </ul>
                         </li>
-
                     </ul>
                 </div>
             </div>
@@ -147,62 +143,36 @@ $page_links = createPageLinks($pages, $current_page);
                         <div class="">
                             <div class="row gap-2">
                                 <div class="col-12">
-                                    <h2 class="page-title">View Tasks</h2>
+                                    <h2 class="page-title">View Allocated Incomes</h2>
                                 </div>
-                                <div class="col-12 mb-0 d-flex gap-2">
-                                    <a href="./export_csv.php" class="btn-primary">CSV</a>
-                                    <!-- <button onclick="downloadPDF()" class="btn-secondary">PDF</button> -->
-                                </div>
-                                <div class="pdf-printable-area">
-
-                                    <table class="col-12" cellpadding="10" cellspacing="0">
-                                        <thead>
+                                <table class="col-12" cellpadding="10" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>SN</th>
+                                            <th>Money Allocation For</th>
+                                            <th>Allocated Money</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $i = 0;
+                                        while ($row = mysqli_fetch_assoc($fetch)) { ?>
                                             <tr>
-                                                <th>SN</th>
-                                                <th>Task Name</th>
-                                                <th>Importance</th>
-                                                <th>Task Due Date</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <td><?php echo ++$i; ?></td>
+                                                <td><?php echo $row['title'] ?></td>
+                                                <td><?php echo $row['estimated_money'] ?></td>
+                                                <td class="d-flex gap-1">
+                                                    <a href="./update_allocated_budget.php?id=<?php echo $row['id'] ?>" class="btn-secondary">Update</a>
+                                                    <a href="./delete_allocate_budget.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a>
+                                                </td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $i = 0;
-                                            while ($row = mysqli_fetch_assoc($fetch)) {
-
-                                            ?>
-                                                <tr>
-                                                    <td><?php echo ++$i; ?></td>
-                                                    <td><a style="text-decoration: none; color:blue" href="./task_detail.php?id=<?php echo $row['id'] ?>"><?php echo $row['task_name'] ?></a></td>
-                                                    <td><?php echo $row['importance'] ?></td>
-                                                    <td><?php echo $row['task_due_date']  ?></td>
-                                                    <td><?php echo $row['status']  ?></td>
-                                                    <td class="d-flex gap-1">
-                                                        <?php
-                                                        if ($row['status'] == "completed") {
-                                                            echo "completed";
-                                                        } else if ($row['task_due_date'] < $date) {
-                                                            echo "Expired";
-                                                        } else {
-                                                        ?>
-                                                            <a href="./complete_task.php?id=<?php echo $row['id'] ?>" class="btn-primary">Complete</a>
-                                                            <a href="./editform.php?id=<?php echo $row['id'] ?>" class="btn-secondary">Update</a>
-                                                            <a href="./delete.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a>
-                                                            <?php
-                                                            // }
-
-                                                            ?>
-                                                    </td>
-                                                </tr>
-                                        <?php }
-                                                    } ?>
-
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
                                 <div class="col-12">
-                                    <?php if (mysqli_num_rows($fetch) >= 1) { ?>
+                                    <?php
+                                    if (mysqli_num_rows($fetch) >= 1) { ?>
                                         <div class="pagination d-flex gap-1 align-items-center">
                                             <a href="?page-nr=<?php echo 1 ?>" class="start-page pagination-btns">First</a>
                                             <div class="page-numbers d-flex gap-1">
@@ -219,10 +189,10 @@ $page_links = createPageLinks($pages, $current_page);
 
                                             </div>
                                             <a href="?page-nr=<?php echo $pages ?>" class="end-page pagination-btns">Last</a>
-
-                                        </div><?php } ?>
-
+                                        </div>
+                                    <?php } ?>
                                 </div>
+
                             </div>
                         </div>
 
@@ -235,4 +205,5 @@ $page_links = createPageLinks($pages, $current_page);
     </div>
 </body>
 <script src="../../script.js">
+
 </script>

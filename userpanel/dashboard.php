@@ -108,7 +108,7 @@ $page_links = createPageLinks($pages, $current_page);
                                         <li><a href="./finance/view_income.php">View Income</a></li>
                                         <li><a href="./finance/add_monthly_income.php">Add Income Sources</a></li>
                                         <li><a href="./finance/view_monthly_income.php">View Income Sources</a></li>
-                                        <li><a href="./finance/view_monthly_income.php">View Income Sources</a></li>
+                                        <li><a href="./finance/view_allocated_incomes.php">Allocate Income</a></li>
                                     </ul>
                                 </li>
                                 <li style="padding-left:5px;">

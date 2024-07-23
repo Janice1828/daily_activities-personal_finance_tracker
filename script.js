@@ -162,6 +162,30 @@ function toggleExpenses() {
     arrowIcon.src = "../../icons/arrow_down.png";
   }
 }
+function downloadPDF() {
+  const printableArea = document.querySelector(".pdf-printable-area").innerHTML;
+  let style = "<style>";
+  style = style + "table{border:1px solid #000; border-collapse:collapse}";
+  style = style + "tr{border:1px solid #000}";
+  style =
+    style +
+    "a{color:black !important; text-decoration:none !important;  pointer-events: none;}";
+  style = style + "td{border:1px solid #000}";
+  style = style + "th{border:1px solid #000}";
+  style = style + "</style>";
+  // let link = document.querySelectorAll("a");
+  // link.forEach((item) => {
+  //   item.setAttribute("href", "#");
+  // });
+  // console.log(link);
+  let windowObj = window.open("", "", "width:900, height:700");
+  windowObj.document.write(style);
+  windowObj.document.write(printableArea);
+
+  windowObj.document.close();
+  windowObj.print();
+}
+
 function toggleDashboardExpenses() {
   const sidebarexpensesList = document.getElementById(
     "dashboard-expenses-list"
@@ -241,6 +265,7 @@ function addInput(containerName) {
     divContainer.remove();
   });
 }
+
 const dateContainer = document.getElementById("date");
 if (dateContainer) {
   dateContainer.value = `${year}-${getMonth}-${d}`;
