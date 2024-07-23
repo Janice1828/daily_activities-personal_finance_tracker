@@ -20,6 +20,12 @@ if (isset($_GET['page-nr'])) {
 }
 $selectQuery = "SELECT id,date, user_id,importance, task_name, task_due_date,status, importance FROM dapf_tasks WHERE `deleted_status` = 0 AND `user_id`=$user_id ORDER BY task_due_date DESC LIMIT $start, $rows_per_page";
 $fetch = mysqli_query($conn, $selectQuery);
+$displayingData = mysqli_fetch_all($fetch, MYSQLI_ASSOC);
+
+// print_r($resultArr);
+// foreach ($resultArr as $data) {
+//     echo $data['task_name'] . "<br/>";
+// }
 $date = date("Y-m-d");
 $current_page = isset($_GET['page-nr']) ? (int)$_GET['page-nr'] : 1;
 
@@ -149,11 +155,25 @@ $page_links = createPageLinks($pages, $current_page);
                                 <div class="col-12">
                                     <h2 class="page-title">View Tasks</h2>
                                 </div>
-                                <div class="col-12 mb-0 d-flex gap-2">
+                                <div class="col-12 d-flex justify-content-between align-items-center">
                                     <a href="./export_csv.php" class="btn-primary">CSV</a>
-                                    <!-- <button onclick="downloadPDF()" class="btn-secondary">PDF</button> -->
+                                    <?php
+                                    if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+                                        $taskName = $_POST['task_name'];
+                                        $fetch_tasks = "SELECT * FROM `dapf_tasks` WHERE `task_name` LIKE '%$taskName%'";
+                                        $data = mysqli_query($conn, $fetch_tasks);
+                                        $resultArr = mysqli_fetch_all($data, MYSQLI_ASSOC);
+                                        $displayingData = $resultArr;
+                                    }
+                                    ?>
+                                    <form method="POST" class="d-flex gap-2">
+                                        <input type="" name="task_name" value="" placeholder="Search Tasks">
+                                        <button type="">Search</button>
+
+                                    </form>
                                 </div>
-                                <div class="pdf-printable-area">
+
+                                <div class="col-12 row pdf-printable-area">
 
                                     <table class="col-12" cellpadding="10" cellspacing="0">
                                         <thead>
@@ -169,35 +189,30 @@ $page_links = createPageLinks($pages, $current_page);
                                         <tbody>
                                             <?php
                                             $i = 0;
-                                            while ($row = mysqli_fetch_assoc($fetch)) {
 
+                                            foreach ($displayingData as $data) {
                                             ?>
                                                 <tr>
                                                     <td><?php echo ++$i; ?></td>
-                                                    <td><a style="text-decoration: none; color:blue" href="./task_detail.php?id=<?php echo $row['id'] ?>"><?php echo $row['task_name'] ?></a></td>
-                                                    <td><?php echo $row['importance'] ?></td>
-                                                    <td><?php echo $row['task_due_date']  ?></td>
-                                                    <td><?php echo $row['status']  ?></td>
-                                                    <td class="d-flex gap-1">
-                                                        <?php
-                                                        if ($row['status'] == "completed") {
+                                                    <td><?php echo $data['task_name'] ?></td>
+                                                    <td><?php echo $data['importance']  ?></td>
+                                                    <td><?php echo $data['task_due_date']  ?></td>
+                                                    <td><?php echo $data['status']  ?></td>
+                                                    <td><?php
+                                                        if ($data['status'] == "completed") {
                                                             echo "completed";
-                                                        } else if ($row['task_due_date'] < $date) {
+                                                        } else if ($data['task_due_date'] < $date) {
                                                             echo "Expired";
                                                         } else {
                                                         ?>
-                                                            <a href="./complete_task.php?id=<?php echo $row['id'] ?>" class="btn-primary">Complete</a>
+                                                            <a href="./complete_task.php?id=<?php echo $data['id'] ?>" class="btn-primary">Complete</a>
                                                             <a href="./editform.php?id=<?php echo $row['id'] ?>" class="btn-secondary">Update</a>
                                                             <a href="./delete.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a>
-                                                            <?php
-                                                            // }
 
-                                                            ?>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
-                                        <?php }
-                                                    } ?>
-
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
