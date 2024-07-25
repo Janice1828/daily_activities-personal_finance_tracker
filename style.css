@@ -287,7 +287,7 @@ table tbody tr:last-child {
   border-bottom: 0px;
 }
 .btn-danger {
-  padding: 8px 20px;
+  padding: 6px 20px;
   cursor: pointer;
   text-decoration: none;
   outline: none;
@@ -306,7 +306,7 @@ table tbody tr:last-child {
   margin-top: 0px !important;
 }
 .btn-primary {
-  padding: 8px 20px;
+  padding: 6px 20px;
   cursor: pointer;
   text-decoration: none;
   outline: none;
@@ -316,7 +316,7 @@ table tbody tr:last-child {
   border-radius: 3px;
 }
 .btn-secondary {
-  padding: 8px 20px;
+  padding: 6px 20px;
   cursor: pointer;
   text-decoration: none;
   outline: none;
@@ -674,4 +674,43 @@ footer h3 {
   font-size: 16px;
   line-height: 30px;
   padding: 10px 0px;
+}
+.data-search-download {
+  background: #fff;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.6);
+  padding: 10px 56px 10px 19px;
+}
+.data-search-download form input {
+  padding: 10px 20px;
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid #c3c3c3;
+}
+.data-search-download form button {
+  border: 1px solid #c3c3c3;
+  outline: none;
+  background: #ededed;
+  height: 35px;
+  width: 80px;
+  font-size: 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.data-search-download form {
+  display: flex;
+  align-items: center;
+}
+.btn-download-csv {
+  height: 33px;
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  width: 70px;
+  justify-content: center;
+  border-radius: 1px;
+  background: #e81c1c;
+  font-size: 14px;
+  font-weight: 500;
 }

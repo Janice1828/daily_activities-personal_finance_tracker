@@ -151,12 +151,12 @@ $page_links = createPageLinks($pages, $current_page);
                 <div class="card">
                     <div class="card-body">
                         <div class="">
-                            <div class="row gap-2">
-                                <div class="col-12">
+                            <div class="row">
+                                <div class="col-12" style="margin-bottom:20px;">
                                     <h2 class="page-title">View Tasks</h2>
                                 </div>
-                                <div class="col-12 d-flex justify-content-between align-items-center">
-                                    <a href="./export_csv.php" class="btn-primary">CSV</a>
+                                <div class="col-12 d-flex justify-content-between align-items-center data-search-download">
+                                    <a href="./export_csv.php" class="btn-download-csv">CSV</a>
                                     <?php
                                     if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                                         $taskName = $_POST['task_name'];
@@ -194,7 +194,10 @@ $page_links = createPageLinks($pages, $current_page);
                                             ?>
                                                 <tr>
                                                     <td><?php echo ++$i; ?></td>
-                                                    <td><?php echo $data['task_name'] ?></td>
+                                                    <td>
+                                                        <a style="text-decoration: none; color:blue" href="./task_detail.php?id=<?php echo $data['id'] ?>"><?php echo $data['task_name'] ?></a>
+                                                    </td>
+
                                                     <td><?php echo $data['importance']  ?></td>
                                                     <td><?php echo $data['task_due_date']  ?></td>
                                                     <td><?php echo $data['status']  ?></td>
@@ -206,8 +209,8 @@ $page_links = createPageLinks($pages, $current_page);
                                                         } else {
                                                         ?>
                                                             <a href="./complete_task.php?id=<?php echo $data['id'] ?>" class="btn-primary">Complete</a>
-                                                            <a href="./editform.php?id=<?php echo $row['id'] ?>" class="btn-secondary">Update</a>
-                                                            <a href="./delete.php?id=<?php echo $row['id'] ?>" class="btn-danger">Delete</a>
+                                                            <a href="./editform.php?id=<?php echo $data['id'] ?>" class="btn-secondary">Update</a>
+                                                            <a href="./delete.php?id=<?php echo $data['id'] ?>" class="btn-danger">Delete</a>
 
                                                         <?php } ?>
                                                     </td>
