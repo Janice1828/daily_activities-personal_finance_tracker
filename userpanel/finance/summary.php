@@ -120,7 +120,7 @@ $user_id = $_SESSION['user_id'];
                         </div>
                         <div>
                             <label for="to_date">To</label>
-                            <input type="date" name="to_date" max="<?php echo $currentDate ?>" required>
+                            <input type="date" value="<?php echo $currentDate ?>" name="to_date" max="<?php echo $currentDate ?>" required>
                         </div>
                         <div style="margin-top:15px">
                             <button type="submit" class="btn-primary">Submit</button>

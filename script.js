@@ -234,6 +234,9 @@ function toggleMasterback() {
     toggleLogo.src = "./../icons/arrow_down.png";
   }
 }
+function stopRefreshing() {
+  // event.preventDefault();
+}
 function addExpensesInput() {
   event.preventDefault();
   addInput("monthlyexpenses-repeater-fields");

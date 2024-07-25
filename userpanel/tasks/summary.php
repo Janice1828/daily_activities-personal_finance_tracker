@@ -1,9 +1,31 @@
 <?php
 session_start();
-$user_id = $_SESSION['user_id'];
-$currentDate = date("Y-m-d");
 include("../../connection.php");
 $user_id = $_SESSION['user_id'];
+$currentDate = date("Y-m-d");
+$to_date = isset($_POST['to_date']) ? $_POST['to_date'] : 0;
+$from_date = isset($_POST['from_date']) ? $_POST['from_date'] : 0;
+
+if (isset($_POST['timely_task_csv'])) {
+    $file_name = "tasks_" . date("Y-m-d") . ".csv";
+    $delimiter = ",";
+    $f = fopen('php://memory', 'w');
+    $fields = array('id', 'date', 'task_name', 'task_due_date', 'importance', 'status', 'summary');
+    fputcsv($f, $fields, $delimiter);
+    $result = $conn->query("SELECT * FROM dapf_tasks WHERE user_id='$user_id' AND date>='$from_date' AND date<='$to_date'");
+    $id = 0;
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $lineData = array(++$id, $row['date'], $row['task_name'], $row['task_due_date'], $row['importance'], $row['status'], $row['summary']);
+            fputcsv($f, $lineData, $delimiter);
+        }
+    }
+    fseek($f, 0);
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="' . $file_name . '";');
+    fpassthru($f);
+    exit();
+}
 
 ?>
 <!DOCTYPE html>
@@ -92,12 +114,13 @@ $user_id = $_SESSION['user_id'];
                 <div class="pb-2 d-flex justify-content-between align-items-center">
                     <h3>Summary</h3>
                     <?php
+
                     $date = date("Y-m-d");
                     $totalTasks = 0;
                     $newTasks = 0;
                     $completedTasks = 0;
                     $expiredTasks = 0;
-                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    if (isset($_POST['tasks_summary'])) {
                         $fromDate = $_POST['from_date'];
                         $toDate = $_POST['to_date'];
                         $totalTasks = "SELECT COUNT(id) AS totalTasks FROM `dapf_tasks` WHERE user_id=$user_id";
@@ -116,20 +139,29 @@ $user_id = $_SESSION['user_id'];
                         $newTasks = $new_task['newTasks'];
                         $completedTasks = $completed_tasks['completedTasks'];
                         $expiredTasks = $expired_query['expiredTasks'];
+                        $to_date = $toDate;
+                        $from_date = $fromDate;
                     }
                     ?>
                     <form method="POST" class="d-flex gap-2 align-items-center">
                         <div>
                             <label for="from_date">From</label>
-                            <input type="date" name="from_date" value="" max="<?php echo $currentDate ?>" required>
+                            <input type="date" name="from_date" value="<?php echo $from_date ?>" max="<?php echo $currentDate ?>" required>
                         </div>
                         <div>
                             <label for="to_date">To</label>
-                            <input type="date" name="to_date" max="<?php echo $currentDate ?>" required>
+                            <input type="date" name="to_date" max="<?php echo $currentDate ?>" value="<?php echo $currentDate ?>" required>
                         </div>
                         <div style="margin-top:15px">
-                            <button type="submit" class="btn-primary">Submit</button>
+                            <button type="submit" name="tasks_summary" class="btn-primary">Submit</button>
                         </div>
+                    </form>
+                </div>
+                <div style="margin-bottom:20px;">
+                    <form method="POST" onsubmit="stopRefreshing()">
+                        <input type="hidden" name="from_date" value="<?php echo $from_date ?>">
+                        <input type="hidden" name="to_date" value="<?php echo $to_date ?>">
+                        <button name="timely_task_csv" class="btn-danger">Download CSV</button>
                     </form>
                 </div>
                 <div class="tasks-report d-flex" style="gap:25px">
@@ -162,3 +194,5 @@ $user_id = $_SESSION['user_id'];
 </body>
 <script src="../../script.js">
 </script>
+
+</html>

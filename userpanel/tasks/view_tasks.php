@@ -22,10 +22,6 @@ $selectQuery = "SELECT id,date, user_id,importance, task_name, task_due_date,sta
 $fetch = mysqli_query($conn, $selectQuery);
 $displayingData = mysqli_fetch_all($fetch, MYSQLI_ASSOC);
 
-// print_r($resultArr);
-// foreach ($resultArr as $data) {
-//     echo $data['task_name'] . "<br/>";
-// }
 $date = date("Y-m-d");
 $current_page = isset($_GET['page-nr']) ? (int)$_GET['page-nr'] : 1;
 
@@ -73,8 +69,6 @@ $page_links = createPageLinks($pages, $current_page);
     <title>Daily Activities & Personal Finance Tracker</title>
     <link rel="stylesheet" href="../../style.css">
 </head>
-<?php
-?>
 
 <body id="<?php echo $id; ?>">
     <div class="row">
@@ -156,7 +150,7 @@ $page_links = createPageLinks($pages, $current_page);
                                     <h2 class="page-title">View Tasks</h2>
                                 </div>
                                 <div class="col-12 d-flex justify-content-between align-items-center data-search-download">
-                                    <a href="./export_csv.php" class="btn-download-csv">CSV</a>
+                                    <a href="./task_export_csv.php" class="btn-download-csv">CSV</a>
                                     <?php
                                     if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                                         $taskName = $_POST['task_name'];
